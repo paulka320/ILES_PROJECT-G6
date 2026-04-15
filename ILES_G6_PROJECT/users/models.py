@@ -8,3 +8,4 @@ class CustomUser(AbstractUser):
         ('academic','Academic Supervisor'),
         ('admin','Admin'),
     )
+    role = models.CharField(max_length=20,choices=ROLE_CHOICES)
