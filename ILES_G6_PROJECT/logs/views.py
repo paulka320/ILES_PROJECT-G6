@@ -40,4 +40,5 @@ return Response({"message": "Log submitted"})
 def review(self, request, pk=None):
   log = self.get_object()
   
-
+if log.status != 'submitted':
+  return Response({"error": "only submitted logs can be reviewed"}, status=400)
