@@ -3,3 +3,16 @@ import django.db.models.deletion
 from django.conf import settings
 from django.db import migrations, models
 
+
+
+class Migration(migration.Migration):
+  
+  initial = TRUE
+
+dependencies = [
+  ('logs', '0001_initials'),
+  migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+]
+
+
+
