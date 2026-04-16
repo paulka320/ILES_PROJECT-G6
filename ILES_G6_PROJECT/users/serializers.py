@@ -21,3 +21,12 @@ class RegisterSerializer(serializers.ModelSerializer):
                 role = validated_data['role'],
                 password = validated_data['password']
             )
+
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+    def validate(self,attrs):
+        data = super().validate(attrs)
+
+        data['role'] = self.user.role
+        data['username'] = self.user.username
+
+        return data
