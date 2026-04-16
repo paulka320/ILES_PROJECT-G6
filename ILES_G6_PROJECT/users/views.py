@@ -6,6 +6,8 @@ from .models import CustomUser
 from .serializers import RegisterSerializer,UserSerializer
 from rest_framework.permissions import IsAuthenticated
 from .permissions import IsAdmin
+from res_framework_simplejwt.views import TokeObtainPairView
+from .serializers import MyTokenObtainPairSerializer
 
 
 class RegisterView(generics.CreateAPIView):
