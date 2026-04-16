@@ -38,5 +38,6 @@ return Response({"message": "Log submitted"})
 # Review Log
 @action(detail=True, methods=['post'], permission_classes=[IsSupervisor])
 def review(self, request, pk=None):
+  log = self.get_object()
   
 
