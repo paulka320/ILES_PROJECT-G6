@@ -17,6 +17,11 @@ class WeeklyLogViewSet(viewsets.modelViewSet):
   def get_queryset(self):
     user = self.request.user
 
+  if user.role == 'student':
+    return WeeklyLog.objects.filter(student=user)
+
+return WeeklyLog.objects.all()
+
 
   
 
