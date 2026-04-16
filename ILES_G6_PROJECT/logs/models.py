@@ -20,6 +20,9 @@ content = models.TextField()
 status = models.charField(max_length=20,choices = STATUS_CHOICES, default='draft')
 created_at = models.DateField(auto_now_add=TRUE)
 
+def __str__(self):
+  return f"Week {self.week_number} -{self.student"}
+
 
 
     
