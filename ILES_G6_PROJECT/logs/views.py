@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from .models import weeklyLog
 from .serializers import WeeklyLogSerializer
 from rest_framework.permissions import IsAuthenticated
-from users.permissions import IsStudent, IsSupervisor
+from users. permissions import IsStudent, IsSupervisor
 
 class WeeklyLogViewSet(viewsets.modelViewSet):
   queryset = WeeklyLog.objects.all()
