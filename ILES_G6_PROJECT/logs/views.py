@@ -13,6 +13,11 @@ class WeeklyLogViewSet(viewsets.modelViewSet):
   queryset = WeeklyLog.objects.all()
   serializer_class = WeeklyLogSerializer
   permission_classes -[IsAuthenticated]
+
+  def get_queryset(self):
+    user = self.request.user
+
+
   
 
 
