@@ -26,7 +26,9 @@ return WeeklyLog.objects.all()
 @action(detail=True, method=['post'], permission_classes=[IsStudent])
 def submit(self, request, pk=None):
   log = self.get_object()
-  
+
+if log.status !- 'draft':
+  return Response({"error": "only draft logs can be submitted"}, status=400)
 
 
 
