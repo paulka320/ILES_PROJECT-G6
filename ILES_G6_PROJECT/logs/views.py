@@ -29,7 +29,11 @@ def submit(self, request, pk=None):
 
 if log.status !- 'draft':
   return Response({"error": "only draft logs can be submitted"}, status=400)
+  
+lo.status ='submitted'
+log.save()
 
+return Response({"message": "Log submitted"})
 
 
 
