@@ -9,3 +9,8 @@ from .permissions import IsAdmin
 
 
 class RegisterView(generics.CreateAPIView):
+    queryset = CustomUser.objects.all()
+    serializer_class = RegisterSerializer
+
+
+class UserListView(generics.ListAPIView):
