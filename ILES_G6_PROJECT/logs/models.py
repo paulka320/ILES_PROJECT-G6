@@ -11,4 +11,11 @@ class WeeklyLog(models.model):
     ('reviewed', 'reviewed'),
     ('approved', 'approved'),
   )
+
+student = models.Foreignkey(User, on_delete=models.CASCADE)
+week_number = models.IntegerField()
+
+content = models.TextField()
+
+
     
