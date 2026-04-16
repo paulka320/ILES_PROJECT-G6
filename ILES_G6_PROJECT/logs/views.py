@@ -42,3 +42,8 @@ def review(self, request, pk=None):
   
 if log.status != 'submitted':
   return Response({"error": "only submitted logs can be reviewed"}, status=400)
+
+log.status ='approved'
+log.save()
+
+return Response({"message": "Log approved"})
