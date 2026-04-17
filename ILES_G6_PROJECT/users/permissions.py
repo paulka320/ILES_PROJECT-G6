@@ -12,3 +12,6 @@ class IsSupervisor(BasePermission):
     def has_permission(self,request,view):
         return request.user.role=='supervisor'
     
+class IsAcademic(BasePermission):
+    def has_permission(self,request,view):
+        return request.user.role=='academic'
