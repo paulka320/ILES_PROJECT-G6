@@ -11,3 +11,4 @@ class EvaluationCriteria(models.model):
         return self.name
     
 class Evaluation(models.Model):
+    student = models.ForeignKey(User, on_delete=models.CASCADE)
