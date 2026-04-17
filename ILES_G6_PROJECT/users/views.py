@@ -6,7 +6,7 @@ from .models import CustomUser
 from .serializers import RegisterSerializer,UserSerializer
 from rest_framework.permissions import IsAuthenticated
 from .permissions import IsAdmin
-from res_framework_simplejwt.views import TokeObtainPairView
+from rest_framework_simplejwt.views import TokenObtainPairView
 from .serializers import MyTokenObtainPairSerializer
 
 
@@ -19,3 +19,6 @@ class UserListView(generics.ListAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
     permission_classes = [IsAuthenticated,IsAdmin]
+
+class MyTokenObtainPairView(TokenObtainPairView):
+    
