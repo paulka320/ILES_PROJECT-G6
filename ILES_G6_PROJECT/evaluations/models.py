@@ -9,3 +9,5 @@ class EvaluationCriteria(models.model):
 
     def __str__(self):
         return self.name
+    
+class Evaluation(models.Model):
