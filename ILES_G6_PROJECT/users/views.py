@@ -21,4 +21,4 @@ class UserListView(generics.ListAPIView):
     permission_classes = [IsAuthenticated,IsAdmin]
 
 class MyTokenObtainPairView(TokenObtainPairView):
-    
+    serializer_class = MyTokenObtainPairSerializer
