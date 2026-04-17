@@ -16,3 +16,5 @@ class Evaluation(models.Model):
     attendance_score = models.FloatField()
     performance_score = models.FloatField()
     report_score = models.FloatField()
+
+    total_score = models.FloatField(blank=True, null=True)
