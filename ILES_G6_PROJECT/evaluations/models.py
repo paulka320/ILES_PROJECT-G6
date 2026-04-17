@@ -14,3 +14,5 @@ class Evaluation(models.Model):
     student = models.ForeignKey(User, on_delete=models.CASCADE)
     evaluator = models.ForeignKey(User, on_delete=models.CASCADE, related_name='evaluatoions_given')
     attendance_score = models.FloatField()
+    performance_score = models.FloatField()
+    report_score = models.FloatField()
