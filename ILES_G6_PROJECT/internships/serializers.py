@@ -17,3 +17,6 @@ class InternshipPlacementSerializer(serializers.ModelSerializer):
 
         existing = InternshipPlacement.objects.filter(
             student=student,
+            start_date__lte=end_date,
+            end_date__gte=start_date
+        )
