@@ -7,3 +7,5 @@ class InternshipPlacementSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     # 🔥 VALIDATION: prevent overlapping dates
+    def validate(self, data):
+        student = data['student']
