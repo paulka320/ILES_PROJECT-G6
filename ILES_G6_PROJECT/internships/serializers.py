@@ -6,3 +6,4 @@ class InternshipPlacementSerializer(serializers.ModelSerializer):
         model = InternshipPlacement
         fields = '__all__'
 
+    # 🔥 VALIDATION: prevent overlapping dates
