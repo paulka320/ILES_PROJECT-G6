@@ -14,3 +14,6 @@ class InternshipPlacementSerializer(serializers.ModelSerializer):
 
         if start_date > end_date:
             raise serializers.ValidationError("Start date must be before end date")
+
+        existing = InternshipPlacement.objects.filter(
+            student=student,
