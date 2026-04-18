@@ -17,3 +17,6 @@ class SupervisorStudentsView(generics.ListAPIView):
     permission_classes =[IsAuthenticated]
 
     def get_queryset(self):
+        return InternshipPlacement.objects.filter(
+            supervisor = self.request.user
+        )
