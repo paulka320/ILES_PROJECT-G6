@@ -9,3 +9,5 @@ class InternshipPlacementSerializer(serializers.ModelSerializer):
     # 🔥 VALIDATION: prevent overlapping dates
     def validate(self, data):
         student = data['student']
+        start_date = data['start_date']
+        end_date = data['end_date']
