@@ -14,3 +14,4 @@ class InternshipPlacementViewSet(viewsets.ModelViewSet):
 
 class SupervisorStudentsView(generics.ListAPIView):
     serializer_class = InternshipPlacementSerializer
+    permission_classes =[IsAuthenticated]
