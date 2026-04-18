@@ -7,4 +7,6 @@ from .serializers import InternshipPlacementSerializer
 from rest_framework.permissions import IsAuthenticated
 from users.permissions import IsAdmin
 
+class InternshipPlacementViewSet(viewsets.ModelViewSet):
+    queryset = InternshipPlacement.objects.all()
 
