@@ -20,3 +20,5 @@ class InternshipPlacementSerializer(serializers.ModelSerializer):
             start_date__lte=end_date,
             end_date__gte=start_date
         )
+
+        if existing.exists():
