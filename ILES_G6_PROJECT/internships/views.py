@@ -9,4 +9,6 @@ from users.permissions import IsAdmin
 
 class InternshipPlacementViewSet(viewsets.ModelViewSet):
     queryset = InternshipPlacement.objects.all()
+    serializer_class = InternshipPlacementSerializer
+    permission_classes = [IsAuthenticated, IsAdmin]
 
