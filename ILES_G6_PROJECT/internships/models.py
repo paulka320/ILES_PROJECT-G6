@@ -8,3 +8,5 @@ class InternshipPlacement(models.Model):
     academic_supervisor = models.ForeignKey(User, on_delete = models.CASCADE, related_name= 'academic_students')
     supervisor_name = models.ForeignKey(User, on_delete = models.CASCADE, related_name = 'supervisor_students')
     start_date = models.DateField()
+    end_date = models.DateField()
+    def __str__(self):
