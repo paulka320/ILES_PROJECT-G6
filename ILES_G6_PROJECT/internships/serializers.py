@@ -22,3 +22,4 @@ class InternshipPlacementSerializer(serializers.ModelSerializer):
         )
 
         if existing.exists():
+            raise serializers.ValidationError("Overlapping internship placement detected")
