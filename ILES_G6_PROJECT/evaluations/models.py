@@ -21,3 +21,6 @@ class Evaluation(models.Model):
     def save(self, *args, **kwargs):
         self.total_score = (self.attendance_score*0.4 + self.performance_score*0.3 + self.report_score*0.3)
         super().save(*args, **kwargs)
+
+        def __str__(self):
+            return f"{self.student} - {self.total_score}"
