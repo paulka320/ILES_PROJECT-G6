@@ -18,3 +18,6 @@ class Evaluation(models.Model):
     report_score = models.FloatField()
 
     total_score = models.FloatField(blank=True, null=True)
+    def save(self, *args, **kwargs):
+        self.total_score = (self.attendance_score*0.4 + self.performance_score*0.3 + self.report_score*0.3)
+        super().save(*args, **kwargs)
