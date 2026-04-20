@@ -2,7 +2,7 @@ from django.db import models
 from django.conf import settings
 # Create your models here.
 
-user = settings.AUTH_USER_MODEL
+User = settings.AUTH_USER_MODEL
 
 class WeeklyLog(models.Model):
   STATUS_CHOICE = (
