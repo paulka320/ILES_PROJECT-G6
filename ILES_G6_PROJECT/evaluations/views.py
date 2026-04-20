@@ -7,3 +7,5 @@ from rest_framework.permissions import IsAuthenticated
 from users.permissions import IsAcademic
 
 class EvaluationViewSet(viewsets.ModelViewSet):
+    queryset = Evaluation.objects.all()
+    
