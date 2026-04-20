@@ -40,10 +40,10 @@ def submit(self, request, pk=None):
 def review(self, request, pk=None):
   log = self.get_object()
   
-if log.status != 'submitted':
-  return Response({"error": "only submitted logs can be reviewed"}, status=400)
+  if log.status != 'submitted':
+    return Response({"error": "only submitted logs can be reviewed"}, status=400)
 
-log.status ='approved'
-log.save()
+  log.status ='approved'
+  log.save()
 
 return Response({"message": "Log approved"})
