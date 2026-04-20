@@ -17,7 +17,7 @@ week_number = models.IntegerField()
 
 content = models.TextField()
 
-status = models.CharsField(max_length=20,choices = STATUS_CHOICES, default='draft')
+status = models.CharField(max_length=20,choices = STATUS_CHOICES, default='draft')
 created_at = models.DateField(auto_now_add=True)
 
 def __str__(self):
