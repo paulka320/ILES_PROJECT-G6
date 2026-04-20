@@ -23,4 +23,5 @@ urlpatterns = [
     path('api/internships/',include('internships.urls')),
     path('api/logs/',include('logs.urls')),
     path('api/evaluations/',include('evaluations.urls')),
+    path('',home),
 ]
