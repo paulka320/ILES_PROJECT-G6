@@ -14,7 +14,7 @@ def create(self, validated_data):
 
 def update(self, instance, validated_data):
   # ! preventing editing after approval 
-  if instance.status == 'Aprroved':
+  if instance.status == 'approved':
     raise serializers.validationError("Cannot edit approved log")
   return super().update(instance, validated_data)
   
