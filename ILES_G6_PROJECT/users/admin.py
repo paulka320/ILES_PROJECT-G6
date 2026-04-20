@@ -7,4 +7,4 @@ class CustomUserAdmin(UserAdmin):
     fieldsets = UserAdmin.fieldsets + (
         (None, {'fields': ('role',)}),
     )
-admin.site.register(CustomUser)
+admin.site.register(CustomUser,CustomUserAdmin)
