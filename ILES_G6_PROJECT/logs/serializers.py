@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import WeeklyLog
 
-class WeeklyLogSerializser(serializers.ModelSerializer):
+class WeeklyLogSerializer(serializers.ModelSerializer):
   class meta:
     model = WeeklyLog
     fields ='__all__'
