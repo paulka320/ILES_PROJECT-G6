@@ -20,7 +20,7 @@ class WeeklyLogViewSet(viewsets.modelViewSet):
     if user.role == 'student':
       return WeeklyLog.objects.filter(student=user)
 
-return WeeklyLog.objects.all()
+    return WeeklyLog.objects.all()
 
 # submitting Log
 @action(detail=True, method=['post'], permission_classes=[IsStudent])
