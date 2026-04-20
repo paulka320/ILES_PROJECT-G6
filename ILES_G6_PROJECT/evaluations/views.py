@@ -8,4 +8,5 @@ from users.permissions import IsAcademic
 
 class EvaluationViewSet(viewsets.ModelViewSet):
     queryset = Evaluation.objects.all()
+    serializer_class = EvaluationSerializer
     
