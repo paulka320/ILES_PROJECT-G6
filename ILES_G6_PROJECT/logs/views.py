@@ -33,7 +33,7 @@ def submit(self, request, pk=None):
   log.status = 'submitted'
   log.save()
 
-return Response({"message": "Log submitted"})
+  return Response({"message": "Log submitted"})
 
 # Review Log
 @action(detail=True, methods=['post'], permission_classes=[IsSupervisor])
