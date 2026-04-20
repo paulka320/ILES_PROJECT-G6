@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'logs',
     'users',
     'internships',
-    'evaluations'
+    'evaluations',
 ]
 
 MIDDLEWARE = [
