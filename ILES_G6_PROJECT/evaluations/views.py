@@ -10,3 +10,5 @@ class EvaluationViewSet(viewsets.ModelViewSet):
     queryset = Evaluation.objects.all()
     serializer_class = EvaluationSerializer
     permission_classes = [IsAuthenticated, IsAcademic]
+
+    def perform_create(self, serializer):
