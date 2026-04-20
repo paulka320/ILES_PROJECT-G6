@@ -3,3 +3,5 @@ from .views import EvaluationViewSet
 
 router = DefaultRouter()
 router.register(r'evaluations', EvaluationViewSet)
+
+urlpatterns = router.urls
