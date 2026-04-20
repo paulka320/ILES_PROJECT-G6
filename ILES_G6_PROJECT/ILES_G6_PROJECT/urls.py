@@ -22,5 +22,5 @@ urlpatterns = [
     path('api/users/',include('users.urls')),
     path('api/internships/',include('internships.urls')),
     path('api/logs/',include('logs.urls')),
-    path
+    path('api/evaluations/',include('evaluations.urls')),
 ]
