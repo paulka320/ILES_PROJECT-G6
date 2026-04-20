@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import weeklyLog
+from .models import WeeklyLog
 # Register your models here.
 admin.site.register(WeeklyLog)
