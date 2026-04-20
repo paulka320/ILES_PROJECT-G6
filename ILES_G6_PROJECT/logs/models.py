@@ -5,19 +5,19 @@ from django.conf import settings
 User = settings.AUTH_USER_MODEL
 
 class WeeklyLog(models.Model):
-  STATUS_CHOICE = (
+  STATUS_CHOICES = (
     ('draft', 'draft'),
     ('submitted', 'submitted'),
     ('reviewed', 'reviewed'),
     ('approved', 'approved'),
   )
 
-student = models.Foreignkey(User, on_delete=models.CASCADE)
+student = models.ForeignKey(User, on_delete=models.CASCADE)
 week_number = models.IntegerField()
 
 content = models.TextField()
 
-status = models.charField(max_length=20,choices = STATUS_CHOICES, default='draft')
+status = models.CharsField(max_length=20,choices = STATUS_CHOICES, default='draft')
 created_at = models.DateField(auto_now_add=True)
 
 def __str__(self):
