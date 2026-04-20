@@ -46,4 +46,4 @@ def review(self, request, pk=None):
   log.status ='approved'
   log.save()
 
-return Response({"message": "Log approved"})
+  return Response({"message": "Log approved"})
