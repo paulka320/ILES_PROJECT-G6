@@ -12,13 +12,13 @@ from users. permissions import IsStudent, IsSupervisor
 class WeeklyLogViewSet(viewsets.modelViewSet):
   queryset = WeeklyLog.objects.all()
   serializer_class = WeeklyLogSerializer
-  permission_classes -[IsAuthenticated]
+  permission_classes =[IsAuthenticated]
 
   def get_queryset(self):
     user = self.request.user
 
-  if user.role == 'student':
-    return WeeklyLog.objects.filter(student=user)
+    if user.role == 'student':
+      return WeeklyLog.objects.filter(student=user)
 
 return WeeklyLog.objects.all()
 
