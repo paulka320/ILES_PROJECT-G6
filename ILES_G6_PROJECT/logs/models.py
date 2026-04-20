@@ -6,10 +6,10 @@ User = settings.AUTH_USER_MODEL
 
 class WeeklyLog(models.Model):
   STATUS_CHOICES = (
-    ('draft', 'draft'),
-    ('submitted', 'submitted'),
-    ('reviewed', 'reviewed'),
-    ('approved', 'approved'),
+    ('draft', 'Draft'),
+    ('submitted', 'Submitted'),
+    ('reviewed', 'Reviewed'),
+    ('approved', 'Approved'),
   )
 
 student = models.ForeignKey(User, on_delete=models.CASCADE)
