@@ -12,3 +12,4 @@ class EvaluationViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated, IsAcademic]
 
     def perform_create(self, serializer):
+        serializer.save(evaluator=self.request.user)
