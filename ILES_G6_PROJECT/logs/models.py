@@ -2,9 +2,9 @@ from django.db import models
 from django.conf import settings
 # Create your models here.
 
-user = settings.AUTH-USER_MODEL
+user = settings.AUTH_USER_MODEL
 
-class WeeklyLog(models.model):
+class WeeklyLog(models.Model):
   STATUS_CHOICE = (
     ('draft', 'draft'),
     ('submitted', 'submitted'),
