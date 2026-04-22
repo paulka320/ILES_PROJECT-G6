@@ -2,6 +2,6 @@ from rest_framework import DefaultRouter
 from .views import EvaluationViewSet
 
 router = DefaultRouter()
-router.register(r'evaluations', EvaluationViewSet)
+router.register(r'evaluations', EvaluationViewSet,basename='evaluations')
 
 urlpatterns = router.urls
