@@ -3,7 +3,7 @@ from django.conf import settings
 
 User = settings.AUTH_USER_MODEL
 
-class EvaluationCriteria(models.model):
+class EvaluationCriteria(models.Model):
     name = models.CharField(max_length = 100)
     weight = models.FloatField()
 
