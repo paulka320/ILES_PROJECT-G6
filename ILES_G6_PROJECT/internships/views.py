@@ -20,6 +20,9 @@ class InternshipPlacementViewSet(viewsets.ModelViewSet):
         
         elif user.role =="supervisor":
             return InternshipPlacement.objects.filter(supervisor_name = user)
+        elif user.role =="academic":
+            return InternshipPlacement.objects.filter(academic_supervisor = user)
+        return InternshipPlacement.objects.none()
 
 class SupervisorStudentsView(generics.ListAPIView):
     serializer_class = InternshipPlacementSerializer
