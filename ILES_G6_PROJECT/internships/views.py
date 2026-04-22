@@ -12,6 +12,12 @@ class InternshipPlacementViewSet(viewsets.ModelViewSet):
     serializer_class = InternshipPlacementSerializer
     permission_classes = [IsAuthenticated, IsAdmin]
 
+    def get_queryset(self):
+        user = self.request.user
+
+        if user.role =="student":
+            return InternshipPlacement.objects.filter(student=user)
+
 class SupervisorStudentsView(generics.ListAPIView):
     serializer_class = InternshipPlacementSerializer
     permission_classes =[IsAuthenticated]
