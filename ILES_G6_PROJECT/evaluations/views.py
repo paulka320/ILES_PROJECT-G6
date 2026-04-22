@@ -11,5 +11,11 @@ class EvaluationViewSet(viewsets.ModelViewSet):
     serializer_class = EvaluationSerializer
     permission_classes = [IsAuthenticated, IsAcademic]
 
+    def get_queryset(self):
+        user = self.request.user
+        if user.role =='student':
+            return Evaluation.objects.filter(student=user)
+        return Evaluation.objects.all()
+
     def perform_create(self, serializer):
         serializer.save(evaluator=self.request.user)
