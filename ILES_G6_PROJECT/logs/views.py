@@ -9,7 +9,7 @@ from .serializers import WeeklyLogSerializer
 from rest_framework.permissions import IsAuthenticated
 from users. permissions import IsStudent, IsSupervisor
 
-class WeeklyLogViewSet(viewsets.modelViewSet):
+class WeeklyLogViewSet(viewsets.ModelViewSet):
   queryset = WeeklyLog.objects.all()
   serializer_class = WeeklyLogSerializer
   permission_classes =[IsAuthenticated]
