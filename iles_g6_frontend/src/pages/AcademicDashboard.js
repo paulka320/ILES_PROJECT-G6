@@ -22,6 +22,8 @@ const AcademicDashboard = () => {
   const { user } = useContext(AuthContext);
   // State to store students supervised by the academic
   const [students, setStudents] = useState([]);
+  
+  // State to store evaluation results
   const [evaluations, setEvaluations] = useState([]);
 
   useEffect(() => {
