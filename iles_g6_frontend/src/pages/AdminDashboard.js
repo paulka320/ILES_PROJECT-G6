@@ -10,4 +10,19 @@ const AdminDashboard = () => {
         totalPlacements:0,
         avgScore:0,
     });
+
+    useEffect (() => {
+        const fetchStats = async () => {
+            try {
+                const res = await API.get("users/admin/stats/");
+                setStats(res.data);
+            }catch (err){
+                console.error("Error fetching admin stats:",err);
+            }
+
+        };
+        fetchStats();
+    }, []);
+
+    return ()
 }
