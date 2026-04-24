@@ -9,6 +9,11 @@ const AcademicDashboard = () =>{
   const{user} = useContext(AuthContext);
   const [students, setStudents] =useState([]);
   const [evalutions, setEvalutions] =useState([]);
+
+  useEffect(() =>{
+    const fetchData =async() =>{
+      try{
+        const studentsRes = await API.get(internship/academic/${user.id}/students/);
   
   
   
