@@ -18,8 +18,8 @@ const SupervisorDashboard = () => {
         console.log("Supervisor students:",studentsRes.data);
         setStudents(studentsRes.data);
 
-             const logsRes = await API.get(`logs/supervisor/${user.id}/pending/`);
-           console.log("Pending logs:", logsRes.data);
+        const logsRes = await API.get(`logs/supervisor/${user.id}/pending/`);
+        console.log("Pending logs:", logsRes.data);
         setPendingLogs(logsRes.data);
 
         const evalRes = await API.get(`evaluations/supervisor/${user.id}/evaluations/`);
