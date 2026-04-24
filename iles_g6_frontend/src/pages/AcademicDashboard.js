@@ -23,15 +23,17 @@ const AcademicDashboard = () =>{
     };
     fetchData();
   }, [user]);
-    const chartData = evaluations.map((ev) =>({
-      student: ev. student.username, score: ev.total_score,
+      const chartData = evaluations.map((ev) =>({
+       student: ev. student.username, score: ev.total_score,
     }));
+  
   return(
     <Container Fluid className="p-4">
      <Row ClassName="mb-4">
        <Col>
         <Card className="bg-info text-white p-3">
            <h2>Welcome, {user.username}!</h2>
+             <p>Role
     
         
   
