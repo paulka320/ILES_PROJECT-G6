@@ -16,7 +16,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-
+// Main dashboard component for academic users
 const AcademicDashboard = () => {
   const { user } = useContext(AuthContext);
   const [students, setStudents] = useState([]);
