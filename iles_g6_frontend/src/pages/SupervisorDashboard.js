@@ -24,3 +24,7 @@ const SupervisorDashboard = () => {
 
         const evalRes = await API.get(`evaluations/supervisor/${user.id}/evaluations/`);
         const data = Array.isArray(evalRes.data) ? evalRes.data :[];
+
+        console.log("Evaluations:", data);
+        setEvaluations(data);
+       
