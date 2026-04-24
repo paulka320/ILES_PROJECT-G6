@@ -29,6 +29,7 @@ const AcademicDashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+         // Fetch students assigned to the academic user
         const studentsRes = await API.get(
           `internship/academic/${user.id}/students/`
         );
