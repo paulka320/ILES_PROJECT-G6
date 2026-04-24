@@ -61,7 +61,7 @@ const AcademicDashboard = () =>{
           </Col>
         </Row>
                      
-<Row>
+    <Row>
     <Col>
     <Card clsaaName="p-3">
     <h4>Evaluation Scores</h4>
