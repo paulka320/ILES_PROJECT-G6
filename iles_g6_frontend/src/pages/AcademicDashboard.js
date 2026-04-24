@@ -15,8 +15,13 @@ const AcademicDashboard = () =>{
       try{
         const studentsRes = await API.get(internship/academic/${user.id}/students/);
         setStudents(studentsRes.data);
-        
         const evalRes = await API.get(evalutions/);
+        setEvaluations(evalRes.data);
+      }catch (err){
+        console.error("Error fetching academic dashboard:", err);
+      }
+    };
+    fetchData();
         
   
 
