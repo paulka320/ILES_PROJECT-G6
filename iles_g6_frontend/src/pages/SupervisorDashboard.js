@@ -21,3 +21,6 @@ const SupervisorDashboard = () => {
              const logsRes = await API.get(`logs/supervisor/${user.id}/pending/`);
            console.log("Pending logs:", logsRes.data);
         setPendingLogs(logsRes.data);
+
+        const evalRes = await API.get(`evaluations/supervisor/${user.id}/evaluations/`);
+        const data = Array.isArray(evalRes.data) ? evalRes.data :[];
