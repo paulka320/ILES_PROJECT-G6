@@ -16,14 +16,13 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-// Main dashboard component for academic users
+// Academic dashboard component: retrieves the logged-in user from context, 
+//fetches supervised students and evaluation data via API on load/user change, 
+//stores them in state, prepares chart data, and renders user info, a student's table, 
+//and evaluation score visualization using React Bootstrap and Recharts
 const AcademicDashboard = () => {
-  // Get current logged-in user from context
   const { user } = useContext(AuthContext);
-  // State to store students supervised by the academic
   const [students, setStudents] = useState([]);
-  
-  // State to store evaluation results
   const [evaluations, setEvaluations] = useState([]);
  // useEffect runs when the component mounts or when the user changes
   useEffect(() => {
