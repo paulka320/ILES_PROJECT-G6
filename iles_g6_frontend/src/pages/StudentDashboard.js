@@ -6,3 +6,4 @@ import { Card, Container, Row, Col, Table, Badge } from "react-bootstrap";
 
 const StudentDashboard = () => {
     const { user } = useContext(AuthContext);
+    const [logs, setLogs] = useState([]);
