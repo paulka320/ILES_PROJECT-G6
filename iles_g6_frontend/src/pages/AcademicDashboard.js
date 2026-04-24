@@ -112,5 +112,4 @@ const AcademicDashboard = () => {
     </Container>
   );
 };
-// Exporting component for use in other parts of the app
 export default AcademicDashboard;
