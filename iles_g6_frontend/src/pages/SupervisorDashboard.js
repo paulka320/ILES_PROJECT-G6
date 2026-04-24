@@ -7,3 +7,5 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 
 const SupervisorDashboard = () => {
   const { user } = useContext(AuthContext);
+  const [students, setStudents] = useState([]);
+  const [pendingLogs, setPendingLogs] = useState([]);
