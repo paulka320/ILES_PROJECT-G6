@@ -61,7 +61,7 @@ const AcademicDashboard = () => {
           </Card>
         </Col>
       </Row>
-
+{/* Table displaying supervised students */}
       <Row className="mb-4">
         <Col>
           <Card className="p-3">
