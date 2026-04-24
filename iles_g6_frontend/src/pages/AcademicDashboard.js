@@ -18,6 +18,7 @@ import {
 } from "recharts";
 // Main dashboard component for academic users
 const AcademicDashboard = () => {
+  // Get current logged-in user from context
   const { user } = useContext(AuthContext);
   const [students, setStudents] = useState([]);
   const [evaluations, setEvaluations] = useState([]);
