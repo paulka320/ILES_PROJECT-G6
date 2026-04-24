@@ -82,6 +82,7 @@ const AcademicDashboard = () =>{
   </Col>
   </Row>
   </Container>
+);
 
  
   
