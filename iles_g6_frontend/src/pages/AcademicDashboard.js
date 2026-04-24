@@ -42,6 +42,16 @@ const AcademicDashboard = () =>{
      <Card className="p-3">
        <h4>Supervised Students</h4.
          <Table striped bordered hover responsive>
+  <Thead>
+    <tr>
+      <th>Username</th>
+      <th>Placement Company</th>
+  </tr>
+  </thead>
+<tbody>
+{students.map((stu) =>(
+  <tr key={stu.id}>
+  <td>{stu.username}</td>
 
 
     
