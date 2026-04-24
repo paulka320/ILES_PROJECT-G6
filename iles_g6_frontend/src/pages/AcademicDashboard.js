@@ -34,7 +34,7 @@ const AcademicDashboard = () => {
           `internship/academic/${user.id}/students/`
         );
         setStudents(studentsRes.data);
-
+ // Fetch evaluation data
         const evalRes = await API.get(`evaluations/`);
         setEvaluations(evalRes.data);
       } catch (err) {
