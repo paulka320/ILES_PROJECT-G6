@@ -1,5 +1,6 @@
 // Import React hooks for state management, lifecycle, and context
 import { useEffect, useState, useContext } from "react";
+// Import authentication context to access logged-in user info
 import { AuthContext } from "../auth/AuthContext";
 import API from "../api/axios";
 import { Container, Row, Col, Card, Table } from "react-bootstrap";
