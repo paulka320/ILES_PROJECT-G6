@@ -1,11 +1,9 @@
-
 import {
   BrowserRouter,
   Routes,
   Route
 } from "react-router-dom";
 
-// Import authentication provider (wraps the app for global auth state)
 import { AuthProvider } from "./auth/AuthContext";
 
 // Import pages/components
@@ -31,7 +29,7 @@ function App() {
 
           {/* Protected route (requires authentication) */}
           <Route
-            path="/dashboard"
+            path="/dashboard."
             element={
               <ProtectedRoute>
                 <Dashboard />
