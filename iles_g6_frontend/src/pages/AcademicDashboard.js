@@ -1,4 +1,4 @@
-// Import React hooks for state management, lifecycle, and context
+// Importing React hooks for state management, lifecycle, and context
 import { useEffect, useState, useContext } from "react";
 // Import authentication context to access logged-in user info
 import { AuthContext } from "../auth/AuthContext";
