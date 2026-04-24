@@ -52,14 +52,27 @@ const AcademicDashboard = () =>{
              {students.map((stu) =>(
                <tr key={stu.id}>
                 <td>{stu.username}</td>
-                   <td>{stu.placement?.Company_name II "N/A"}
-                      </tr>
-                     ))}
-                   </tbody>
-                 </Table?
-                </Card>
-              </Col>
-            </Row>
+                <td>{stu.placement?.Company_name II "N/A"}
+                 </tr>
+                ))}
+                </tbody>
+              </Table?
+            </Card>
+          </Col>
+        </Row>
+                     
+<Row>
+    <Col>
+    <Card clsaaName="p-3">
+    <h4>Evaluation Scores</h4>
+{chartData.length> 0? (
+  <ResponseiveContainer width="100%" height={300}>
+   <LineChart data={chartData}>
+  <CartesianGrid strokeDasharray="33"/>
+  
+                     
+                     
+                     
 
 
 
