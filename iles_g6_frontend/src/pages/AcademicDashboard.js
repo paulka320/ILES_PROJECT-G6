@@ -1,4 +1,5 @@
-// Import authentication context, API service, UI components, and charting tools for user data access, backend communication, interface layout, and data visualization
+// Import authentication context, API service, UI components, and charting tools for user data access, 
+//backend communication, interface layout, and data visualization
 import { useEffect, useState, useContext } from "react";
 
 import { AuthContext } from "../auth/AuthContext";
