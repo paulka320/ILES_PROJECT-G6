@@ -20,6 +20,7 @@ import {
 const AcademicDashboard = () => {
   // Get current logged-in user from context
   const { user } = useContext(AuthContext);
+  // State to store students supervised by the academic
   const [students, setStudents] = useState([]);
   const [evaluations, setEvaluations] = useState([]);
 
