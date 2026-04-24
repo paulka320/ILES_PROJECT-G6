@@ -33,7 +33,12 @@ const AcademicDashboard = () =>{
        <Col>
         <Card className="bg-info text-white p-3">
            <h2>Welcome, {user.username}!</h2>
-             <p>Role
+             <p>Role:{user.role}</p>
+  </Card>
+  </Col>
+  </Row>
+
+
     
         
   
