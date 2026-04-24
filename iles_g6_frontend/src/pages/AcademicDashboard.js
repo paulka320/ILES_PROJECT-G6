@@ -78,6 +78,10 @@ const AcademicDashboard = () =>{
  ):(
    <p>No evalutions data yet</p>
    )}
+</Card>
+  </Col>
+  </Row>
+  </Container>
 
  
   
