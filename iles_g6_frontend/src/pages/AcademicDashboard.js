@@ -46,7 +46,7 @@ const AcademicDashboard = () => {
   }, [user]);
 
   const chartData = evaluations.map((ev) => ({
-    student: ev.student?.username,
+    student: ev. student?.username,
     score: ev.total_score,
   }));
 
