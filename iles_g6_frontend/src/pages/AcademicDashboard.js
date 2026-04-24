@@ -41,7 +41,7 @@ const AcademicDashboard = () =>{
   <Col>
      <Card className="p-3">
        <h4>Supervised Students</h4.
-      <Table striped bordered hover responsive>
+         <Table striped bordered hover responsive>
 
 
     
