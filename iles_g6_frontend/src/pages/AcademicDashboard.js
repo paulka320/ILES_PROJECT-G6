@@ -1,12 +1,12 @@
-// Importing React hooks for state management, lifecycle, and context
+// Import authentication context, API service, UI components, and charting tools for user data access, backend communication, interface layout, and data visualization
 import { useEffect, useState, useContext } from "react";
-// Import authentication context to access logged-in user info
+
 import { AuthContext } from "../auth/AuthContext";
-// Import configured Axios instance for API requests
+
 import API from "../api/axios";
-// Importing UI components from React Bootstrap
+
 import { Container, Row, Col, Card, Table } from "react-bootstrap";
-// Import chart components from Recharts for data visualization
+
 import {
   LineChart,
   Line,
