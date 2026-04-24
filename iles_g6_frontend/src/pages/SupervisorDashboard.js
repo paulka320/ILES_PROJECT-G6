@@ -9,3 +9,4 @@ const SupervisorDashboard = () => {
   const { user } = useContext(AuthContext);
   const [students, setStudents] = useState([]);
   const [pendingLogs, setPendingLogs] = useState([]);
+  const [evaluations, setEvaluations] = useState([]);
