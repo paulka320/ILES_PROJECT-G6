@@ -14,3 +14,5 @@ const SupervisorDashboard = () => {
    useEffect(() => {
      const fetchData = async () => {
       try {
+        const studentsRes = await API.get(`internships/supervisor/${user.id}/students/`);
+        console.log("Supervisor students:",studentsRes.data);
