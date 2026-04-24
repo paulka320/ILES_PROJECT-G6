@@ -25,7 +25,7 @@ const AcademicDashboard = () => {
   
   // State to store evaluation results
   const [evaluations, setEvaluations] = useState([]);
- // useEffect runs when component mounts or when user changes
+ // useEffect runs when the component mounts or when the user changes
   useEffect(() => {
     const fetchData = async () => {
       try {
