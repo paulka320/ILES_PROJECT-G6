@@ -25,16 +25,13 @@ const AcademicDashboard = () => {
   const { user } = useContext(AuthContext);
   const [students, setStudents] = useState([]);
   const [evaluations, setEvaluations] = useState([]);
- // useEffect runs when the component mounts or when the user changes
   useEffect(() => {
     const fetchData = async () => {
       try {
-         // Fetch students assigned to the academic user
         const studentsRes = await API.get(
           `internship/academic/${user.id}/students/`
         );
         setStudents(studentsRes.data);
- // Fetch evaluation data
         const evalRes = await API.get(`evaluations/`);
         setEvaluations(evalRes.data);
       } catch (err) {
@@ -52,7 +49,6 @@ const AcademicDashboard = () => {
 
   return (
     <Container fluid className="p-4">
-     {/* Header section showing logged-in user info */}
       <Row className="mb-4">
         <Col>
           <Card className="bg-info text-white p-3">
@@ -61,7 +57,6 @@ const AcademicDashboard = () => {
           </Card>
         </Col>
       </Row>
-{/* Table displaying supervised students */}
       <Row className="mb-4">
         <Col>
           <Card className="p-3">
