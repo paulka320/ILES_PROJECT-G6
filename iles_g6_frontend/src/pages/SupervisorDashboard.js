@@ -27,4 +27,11 @@ const SupervisorDashboard = () => {
 
         console.log("Evaluations:", data);
         setEvaluations(data);
-       
+      
+      } catch (err) {
+        console.error("Error fetching supervisor dashboard:", err);
+      }
+    };
+    fetchData();
+  }, [user]);
+        
