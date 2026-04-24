@@ -67,8 +67,8 @@ const AcademicDashboard = () =>{
     <h4>Evaluation Scores</h4>
 {chartData.length> 0? (
   <ResponseiveContainer width="100%" height={300}>
-   <LineChart data={chartData}>
-  <CartesianGrid strokeDasharray="33"/>
+      <LineChart data={chartData}>
+         <CartesianGrid strokeDasharray="33"/>
   
                      
                      
