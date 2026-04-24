@@ -17,3 +17,6 @@ const SupervisorDashboard = () => {
         const studentsRes = await API.get(`internships/supervisor/${user.id}/students/`);
         console.log("Supervisor students:",studentsRes.data);
         setStudents(studentsRes.data);
+
+             const logsRes = await API.get(`logs/supervisor/${user.id}/pending/`);
+   
