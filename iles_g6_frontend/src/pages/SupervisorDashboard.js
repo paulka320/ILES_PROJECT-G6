@@ -11,4 +11,6 @@ const SupervisorDashboard = () => {
   const [pendingLogs, setPendingLogs] = useState([]);
   const [evaluations, setEvaluations] = useState([]);
 
-  
+   useEffect(() => {
+     const fetchData = async () => {
+      try {
