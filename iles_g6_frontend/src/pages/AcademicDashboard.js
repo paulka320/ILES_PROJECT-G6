@@ -6,6 +6,7 @@ import { AuthContext } from "../auth/AuthContext";
 import API from "../api/axios";
 // Import UI components from React Bootstrap
 import { Container, Row, Col, Card, Table } from "react-bootstrap";
+// Import chart components from Recharts for data visualization
 import {
   LineChart,
   Line,
