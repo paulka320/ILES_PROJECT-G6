@@ -52,6 +52,7 @@ const AcademicDashboard = () => {
 
   return (
     <Container fluid className="p-4">
+     {/* Header section showing logged-in user info */}
       <Row className="mb-4">
         <Col>
           <Card className="bg-info text-white p-3">
