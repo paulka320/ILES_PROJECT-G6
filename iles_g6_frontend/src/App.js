@@ -1,4 +1,4 @@
-// Import routing components from React Router
+
 import {
   BrowserRouter,
   Routes,
