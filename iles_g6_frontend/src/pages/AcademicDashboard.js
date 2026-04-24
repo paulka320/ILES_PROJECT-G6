@@ -62,11 +62,11 @@ const AcademicDashboard = () =>{
         </Row>
                      
     <Row>
-    <Col>
-    <Card clsaaName="p-3">
+      <Col>
+      <Card clsaaName="p-3">
     <h4>Evaluation Scores</h4>
 {chartData.length> 0? (
-  <ResponseiveContainer width="100%" height={300}>
+    <ResponseiveContainer width="100%" height={300}>
       <LineChart data={chartData}>
          <CartesianGrid strokeDasharray="33"/>
           <XAxis dataKey="student"/>
