@@ -22,6 +22,13 @@ const AcademicDashboard = () =>{
       }
     };
     fetchData();
+  }, [user]);
+    const chartData = evaluations.map((ev) =>({
+      student: ev. student.username, score: ev.total_score,
+    }));
+  return(
+    <Container Fluid className="p-4">
+    
         
   
 
