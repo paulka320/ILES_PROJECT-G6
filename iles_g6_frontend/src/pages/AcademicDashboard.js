@@ -83,6 +83,7 @@ const AcademicDashboard = () =>{
   </Row>
   </Container>
 );
+};
 
  
   
