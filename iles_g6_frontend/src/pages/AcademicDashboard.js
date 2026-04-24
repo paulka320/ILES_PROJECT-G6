@@ -34,9 +34,14 @@ const AcademicDashboard = () =>{
         <Card className="bg-info text-white p-3">
            <h2>Welcome, {user.username}!</h2>
              <p>Role:{user.role}</p>
-  </Card>
-  </Col>
+     </Card>
+   </Col>
   </Row>
+<Row className="mb-4">
+  <Col>
+     <Card className="p-3">
+       <h4>Supervised Students</h4.
+      <Table striped bordered hover responsive>
 
 
     
