@@ -4,6 +4,7 @@ import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../auth/AuthContext";
 // Import configured Axios instance for API requests
 import API from "../api/axios";
+// Import UI components from React Bootstrap
 import { Container, Row, Col, Card, Table } from "react-bootstrap";
 import {
   LineChart,
