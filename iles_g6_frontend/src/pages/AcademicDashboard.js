@@ -48,10 +48,19 @@ const AcademicDashboard = () =>{
       <th>Placement Company</th>
   </tr>
   </thead>
-<tbody>
-{students.map((stu) =>(
-  <tr key={stu.id}>
-  <td>{stu.username}</td>
+          <tbody>
+             {students.map((stu) =>(
+               <tr key={stu.id}>
+                <td>{stu.username}</td>
+                   <td>{stu.placement?.Company_name II "N/A"}
+                      </tr>
+                     ))}
+                   </tbody>
+                 </Table?
+                </Card>
+              </Col>
+            </Row>
+
 
 
     
