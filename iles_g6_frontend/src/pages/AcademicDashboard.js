@@ -2,6 +2,7 @@
 import { useEffect, useState, useContext } from "react";
 // Import authentication context to access logged-in user info
 import { AuthContext } from "../auth/AuthContext";
+// Import configured Axios instance for API requests
 import API from "../api/axios";
 import { Container, Row, Col, Card, Table } from "react-bootstrap";
 import {
