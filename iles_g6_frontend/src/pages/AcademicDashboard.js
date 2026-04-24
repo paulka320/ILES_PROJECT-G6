@@ -14,8 +14,10 @@ const AcademicDashboard = () =>{
     const fetchData =async() =>{
       try{
         const studentsRes = await API.get(internship/academic/${user.id}/students/);
-  
-  
+        setStudents(studentsRes.data);
+        
+        const evalRes = await API.get(evalutions/);
+        
   
 
 
