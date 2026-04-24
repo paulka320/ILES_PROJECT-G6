@@ -5,3 +5,4 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 import { Card, Container, Row, Col, Table, Badge } from "react-bootstrap";
 
 const StudentDashboard = () => {
+    const { user } = useContext(AuthContext);
