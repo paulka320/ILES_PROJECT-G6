@@ -78,4 +78,10 @@ const SupervisorDashboard = () => {
           <Card className="p-3">
             <h4>Pending Weekly Logs</h4>
             <Table striped bordered hover responsive>
+              <thead>
+                <tr>
+                  <th>Student</th>
+                  <th>Week</th>
+                  <th>Status</th>
+                </tr>
         
