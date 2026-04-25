@@ -16,3 +16,4 @@ const StudentDashboard = () => {
 
                 const logRes = await getStudentLogs();
                 console.log("LOG DATA:", logRes.data);
+                setLogs(logRes.data);
