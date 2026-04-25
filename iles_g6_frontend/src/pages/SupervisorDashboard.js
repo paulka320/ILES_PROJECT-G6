@@ -62,3 +62,8 @@ const SupervisorDashboard = () => {
                   <th>Role</th>
                 </tr>
               </thead>
+              <tbody>
+                {students.map((stu) => (
+                  <tr key={stu.id}>
+                    <td>{stu.username}</td>
+                    <td>{stu.role}</td>
