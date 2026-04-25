@@ -15,3 +15,4 @@ const StudentDashboard = () => {
             try {
 
                 const logRes = await getStudentLogs();
+                console.log("LOG DATA:", logRes.data);
