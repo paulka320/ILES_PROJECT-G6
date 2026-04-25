@@ -11,3 +11,4 @@ const StudentDashboard = () => {
     const [evaluations, setEvaluations] = useState([]);
 
     useEffect(() => {
+        const fetchData = async () => {
