@@ -122,3 +122,5 @@ const SupervisorDashboard = () => {
         </Col>
       </Row>
     </Container>
+  );
+};
