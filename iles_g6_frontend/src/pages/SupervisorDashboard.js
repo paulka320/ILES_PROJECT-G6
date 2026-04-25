@@ -84,4 +84,14 @@ const SupervisorDashboard = () => {
                   <th>Week</th>
                   <th>Status</th>
                 </tr>
+              </thead>
+              <tbody>
+                {pendingLogs.map((log) => (
+                  <tr key={log.id}>
+                    <td>{log.student.username}</td>
+                    <td>{log.week_number}</td>
+                    <td>
+                      <Badge bg="warning">{log.status}</Badge>
+                    </td>
+                  </tr>
         
