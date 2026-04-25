@@ -27,6 +27,8 @@ The system supports:
 - Python
 - Django
 - SQLite
+- JavaScript
+- React
 
 ## How to Run the Project
 1. Clone the repository
