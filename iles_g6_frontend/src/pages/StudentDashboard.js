@@ -24,3 +24,4 @@ const StudentDashboard = () => {
 
                 const evalRes = await getStudentEvaluations();
                 console.log("EVALUATION DATA:", evalRes.data);
+                setEvaluations(evalRes.data);
