@@ -39,4 +39,11 @@ const SupervisorDashboard = () => {
     student: ev.student.username,
     score: ev.total_score,
   }));
+
+  return (
+    <Container fluid className="p-4">
+      <Row className="mb-4">
+        <Col>
+          <Card className="bg-success text-white p-3">
+            <h2>Welcome, {user.username}!</h2>
   
