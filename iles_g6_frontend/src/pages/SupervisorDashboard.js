@@ -115,3 +115,5 @@ const SupervisorDashboard = () => {
                   <Line type="monotone" dataKey="score" stroke="#82ca9d" strokeWidth={3} />
                 </LineChart>
               </ResponsiveContainer>
+            ) : (
+              <p>No evaluation data yet</p>
