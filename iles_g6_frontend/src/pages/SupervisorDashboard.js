@@ -119,3 +119,4 @@ const SupervisorDashboard = () => {
               <p>No evaluation data yet</p>
             )}
           </Card>
+        </Col>
