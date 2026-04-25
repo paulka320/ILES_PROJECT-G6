@@ -9,3 +9,5 @@ const StudentDashboard = () => {
     const [logs, setLogs] = useState([]);
     const [placement, setPlacement] = useState(null);
     const [evaluations, setEvaluations] = useState([]);
+
+    useEffect(() => {
