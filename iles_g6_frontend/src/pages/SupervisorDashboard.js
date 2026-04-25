@@ -67,3 +67,10 @@ const SupervisorDashboard = () => {
                   <tr key={stu.id}>
                     <td>{stu.username}</td>
                     <td>{stu.role}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </Card>
+        </Col>
+
