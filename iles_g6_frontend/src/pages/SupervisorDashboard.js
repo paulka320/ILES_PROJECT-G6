@@ -94,4 +94,10 @@ const SupervisorDashboard = () => {
                       <Badge bg="warning">{log.status}</Badge>
                     </td>
                   </tr>
+                ))}
+              </tbody>
+            </Table>
+          </Card>
+        </Col>
+      </Row>
         
