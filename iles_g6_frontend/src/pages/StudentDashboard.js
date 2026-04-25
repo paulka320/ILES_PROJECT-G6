@@ -20,3 +20,4 @@ const StudentDashboard = () => {
 
                 const placementRes = await getStudentPlacement();
                 console.log("PLACEMENT DATA:", placementRes.data);
+                setPlacement(placementRes.data);
