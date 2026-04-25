@@ -55,3 +55,10 @@ const SupervisorDashboard = () => {
         <Col md={6}>
           <Card className="p-3">
             <h4>Assigned Students</h4>
+            <Table striped bordered hover responsive>
+              <thead>
+                <tr>
+                  <th>Username</th>
+                  <th>Role</th>
+                </tr>
+              </thead>
