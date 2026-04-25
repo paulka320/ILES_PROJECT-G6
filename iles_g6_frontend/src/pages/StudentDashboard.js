@@ -23,3 +23,4 @@ const StudentDashboard = () => {
                 setPlacement(placementRes.data);
 
                 const evalRes = await getStudentEvaluations();
+                console.log("EVALUATION DATA:", evalRes.data);
