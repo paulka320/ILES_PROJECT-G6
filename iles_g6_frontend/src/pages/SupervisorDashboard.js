@@ -124,3 +124,5 @@ const SupervisorDashboard = () => {
     </Container>
   );
 };
+
+export default SupervisorDashboard;
