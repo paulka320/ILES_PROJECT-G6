@@ -109,3 +109,6 @@ const SupervisorDashboard = () => {
               <ResponsiveContainer width="100%" height={300}>
                 <LineChart data={chartData}>
                   <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="student" />
+                  <YAxis />
+                  <Tooltip />
