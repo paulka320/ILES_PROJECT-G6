@@ -46,4 +46,8 @@ const SupervisorDashboard = () => {
         <Col>
           <Card className="bg-success text-white p-3">
             <h2>Welcome, {user.username}!</h2>
+            <p>Role: {user.role}</p>
+          </Card>
+        </Col>
+      </Row>
   
