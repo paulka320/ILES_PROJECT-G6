@@ -50,4 +50,8 @@ const SupervisorDashboard = () => {
           </Card>
         </Col>
       </Row>
-  
+
+      <Row className="mb-4">
+        <Col md={6}>
+          <Card className="p-3">
+            <h4>Assigned Students</h4>
