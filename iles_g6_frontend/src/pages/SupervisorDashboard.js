@@ -117,3 +117,5 @@ const SupervisorDashboard = () => {
               </ResponsiveContainer>
             ) : (
               <p>No evaluation data yet</p>
+            )}
+          </Card>
