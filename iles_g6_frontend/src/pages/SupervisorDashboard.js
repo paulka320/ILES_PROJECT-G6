@@ -74,3 +74,8 @@ const SupervisorDashboard = () => {
           </Card>
         </Col>
 
+        <Col md={6}>
+          <Card className="p-3">
+            <h4>Pending Weekly Logs</h4>
+            <Table striped bordered hover responsive>
+        
