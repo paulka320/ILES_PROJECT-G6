@@ -121,3 +121,4 @@ const SupervisorDashboard = () => {
           </Card>
         </Col>
       </Row>
+    </Container>
