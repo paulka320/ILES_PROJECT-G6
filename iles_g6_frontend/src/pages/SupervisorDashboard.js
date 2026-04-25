@@ -113,3 +113,4 @@ const SupervisorDashboard = () => {
                   <YAxis />
                   <Tooltip />
                   <Line type="monotone" dataKey="score" stroke="#82ca9d" strokeWidth={3} />
+                </LineChart>
