@@ -19,3 +19,4 @@ const StudentDashboard = () => {
                 setLogs(logRes.data);
 
                 const placementRes = await getStudentPlacement();
+                console.log("PLACEMENT DATA:", placementRes.data);
