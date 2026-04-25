@@ -34,4 +34,9 @@ const SupervisorDashboard = () => {
     };
     fetchData();
   }, [user]);
-        
+
+  const chartData = evaluations.map((ev) => ({
+    student: ev.student.username,
+    score: ev.total_score,
+  }));
+  
