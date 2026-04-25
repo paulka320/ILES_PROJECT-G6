@@ -12,3 +12,6 @@ const StudentDashboard = () => {
 
     useEffect(() => {
         const fetchData = async () => {
+            try {
+
+                const logRes = await getStudentLogs();
