@@ -37,3 +37,6 @@ const StudentDashboard = () => {
         score: ev.total_score,
     }));
 
+    const totalLogs = logs.length;
+    const submittedLogs = logs.filter((l) => l.status === "submitted").length;
+
