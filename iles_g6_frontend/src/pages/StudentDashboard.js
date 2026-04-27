@@ -39,4 +39,5 @@ const StudentDashboard = () => {
 
     const totalLogs = logs.length;
     const submittedLogs = logs.filter((l) => l.status === "submitted").length;
+    const pendingLogs = totalLogs - submittedLogs;
 
