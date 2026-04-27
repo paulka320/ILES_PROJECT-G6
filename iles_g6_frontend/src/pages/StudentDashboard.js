@@ -29,4 +29,5 @@ const StudentDashboard = () => {
                 console.log(" Dashboard :", err.response || err);
             }
         };
+        fetchData();
 
