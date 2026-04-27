@@ -30,4 +30,5 @@ const StudentDashboard = () => {
             }
         };
         fetchData();
+    }, [user]);
 
