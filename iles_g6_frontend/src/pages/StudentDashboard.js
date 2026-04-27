@@ -32,3 +32,8 @@ const StudentDashboard = () => {
         fetchData();
     }, [user]);
 
+    const chartData = evaluations.map((ev, index) => ({
+        week: index + 1,
+        score: ev.total_score,
+    }));
+
