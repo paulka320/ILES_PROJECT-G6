@@ -62,6 +62,14 @@ const StudentDashboard = () => {
                             <p><strong>Start Date:</strong> {placement.start_date}</p>
                             <p><strong>End Date:</strong> {placement.end_date}</p>
 
+                        </Card>
+                    </Col>
+                </Row>
+            )}
+
+            <Row className="mb-4">
+                <Col md={4}>
+
 
         
 
