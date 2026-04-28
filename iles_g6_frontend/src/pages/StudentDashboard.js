@@ -54,7 +54,11 @@ const StudentDashboard = () => {
             </Row>
 
             {placement && (
-                
+                <Row className="mb-4">
+                    <Col>
+                        <Card className="p-3">
+                            <h4>Placement Information</h4>
+
 
         
 
