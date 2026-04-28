@@ -47,4 +47,7 @@ const StudentDashboard = () => {
             <Row className="mb-4">
                 <Card className="bg-primary text-white p-3">
                     <h2>Welcome, {user.username}</h2>
+                    <p>Role: {user.role}</p>
+
+
 
