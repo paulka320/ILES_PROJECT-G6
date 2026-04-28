@@ -46,4 +46,5 @@ const StudentDashboard = () => {
         <Container fluid className="p-4">
             <Row className="mb-4">
                 <Card className="bg-primary text-white p-3">
+                    <h2>Welcome, {user.username}</h2>
 
