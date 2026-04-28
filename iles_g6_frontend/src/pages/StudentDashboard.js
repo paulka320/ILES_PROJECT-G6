@@ -59,6 +59,7 @@ const StudentDashboard = () => {
                         <Card className="p-3">
                             <h4>Placement Information</h4>
                             <p><strong>Company:</strong> {placement.company_name}</p>
+                            <p><strong>Start Date:</strong> {placement.start_date}</p>
 
 
         
