@@ -106,6 +106,7 @@ const StudentDashboard = () => {
                                         <td>{log.week}</td>
                                         <td>
                                             <Badge bg={log.status === "submitted" ? "success" : "warning"}>
+                                                {log.status}
                             
 
 
