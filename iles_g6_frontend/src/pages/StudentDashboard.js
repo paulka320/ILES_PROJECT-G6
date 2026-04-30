@@ -124,6 +124,7 @@ const StudentDashboard = () => {
                         {chartData.length > 0 ? (
                             <ResponsiveContainer width="100%" height={300}>
                                 <LineChart data={chartData}>
+                                    <CartesianGrid strokeDasharray="3 3" />
                             
 
 
