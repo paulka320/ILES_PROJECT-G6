@@ -128,6 +128,7 @@ const StudentDashboard = () => {
                                     <XAxis dataKey="week" label={{ value: "Week", position: "insideBottomRight", offset: 0 }} />
                                     <YAxis label={{ value: "Score", angle: -90, position: "insideLeft" }} />
                                     <Tooltip />
+                                    <Line type="monotone" dataKey="score" stroke="#8884d8" strokeWidth={3} />
                             
 
 
