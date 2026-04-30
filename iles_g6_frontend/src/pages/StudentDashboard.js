@@ -84,6 +84,15 @@ const StudentDashboard = () => {
                     <Card className="text-center p-3">
                         <h5>Average Score</h5>
                         <h2>{avgScore}</h2>
+                    </Card>
+                </Col>
+            </Row>
+
+            <Row className="mb-4">
+                <Col>
+                    <Card className="p-3">
+                        <h4>Weekly Logs</h4>
+                        
 
 
 
