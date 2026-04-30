@@ -69,6 +69,9 @@ const StudentDashboard = () => {
 
             <Row className="mb-4">
                 <Col md={4}>
+                    <Card className="text-center p-3">
+                        <h5>Total Logs</h5>
+                        <h2>{totalLogs}</h2>
 
 
         
