@@ -101,6 +101,7 @@ const StudentDashboard = () => {
                             </thead>
                             <tbody>
                                 {logs.map((log) => (
+                                    <tr key={log.id}>
 
                         
 
