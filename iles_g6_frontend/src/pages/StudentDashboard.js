@@ -126,6 +126,7 @@ const StudentDashboard = () => {
                                 <LineChart data={chartData}>
                                     <CartesianGrid strokeDasharray="3 3" />
                                     <XAxis dataKey="week" label={{ value: "Week", position: "insideBottomRight", offset: 0 }} />
+                                    <YAxis label={{ value: "Score", angle: -90, position: "insideLeft" }} />
                             
 
 
