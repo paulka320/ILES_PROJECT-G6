@@ -103,6 +103,9 @@ const StudentDashboard = () => {
                                 {logs.map((log) => (
                                     <tr key={log.id}>
 
+        <td>{log.week}</td>
+
+
                         
 
 
