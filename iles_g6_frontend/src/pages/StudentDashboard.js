@@ -96,6 +96,7 @@ const StudentDashboard = () => {
                             <thead>
                                 <tr>
                                     <th>Week</th>
+                                    <th>Status</th>
                         
 
 
