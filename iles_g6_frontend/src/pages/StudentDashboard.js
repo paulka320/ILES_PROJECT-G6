@@ -103,11 +103,10 @@ const StudentDashboard = () => {
                                 {logs.map((log) => (
                                     <tr key={log.id}>
 
-        <td>{log.week}</td>
-
-
-                        
-
+                                        <td>{log.week}</td>
+                                        <td>
+                                            <Badge bg={log.status === "submitted" ? "success" : "warning"}>
+                            
 
 
 
