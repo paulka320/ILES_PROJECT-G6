@@ -107,6 +107,20 @@ const StudentDashboard = () => {
                                         <td>
                                             <Badge bg={log.status === "submitted" ? "success" : "warning"}>
                                                 {log.status}
+                                            </Badge>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </Table>
+                    </Card>
+                </Col>
+            </Row>
+
+            <Row>
+                <Col>
+                    <Card className="p-3">
+                        <h4>Evaluation Scores Over Weeks</h4>
                             
 
 
