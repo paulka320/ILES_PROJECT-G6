@@ -133,6 +133,15 @@ const StudentDashboard = () => {
                             </ResponsiveContainer>
                         ) : (
                             <p>No evaluation data yet</p>
+                        )}
+                    </Card>
+                </Col>
+            </Row>
+        </Container>
+    );
+};
+
+export default StudentDashboard;
                             
 
 
