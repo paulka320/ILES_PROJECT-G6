@@ -129,6 +129,10 @@ const StudentDashboard = () => {
                                     <YAxis label={{ value: "Score", angle: -90, position: "insideLeft" }} />
                                     <Tooltip />
                                     <Line type="monotone" dataKey="score" stroke="#8884d8" strokeWidth={3} />
+                                </LineChart>
+                            </ResponsiveContainer>
+                        ) : (
+                            <p>No evaluation data yet</p>
                             
 
 
