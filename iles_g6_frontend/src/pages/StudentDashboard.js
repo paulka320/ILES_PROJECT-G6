@@ -72,6 +72,15 @@ const StudentDashboard = () => {
                     <Card className="text-center p-3">
                         <h5>Total Logs</h5>
                         <h2>{totalLogs}</h2>
+                    </Card>
+                </Col>
+                <Col md={4}>
+                    <Card className="text-center p-3">
+                        <h5>Submitted Logs</h5>
+                        <h2>{submittedLogs}</h2>
+
+
+
 
 
         
