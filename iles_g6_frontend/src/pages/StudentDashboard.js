@@ -123,6 +123,7 @@ const StudentDashboard = () => {
                         <h4>Evaluation Scores Over Weeks</h4>
                         {chartData.length > 0 ? (
                             <ResponsiveContainer width="100%" height={300}>
+                                <LineChart data={chartData}>
                             
 
 
