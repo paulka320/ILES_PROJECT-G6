@@ -97,6 +97,11 @@ const StudentDashboard = () => {
                                 <tr>
                                     <th>Week</th>
                                     <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {logs.map((log) => (
+
                         
 
 
