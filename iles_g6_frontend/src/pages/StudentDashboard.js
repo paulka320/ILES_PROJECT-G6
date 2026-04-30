@@ -121,6 +121,7 @@ const StudentDashboard = () => {
                 <Col>
                     <Card className="p-3">
                         <h4>Evaluation Scores Over Weeks</h4>
+                        {chartData.length > 0 ? (
                             
 
 
