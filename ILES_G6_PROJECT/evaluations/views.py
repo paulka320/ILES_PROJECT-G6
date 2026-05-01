@@ -53,3 +53,9 @@ def academic_stats(request, id=None):
 class AdminEvaluationsView(ListAPIView):
     serializer_class = EvaluationSerializer
     permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+
+        if self.request.user.role =="admin":
+            return Evaluation.objects.all()
+        return Evaluation.objects.none()
