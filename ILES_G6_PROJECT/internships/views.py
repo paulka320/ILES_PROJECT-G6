@@ -6,6 +6,8 @@ from .models import InternshipPlacement
 from .serializers import InternshipPlacementSerializer
 from rest_framework.permissions import IsAuthenticated
 from users.permissions import IsAdmin
+from rest_framework.generics import ListAPIView
+
 
 class InternshipPlacementViewSet(viewsets.ModelViewSet):
     queryset = InternshipPlacement.objects.all()
