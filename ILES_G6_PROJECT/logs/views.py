@@ -47,3 +47,9 @@ def review(self, request, pk=None):
   log.save()
 
   return Response({"message": "Log approved"})
+
+
+
+class AdminLogsView(ListAPIView):
+  serializer_class = WeeklyLogSerializer
+  permission_classes = [IsAuthenticated]
