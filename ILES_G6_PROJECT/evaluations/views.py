@@ -5,6 +5,10 @@ from .models import Evaluation
 from .serializers import EvaluationSerializer
 from rest_framework.permissions import IsAuthenticated
 from users.permissions import IsAcademic
+from rest_framework.decorators import api_view, permission_classes
+
+
+
 
 class EvaluationViewSet(viewsets.ModelViewSet):
     queryset = Evaluation.objects.all()
