@@ -10,4 +10,9 @@ const Login = () => {
         username: "",
         password: "",
     });
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        await login (form.username, form.password);
+        navigate("/dashboard");
+    };
 }
