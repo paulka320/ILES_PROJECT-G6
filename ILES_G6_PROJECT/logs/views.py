@@ -49,6 +49,18 @@ def review(self, request, pk=None):
   return Response({"message": "Log approved"})
 
 
+class AcademicStudentLogsView(ListAPIView):
+  serializer_class = WeeklyLogSerializer
+  permission_classes = [IsAuthenticated]
+  
+
+
+
+
+
+
+
+
 
 class AdminLogsView(ListAPIView):
   serializer_class = WeeklyLogSerializer
