@@ -37,7 +37,10 @@ class AdminStatsView(APIView):
         avg_score = Evaluation.object.aggregate(Avg("total_score"))["total_score__avg"] or 0
 
         return Response({
-            
+            "totalStudents":total_students,
+            "totalSupervisors":total_supervisors,
+            "totalAcademics":total_academics,
+            "totalPlacements":total_placements
         })
 
 
