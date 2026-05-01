@@ -40,14 +40,13 @@ class AdminStatsView(APIView):
             "totalStudents":total_students,
             "totalSupervisors":total_supervisors,
             "totalAcademics":total_academics,
-            "totalPlacements":total_placements
+            "totalPlacements":total_placements,
+            "totalLogs":total_logs,
+            "totalEvaluations":total_evaluations,
+            "avgScore":round(avg_score,2),
         })
 
 
-class UserListView(generics.ListAPIView):
-    queryset = CustomUser.objects.all()
-    serializer_class = UserSerializer
-    permission_classes = [IsAuthenticated,IsAdmin]
 
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
