@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from rest_framework.generics import ListAPIView
 # Create your views here.
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
@@ -8,6 +8,12 @@ from .models import WeeklyLog
 from .serializers import WeeklyLogSerializer
 from rest_framework.permissions import IsAuthenticated
 from users. permissions import IsStudent, IsSupervisor
+from internships.models import InternshipPlacement
+
+
+
+
+
 
 class WeeklyLogViewSet(viewsets.ModelViewSet):
   queryset = WeeklyLog.objects.all()
