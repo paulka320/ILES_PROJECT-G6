@@ -46,6 +46,14 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/admin/placements"
+            element = {
+              <ProtectedRoute>
+                <AdminPlacements />
+              </ProtectedRoute>
+            }
+          />
 
         </Routes>
 
