@@ -14,3 +14,6 @@ export const getAllLogs = () =>
 
 export const deleteLog = (id) =>
     API.delete(`/logs/weeklylogs/${id}/`);
+
+export const approveLog = (id) =>
+    API.post(`/logs/weeklylogs/${id}/admin_approve/`);
