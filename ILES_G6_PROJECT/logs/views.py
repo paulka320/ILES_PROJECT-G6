@@ -71,6 +71,23 @@ def admin_approve(self,request,pk=None):
 
   if request.user.role != "admin":
     return Response ({"error":"Unauthorised"},status=403)
+  log.status = "approved"
+  log.save()
+
+  return Response ({"message":"Log approved by admin"})
+
+
+@action (detail=True, methods = ["post"])
+def admin_reject(self,request,pk = None):
+  log = self.get_object()
+
+  if request.user.role != "admin":
+    return Response({"error":"Unauthorized"},status=403)
+  
+  log.status = "rejected"
+  log.save()
+
+  return Response({"message":"Log rejected by admin"})
 
 
 class SupervisorPendingLogsView(ListAPIView):
