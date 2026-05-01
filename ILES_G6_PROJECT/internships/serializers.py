@@ -1,5 +1,11 @@
 from rest_framework import serializers
 from .models import InternshipPlacement
+from users.models import CustomUser
+
+class UserMiniSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = ['id','username','role']
 
 class InternshipPlacementSerializer(serializers.ModelSerializer):
     class Meta:
