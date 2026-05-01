@@ -40,3 +40,8 @@ def academic_stats(request, id=None):
     total_students =students.count()
     evaluations = Evaluation.objects.filter(evaluator=request.user)
     total_evaluations = evaluations.count()
+    avg_score = evaluations.aggregate(Avg('total_score'))['total_score__avg'] or 0
+
+    return Response ({
+        
+    })
