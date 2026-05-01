@@ -1,5 +1,6 @@
 from rest_framework.routers import DefaultRouter
 from .views import InternshipPlacementViewSet,SupervisorStudentsView,AcademicStudentsView,AdminPlacementViewSet
+from django.urls import path
 router = DefaultRouter()
 router.register(r'admin/placements', AdminPlacementViewSet,basename='admin-placements')
 
