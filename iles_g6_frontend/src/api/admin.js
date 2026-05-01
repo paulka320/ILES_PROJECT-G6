@@ -8,3 +8,6 @@ export const deleteUser = (id) =>
 
 export const getAllPlacements = () =>
     API.get("/internships/internshipplacement");
+
+export const getAllLogs = () =>
+    API.get("/logs/weeklylogs/");
