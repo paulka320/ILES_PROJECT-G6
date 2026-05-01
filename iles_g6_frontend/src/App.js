@@ -14,7 +14,7 @@ import AdminPlacements from "./pages/Adminplacements";
 
 // Import protected route component (restricts access)
 import ProtectedRoute from "./components/ProtectedRoute";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   return (
     // Provides authentication context to the entire app
