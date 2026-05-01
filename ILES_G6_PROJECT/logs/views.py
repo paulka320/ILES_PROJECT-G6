@@ -23,18 +23,30 @@ class WeeklyLogViewSet(viewsets.ModelViewSet):
     
     elif user.role == "supervisor":
       return WeeklyLog.objects.filter(status="submitted").order_by("-week_number")
+    
+    elif user.role == "academic":
+      return WeeklyLog.objects.all().order_by("-week_number")
+    
+    elif user.role =="admin":
+      return WeeklyLog.objects.all().order_by("-week_number")
+    return WeeklyLog.objects.none()
+  
+
+  def perform_create(self,serializer):
+    serializer.save(student=self.request.user)
+
 # submitting Log
-@action(detail=True, method=['post'], permission_classes=[IsStudent])
-def submit(self, request, pk=None):
-  log = self.get_object()
+  @action(detail=True, method=['post'], permission_classes=[IsStudent])
+  def submit(self, request, pk=None):
+    log = self.get_object()
 
-  if log.status != 'draft':
-    return Response({"error": "only draft logs can be submitted"}, status=400)
+    if log.status != 'draft':
+      return Response({"error": "only draft logs can be submitted"}, status=400)
 
-  log.status = 'submitted'
-  log.save()
+    log.status = 'submitted'
+    log.save()
 
-  return Response({"message": "Log submitted"})
+    return Response({"message": "Log submitted"})
 
 # Review Log
 @action(detail=True, methods=['post'], permission_classes=[IsSupervisor])
@@ -44,10 +56,15 @@ def review(self, request, pk=None):
   if log.status != 'submitted':
     return Response({"error": "only submitted logs can be reviewed"}, status=400)
 
+  comment = request.data.get("supervisor_comment")
+
+  if comment :
+    log.supervisor_comment = comment
+
   log.status ='approved'
   log.save()
 
-  return Response({"message": "Log approved"})
+  return Response({"message": "Log  reviewed and approved"})
 
 
 
