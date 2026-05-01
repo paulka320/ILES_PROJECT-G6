@@ -8,6 +8,9 @@ class UserMiniSerializer(serializers.ModelSerializer):
         fields = ['id','username','role']
 
 class InternshipPlacementSerializer(serializers.ModelSerializer):
+    student = UserMiniSerializer(read_only=True)
+    supervisor_name = UserMiniSerializer(read_only=True)
+    academic_supervisor = UserMiniSerializer(read_only=True)
     class Meta:
         model = InternshipPlacement
         fields = '__all__'
