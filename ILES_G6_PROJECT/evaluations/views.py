@@ -43,5 +43,8 @@ def academic_stats(request, id=None):
     avg_score = evaluations.aggregate(Avg('total_score'))['total_score__avg'] or 0
 
     return Response ({
-        
+        "totalStudents":total_students,
+        "totalEvaluations":total_evaluations,
+        "avgScore":round(avg_score, 2)
+
     })
