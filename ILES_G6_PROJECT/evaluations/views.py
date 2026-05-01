@@ -26,3 +26,9 @@ class EvaluationViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(evaluator=self.request.user)
+from users.permissions import IsAdmin
+
+class AdminEvaluationsView(viewsets.ModelViewSet):
+    queryset = Evaluation.objects.all()
+    serializer_class = EvaluationSerializer
+    permission_classes = [IsAuthenticated,IsAdmin]
