@@ -2,13 +2,16 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.db.models import Avg
-from rest_framework import generics
+from rest_framework import generics,viewsets
 from .models import CustomUser
 from .serializers import RegisterSerializer,UserSerializer
 from rest_framework.permissions import IsAuthenticated
 from .permissions import IsAdmin
 from rest_framework_simplejwt.views import TokenObtainPairView
 from .serializers import MyTokenObtainPairSerializer
+from internships.models import InternshipPlacement
+from logs.models import WeeklyLog
+from rest_framework.views import APIView
 
 
 class RegisterView(generics.CreateAPIView):
