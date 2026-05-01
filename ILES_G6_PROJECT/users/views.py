@@ -12,6 +12,9 @@ from .serializers import MyTokenObtainPairSerializer
 from internships.models import InternshipPlacement
 from logs.models import WeeklyLog
 from rest_framework.views import APIView
+from rest_framework.response import Response
+from evaluations.models import Evaluation
+
 
 
 class RegisterView(generics.CreateAPIView):
@@ -34,7 +37,7 @@ class AdminStatsView(APIView):
         total_students = CustomUser.objects.filter(role="student").count()
         total_supervisors = CustomUser.objects.filter(role="supervisor").count()
         total_academics = CustomUser.objects.filter(role="academic").count()
-        toatl_placements = InternshipPlacement.objects.count()
+        total_placements = InternshipPlacement.objects.count()
         total_logs = WeeklyLog.objects.count()
         total_evaluations = Evaluation.objects.count()
         avg_score = Evaluation.object.aggregate(Avg("total_score"))["total_score__avg"] or 0
