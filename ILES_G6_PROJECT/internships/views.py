@@ -32,3 +32,11 @@ class SupervisorStudentsView(generics.ListAPIView):
         return InternshipPlacement.objects.filter(
             supervisor = self.request.user
         )
+    
+
+
+from users.permissions import IsAdmin
+class AdminPlacementViewSet(viewsets.ModelViewSet):
+    queryset = InternshipPlacement.objects.all()
+    serializer_class = InternshipPlacementSerializer
+    permission_classes = [IsAuthenticated, IsAdmin]
