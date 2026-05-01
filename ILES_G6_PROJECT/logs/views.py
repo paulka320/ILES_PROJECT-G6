@@ -52,7 +52,24 @@ def review(self, request, pk=None):
 class AcademicStudentLogsView(ListAPIView):
   serializer_class = WeeklyLogSerializer
   permission_classes = [IsAuthenticated]
-  
+
+  def get_queryset(self):
+
+    user = self.request.user
+    student_id = self.kwargs["student_id"]
+
+    if user.role == "academic":
+      assigned_students = (
+        InternshipPlacement.objects.filter(academic_supervisor=user).values_list("student_id",flat=True)
+
+      )
+      if student_id in assigned_students:
+        return WeeklyLog.objects.filter(
+          student_id = student_id
+        ).order_by("-week_number")
+      
+    return WeeklyLog.objects.none()
+
 
 
 
