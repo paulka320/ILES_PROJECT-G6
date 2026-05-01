@@ -3,4 +3,7 @@ from .views import InternshipPlacementViewSet,SupervisorStudentsView,AcademicStu
 router = DefaultRouter()
 router.register(r'admin/placements', AdminPlacementViewSet,basename='admin-placements')
 
-urlpatterns = router.urls
+urlpatterns = router.urls + [
+    path('supervisor/students/',SupervisorStudentsView.as_view(),name="supervisor-students"),
+    path('academic/students/',AcademicStudentsView.as_view(),name="academic-students"),
+]
