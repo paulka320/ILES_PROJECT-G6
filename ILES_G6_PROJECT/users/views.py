@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
+from django.db.models import Avg
 from rest_framework import generics
 from .models import CustomUser
 from .serializers import RegisterSerializer,UserSerializer
