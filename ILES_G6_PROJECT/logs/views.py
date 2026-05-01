@@ -53,3 +53,8 @@ def review(self, request, pk=None):
 class AdminLogsView(ListAPIView):
   serializer_class = WeeklyLogSerializer
   permission_classes = [IsAuthenticated]
+
+  def get_queryset(self):
+    if self.request.user.role == "admin":
+      return WeeklyLog.objects.all().order_by("-week_number")
+    return WeeklyLog.objects.none()
