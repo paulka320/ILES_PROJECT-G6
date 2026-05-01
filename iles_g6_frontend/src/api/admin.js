@@ -24,3 +24,6 @@ export const rejectLog = (id) =>
 
 export const getAllEvaluations = () =>
     API.get("/evaluations/evaluations/");
+
+export const getAdminStats = () =>
+    API.get("/users/admin/stats/");
