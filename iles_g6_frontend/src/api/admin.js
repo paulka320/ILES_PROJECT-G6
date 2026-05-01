@@ -20,3 +20,7 @@ export const approveLog = (id) =>
 
 export const rejectLog = (id) =>
     API.post(`/logs/weeklylogs/${id}/admin_reject/`);
+
+
+export const getAllEvaluations = () =>
+    API.get("/evaluations/evaluations/");
