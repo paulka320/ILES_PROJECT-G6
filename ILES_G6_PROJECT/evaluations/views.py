@@ -66,3 +66,6 @@ from rest_framework.generics import ListAPIView
 class AcademicEvaluationsView(ListAPIView):
     serializer_class = EvaluationSerializer
     permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return Evaluation.objects.filter(evaluator = self.request.user)
