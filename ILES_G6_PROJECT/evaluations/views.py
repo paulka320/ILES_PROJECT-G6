@@ -32,3 +32,8 @@ class AdminEvaluationsView(viewsets.ModelViewSet):
     queryset = Evaluation.objects.all()
     serializer_class = EvaluationSerializer
     permission_classes = [IsAuthenticated,IsAdmin]
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def academic_stats(request, id=None):
+    
