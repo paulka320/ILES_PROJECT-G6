@@ -15,13 +15,14 @@ class WeeklyLogViewSet(viewsets.ModelViewSet):
   permission_classes =[IsAuthenticated]
 
   def get_queryset(self):
+
     user = self.request.user
 
-    if user.role == 'student':
-      return WeeklyLog.objects.filter(student=user)
-
-    return WeeklyLog.objects.all()
-
+    if user.role == "student":
+      return WeeklyLog.objects.filter(student=user).order_by("-week_number")
+    
+    elif user.role == "supervisor":
+      return WeeklyLog.objects.filter(status="submitted").order_by("-week_number")
 # submitting Log
 @action(detail=True, method=['post'], permission_classes=[IsStudent])
 def submit(self, request, pk=None):
