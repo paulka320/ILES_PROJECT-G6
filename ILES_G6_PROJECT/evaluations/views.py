@@ -36,4 +36,7 @@ class AdminEvaluationsView(viewsets.ModelViewSet):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def academic_stats(request, id=None):
-    
+    students = InternshipPlacement.objects.filter(academic_supervisor=request.user)
+    total_students =students.count()
+    evaluations = Evaluation.objects.filter(evaluator=request.user)
+    total_evaluations = evaluations.count()
