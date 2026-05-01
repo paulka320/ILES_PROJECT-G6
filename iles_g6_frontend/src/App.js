@@ -10,6 +10,7 @@ import { AuthProvider } from "./auth/AuthContext";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import AdminDashboard from "./pages/AdminDashboard";
+import AdminPlacements from "./pages/Adminplacements";
 
 // Import protected route component (restricts access)
 import ProtectedRoute from "./components/ProtectedRoute";
