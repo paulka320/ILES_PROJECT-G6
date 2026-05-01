@@ -16,6 +16,20 @@ class RegisterView(generics.CreateAPIView):
     serializer_class = RegisterSerializer
 
 
+class AdminUserViewSet(viewsets.ModelViewSet):
+    queryset = CustomUser.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [IsAuthenticated,IsAdmin]
+
+from rest_framework_simplejwt.views import TokenObtainPairView
+from .serializers import MyTokenObtainPairSerializer
+
+
+class AdminStatsView(APIView):
+    permission_classes = [IsAuthenticated,IsAdmin]
+    def get(self, request):
+        total_students = CustomUser.objects.filter(role="student").count()
+
 class UserListView(generics.ListAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
