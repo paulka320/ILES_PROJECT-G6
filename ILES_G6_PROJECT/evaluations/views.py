@@ -59,3 +59,10 @@ class AdminEvaluationsView(ListAPIView):
         if self.request.user.role =="admin":
             return Evaluation.objects.all()
         return Evaluation.objects.none()
+
+
+from rest_framework.generics import ListAPIView
+
+class AcademicEvaluationsView(ListAPIView):
+    serializer_class = EvaluationSerializer
+    permission_classes = [IsAuthenticated]
