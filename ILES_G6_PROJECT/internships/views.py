@@ -22,6 +22,9 @@ class InternshipPlacementViewSet(viewsets.ModelViewSet):
             return InternshipPlacement.objects.filter(supervisor_name = user)
         elif user.role =="academic":
             return InternshipPlacement.objects.filter(academic_supervisor = user)
+        elif user.role =="admin":
+            return InternshipPlacement.objects.all()
+        
         return InternshipPlacement.objects.none()
 
 class SupervisorStudentsView(generics.ListAPIView):
