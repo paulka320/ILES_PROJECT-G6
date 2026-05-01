@@ -15,4 +15,21 @@ const Login = () => {
         await login (form.username, form.password);
         navigate("/dashboard");
     };
+    return (
+        <div>
+            <h2>Login</h2>
+
+            <form onSubmit= {handleSubmit}>
+                <input 
+                    placeholder = "Username"
+                    onChange = {(e) => setForm({...form, username: e.target.value })}
+                />
+                <input
+                    type = "password"
+                    placeholder = "Password" 
+                    onChange = { (e) => setForm({...form, password: e.target.value})}  
+                />
+            </form>
+        </div>
+    )
 }
