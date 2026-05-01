@@ -7,6 +7,7 @@ from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
 router.register(r"admin/users", AdminUserViewSet, basename='admin-users')
 urlpatterns =router.urls + [
+    path('admin/stats/',AdminStatsView.as_view()),
     path('register/',RegisterView.as_view()),
     path('login/',MyTokenObtainPairView.as_view()),
     path('refresh/',TokenRefreshView.as_view()),
