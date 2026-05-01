@@ -1,6 +1,6 @@
 from rest_framework.routers import DefaultRouter
 from .views import EvaluationViewSet,AcademicEvaluationsView,academic_stats,AdminEvaluationsView
-
+from django.urls import path
 router = DefaultRouter()
 router.register(r'evaluations', EvaluationViewSet,basename='evaluations')
 
