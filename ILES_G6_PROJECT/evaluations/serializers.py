@@ -1,5 +1,13 @@
 from rest_framework import serializers
 from .models import Evaluation
+from users.models import CustomUser
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = ['id','username', 'role']
+        
 
 class EvaluationSerializer(serializers.ModelSerializer):
     class Meta:
