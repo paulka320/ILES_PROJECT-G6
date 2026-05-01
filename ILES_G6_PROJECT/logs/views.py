@@ -55,6 +55,15 @@ class SupervisorPendingLogsView(ListAPIView):
   permission_classes = [IsAuthenticated]
 
 
+  def get_queryset(self):
+
+    if self.request.user.role == "supervisor":
+      return WeeklyLog.objects.filter(
+        status ="submitted"
+      ).order_by("-week_number")
+    return WeeklyLog.objects.none()
+
+
 
 
 
