@@ -17,3 +17,6 @@ export const deleteLog = (id) =>
 
 export const approveLog = (id) =>
     API.post(`/logs/weeklylogs/${id}/admin_approve/`);
+
+export const rejectLog = (id) =>
+    API.post(`/logs/weeklylogs/${id}/admin_reject/`);
