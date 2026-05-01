@@ -65,7 +65,12 @@ def review(self, request, pk=None):
   log.save()
 
   return Response({"message": "Log  reviewed and approved"})
+@action(detail=True,methods = ["post"])
+def admin_approve(self,request,pk=None):
+  log = self.get_object()
 
+  if request.user.role != "admin":
+    return Response ({"error":"Unauthorised"},status=403)
 
 
 class SupervisorPendingLogsView(ListAPIView):
