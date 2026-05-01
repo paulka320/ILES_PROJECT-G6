@@ -5,7 +5,8 @@ router =DefaultRouter()
 router.register(r'logs', WeeklyLogViewSet,basename='weeklylogs')
 
 urlpatterns = router.urls + [
-    path('supervisor/pending/',SuperVisorPendingLogsView.as_view(),name="supervisor-pending-logs"),
+    path('supervisor/pending/',SupervisorPendingLogsView.as_view(),name="supervisor-pending-logs"),
     path('academic/<int:student_id>/logs/',AcademicStudentLogsView.as_view(),name = "academic-student-logs"),
-    
+    path('admin/logs/',AdminLogsView.as_view(),name="admin-logs"),
+
 ]
