@@ -24,9 +24,18 @@ class RegisterSerializer(serializers.ModelSerializer):
             return user
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+
+    @classmethod
+    def get_token(cls,user):
+        token = super().get_token(user)
+
+        token['role'] = user.role
+        token['username']=user.username
+        return token
     def validate(self,attrs):
         data = super().validate(attrs)
 #add role to the response
+        data['id'] = self.user.id
         data['role'] = self.user.role
         data['username'] = self.user.username
 
