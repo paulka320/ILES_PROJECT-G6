@@ -1,7 +1,15 @@
 from rest_framework import serializers
 from .models import WeeklyLog
+from users.models import CustomUser
+
+
+class UserMiniSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = CustomUser
+    fields = ['id','username','role']
 
 class WeeklyLogSerializer(serializers.ModelSerializer):
+  
   class meta:
     model = WeeklyLog
     fields ='__all__'
