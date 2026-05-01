@@ -32,7 +32,14 @@ class SupervisorStudentsView(generics.ListAPIView):
         return InternshipPlacement.objects.filter(
             supervisor = self.request.user
         )
-    
+
+
+class AcademicStudentsView(ListAPIView):
+    serializer_class = InternshipPlacementSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return InternshipPlacement.objects.filter(academic_supervisor = self.request.user)
 
 
 from users.permissions import IsAdmin
