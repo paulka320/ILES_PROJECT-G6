@@ -29,6 +29,17 @@ class AdminStatsView(APIView):
     permission_classes = [IsAuthenticated,IsAdmin]
     def get(self, request):
         total_students = CustomUser.objects.filter(role="student").count()
+        total_supervisors = CustomUser.objects.filter(role="supervisor").count()
+        total_academics = CustomUser.objects.filter(role="academic").count()
+        toatl_placements = InternshipPlacement.objects.count()
+        total_logs = WeeklyLog.objects.count()
+        total_evaluations = Evaluation.objects.count()
+        avg_score = Evaluation.object.aggregate(Avg("total_score"))["total_score__avg"] or 0
+
+        return Response({
+            
+        })
+
 
 class UserListView(generics.ListAPIView):
     queryset = CustomUser.objects.all()
