@@ -48,3 +48,8 @@ def academic_stats(request, id=None):
         "avgScore":round(avg_score, 2)
 
     })
+
+
+class AdminEvaluationsView(ListAPIView):
+    serializer_class = EvaluationSerializer
+    permission_classes = [IsAuthenticated]
