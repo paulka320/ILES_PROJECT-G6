@@ -14,7 +14,6 @@ from internships.models import InternshipPlacement
 
 
 
-
 class WeeklyLogViewSet(viewsets.ModelViewSet):
   queryset = WeeklyLog.objects.all()
   serializer_class = WeeklyLogSerializer
