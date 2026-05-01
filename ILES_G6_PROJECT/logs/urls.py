@@ -1,5 +1,7 @@
 from rest_framework.routers import DefaultRouter
 from .views import WeeklyLogViewSet,SupervisorPendingLogsView,AcademicStudentLogsView,AdminLogsView
+from django.urls import path
+
 
 router =DefaultRouter()
 router.register(r'logs', WeeklyLogViewSet,basename='weeklylogs')
