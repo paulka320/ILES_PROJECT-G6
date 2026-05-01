@@ -17,5 +17,13 @@ export const AuthProvider = ({ children }) => {
             username:res.data.username,
             role:res.data.role
         });
-    }
+    };
+    const logout = () => {
+        localStorage.removeItem("token");
+        setUser(null);
+    };
+    
+    return (
+
+    );
 }
