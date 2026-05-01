@@ -29,7 +29,10 @@ const Login = () => {
                     placeholder = "Password" 
                     onChange = { (e) => setForm({...form, password: e.target.value})}  
                 />
+                <button type = "submit">Login</button>
             </form>
         </div>
-    )
-}
+    );
+};
+
+export default Login;
