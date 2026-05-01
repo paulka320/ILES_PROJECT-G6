@@ -11,3 +11,6 @@ export const getAllPlacements = () =>
 
 export const getAllLogs = () =>
     API.get("/logs/weeklylogs/");
+
+export const deleteLog = (id) =>
+    API.delete(`/logs/weeklylogs/${id}/`);
