@@ -15,6 +15,13 @@ class EvaluationViewSet(viewsets.ModelViewSet):
         user = self.request.user
         if user.role =='student':
             return Evaluation.objects.filter(student=user)
+        
+        if user.role=='supervisor':
+            return Evaluation.objects.filter(evaluator=user)
+        
+        if user.role =='academic':
+            return Evaluation.objects.filter(evaluator=user)
+        
         return Evaluation.objects.all()
 
     def perform_create(self, serializer):
