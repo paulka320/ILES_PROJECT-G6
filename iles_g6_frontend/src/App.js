@@ -9,6 +9,7 @@ import { AuthProvider } from "./auth/AuthContext";
 // Import pages/components
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import AdminDashboard from "./pages/AdminDashboard";
 
 // Import protected route component (restricts access)
 import ProtectedRoute from "./components/ProtectedRoute";
