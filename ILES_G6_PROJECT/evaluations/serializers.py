@@ -12,6 +12,7 @@ class UserSerializer(serializers.ModelSerializer):
 class EvaluationSerializer(serializers.ModelSerializer):
     student = serializers.PrimaryKeyRelationField(queryset=CustomUser.objects.all(),write_only = True)
     student_details=UserSerializer(source ='student',read_only= True)
+    evaluator = UserSerializer(read_only=True)
     class Meta:
         model = Evaluation
         fields = '__all__'
