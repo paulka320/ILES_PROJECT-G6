@@ -18,3 +18,4 @@ const Dashboard = () => {
       return <SupervisorDashboard/>;
     case "academic":
       return <AcademicDashboard/>;
+    case "admin":
