@@ -25,3 +25,14 @@ const AcademicDashboard = () => {
         performance_score: '',
         report_score: '',
     });
+
+
+    const fetchStudents = async () => {
+        try {
+            const res = await API.get(internships/academic/students/);
+            setStudents(res.data);
+        } catch (err) {
+            console.error('Error fetching students:', err);
+            setMessage({ type: 'danger', text: 'Failed to load students' });
+        }
+    }; 
