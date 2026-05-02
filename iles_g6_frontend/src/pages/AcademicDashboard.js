@@ -7,4 +7,6 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 
 const AcademicDashboard = () => {
     const { user } = useContext(AuthContext);
+    const [students, setStudents] = useState([]);
+    const [evaluations, setEvaluations] = useState([]);
 
