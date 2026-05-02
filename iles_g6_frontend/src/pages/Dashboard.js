@@ -20,3 +20,9 @@ const Dashboard = () => {
       return <AcademicDashboard/>;
     case "admin":
       return <AdminDashboard/>;
+    default:
+      return <p>Invalid role</p>;
+  }
+};
+
+export default Dashboard;
