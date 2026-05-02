@@ -100,4 +100,37 @@ const AcademicDashboard = () => {
         setMessage({ type: 'warning', text: 'Please select a student first' });
         return;
         }
+
+        if (
+            newEvaluation.attendance_score < 0 ||
+            newEvaluation.attendance_score > 10 ||
+            newEvaluation.performance_score < 0 ||
+            newEvaluation.performance_score > 10 ||
+            newEvaluation.report_score < 0 ||
+            newEvaluation.report_score > 10
+        ) {
+            setMessage({ type: 'warning', text: 'Scores must be between 0 and 10' });
+            return;
+        }
+
+        setSubmitting(true);
+        try {
+            await API.post(evaluations/evaluations/, newEvaluation);
+            setMessage({ type: 'success', text: 'Evaluation submitted successfully' });
+            setShowEvaluationModal(false);
+            setNewEvaluation({
+                student: '',
+                attendance_score: '',
+                performance_score: '',
+                report_score: '',
+            });
+            fetchEvaluations();
+            fetchStats();
+        } catch (err) {
+          setMessage({ type: 'danger', text: 'Evaluation submission failed' });
+        } finally {
+          setSubmitting(false);
+        }
+    };
+        
         
