@@ -46,3 +46,13 @@ const AcademicDashboard = () => {
             setMessage({ type: 'danger', text: 'Failed to load evaluations' });
         }
     };
+
+    const fetchStats = async () => {
+        try {
+            const res = await API.get(evaluations/academic/${user.id}/stats/);
+            setStats(res.data);
+        } catch (err) {
+            console.error('Error fetching stats:', err);
+            setMessage({ type: 'danger', text: 'Failed to load statistics' });
+        }
+    };
