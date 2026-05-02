@@ -23,3 +23,4 @@ const Dashboard = () => {
     default:
       return <p>Invalid role</p>;
   }
+};
