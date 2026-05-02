@@ -92,3 +92,12 @@ const AcademicDashboard = () => {
           [e.target.name]: Number(e.target.value),
         });
     };
+
+    const submitEvaluation = async (e) => {
+       e.preventDefault();
+
+       if (!newEvaluation.student) {
+        setMessage({ type: 'warning', text: 'Please select a student first' });
+        return;
+        }
+        
