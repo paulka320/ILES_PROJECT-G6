@@ -7,3 +7,4 @@ import AcademicDashboard from "./AcademicDashboard";
 import AdminDashboard from "./AdminDashboard";
 
 const Dashboard = () => {
+  const { user } = useContext(AuthContext);
