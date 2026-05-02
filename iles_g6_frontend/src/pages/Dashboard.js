@@ -21,3 +21,4 @@ const Dashboard = () => {
     case "admin":
       return <AdminDashboard/>;
     default:
+      return <p>Invalid role</p>;
