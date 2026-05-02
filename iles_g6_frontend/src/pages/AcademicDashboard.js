@@ -19,3 +19,9 @@ const AcademicDashboard = () => {
     const [showEvaluationModal, setShowEvaluationModal] = useState(false);
     const [showStudentDetails, setShowStudentDetails] = useState(false);
 
+    const [newEvaluation, setNewEvaluation] = useState({
+        student: '',
+        attendance_score: '',
+        performance_score: '',
+        report_score: '',
+    });
