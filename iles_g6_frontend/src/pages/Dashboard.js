@@ -20,3 +20,4 @@ const Dashboard = () => {
       return <AcademicDashboard/>;
     case "admin":
       return <AdminDashboard/>;
+    default:
