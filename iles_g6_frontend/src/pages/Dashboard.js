@@ -13,3 +13,4 @@ const Dashboard = () => {
 
   switch (user.role) {
     case "student":
+      return <StudentDashboard/>;
