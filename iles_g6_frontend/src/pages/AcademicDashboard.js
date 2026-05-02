@@ -12,4 +12,5 @@ const AcademicDashboard = () => {
     const [stats, setStats] = useState(null);
     const [logs, setLogs] = useState([]);
     const [selectedStudent, setSelectedStudent] = useState(null);
+    const [message, setMessage] = useState(null);
 
