@@ -22,3 +22,4 @@ const Dashboard = () => {
       return <AdminDashboard/>;
     default:
       return <p>Invalid role</p>;
+  }
