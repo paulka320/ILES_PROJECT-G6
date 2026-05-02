@@ -85,3 +85,10 @@ const AcademicDashboard = () => {
         fetchStudentLogs(student.student.id);
         setShowStudentDetails(true);
     };
+
+    const handleChange = (e) => {
+        setNewEvaluation({
+          ...newEvaluation,
+          [e.target.name]: Number(e.target.value),
+        });
+    };
