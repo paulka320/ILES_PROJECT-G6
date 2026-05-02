@@ -16,3 +16,6 @@ const AcademicDashboard = () => {
     const [loading, setLoading] = useState(false);
     const [submitting, setSubmitting] = useState(false);
 
+    const [showEvaluationModal, setShowEvaluationModal] = useState(false);
+    const [showStudentDetails, setShowStudentDetails] = useState(false);
+
