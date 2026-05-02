@@ -10,3 +10,5 @@ const Dashboard = () => {
   const { user } = useContext(AuthContext);
 
   if (!user) return <p>Loading...</p>;
+
+  switch (user.role) {
