@@ -56,3 +56,13 @@ const AcademicDashboard = () => {
             setMessage({ type: 'danger', text: 'Failed to load statistics' });
         }
     };
+
+    const fetchStudentLogs = async (studentId) => {
+        try {
+            const res = await API.get(logs/academic/${studentId}/logs/);
+            setLogs(res.data);
+        } catch (err) {
+            console.error('Error fetching logs:', err);
+            setMessage({ type: 'danger', text: 'Failed to load student logs' });
+        }
+    };
