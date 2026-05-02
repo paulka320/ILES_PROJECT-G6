@@ -66,3 +66,22 @@ const AcademicDashboard = () => {
             setMessage({ type: 'danger', text: 'Failed to load student logs' });
         }
     };
+
+
+    useEffect(() => {
+      if (user && user.role === 'academic') {
+        setLoading(true);
+        Promise.all([fetchStudents(), fetchEvaluations(), fetchStats()]).finally(() => setLoading(false));
+      }
+    }, [user]);
+
+    const selectStudent = (student) => {
+        setSelectedStudent(student);
+        setNewEvaluation({
+          ...newEvaluation,
+          student: student.student.id,
+        });
+
+        fetchStudentLogs(student.student.id);
+        setShowStudentDetails(true);
+    };
