@@ -6,4 +6,5 @@ import { Container, Row, Col, Card, Table, Button, Form, Badge, Alert, Modal, Ta
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
 
 const AcademicDashboard = () => {
+    const { user } = useContext(AuthContext);
 
