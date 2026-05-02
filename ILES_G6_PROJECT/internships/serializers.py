@@ -1,7 +1,16 @@
 from rest_framework import serializers
 from .models import InternshipPlacement
+from users.models import CustomUser
+
+class UserMiniSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = ['id','username','role']
 
 class InternshipPlacementSerializer(serializers.ModelSerializer):
+    student = UserMiniSerializer(read_only=True)
+    supervisor_name = UserMiniSerializer(read_only=True)
+    academic_supervisor = UserMiniSerializer(read_only=True)
     class Meta:
         model = InternshipPlacement
         fields = '__all__'

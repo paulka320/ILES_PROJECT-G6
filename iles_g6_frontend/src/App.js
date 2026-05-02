@@ -9,10 +9,12 @@ import { AuthProvider } from "./auth/AuthContext";
 // Import pages/components
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import AdminDashboard from "./pages/AdminDashboard";
+import AdminPlacements from "./pages/Adminplacements";
 
 // Import protected route component (restricts access)
 import ProtectedRoute from "./components/ProtectedRoute";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   return (
     // Provides authentication context to the entire app
@@ -33,6 +35,22 @@ function App() {
             element={
               <ProtectedRoute>
                 <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin"
+            element = {
+              <ProtectedRoute>
+                <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/placements"
+            element = {
+              <ProtectedRoute>
+                <AdminPlacements />
               </ProtectedRoute>
             }
           />

@@ -16,7 +16,9 @@ class WeeklyLog(models.Model):
   student = models.ForeignKey(User, on_delete=models.CASCADE)
   week_number = models.IntegerField()
 
-  content = models.TextField()
+  activities = models.TextField()
+  challenges = models.TextField()
+  supervisor_comment = models.TextField(blank=True,null=True)
   status = models.CharField(max_length=20,choices= STATUS_CHOICES, default='draft')
   created_at = models.DateField(auto_now_add=True)
 

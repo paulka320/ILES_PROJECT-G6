@@ -6,6 +6,8 @@ from .models import InternshipPlacement
 from .serializers import InternshipPlacementSerializer
 from rest_framework.permissions import IsAuthenticated
 from users.permissions import IsAdmin
+from rest_framework.generics import ListAPIView
+
 
 class InternshipPlacementViewSet(viewsets.ModelViewSet):
     queryset = InternshipPlacement.objects.all()
@@ -22,6 +24,9 @@ class InternshipPlacementViewSet(viewsets.ModelViewSet):
             return InternshipPlacement.objects.filter(supervisor_name = user)
         elif user.role =="academic":
             return InternshipPlacement.objects.filter(academic_supervisor = user)
+        elif user.role =="admin":
+            return InternshipPlacement.objects.all()
+        
         return InternshipPlacement.objects.none()
 
 class SupervisorStudentsView(generics.ListAPIView):
@@ -32,3 +37,18 @@ class SupervisorStudentsView(generics.ListAPIView):
         return InternshipPlacement.objects.filter(
             supervisor = self.request.user
         )
+
+
+class AcademicStudentsView(ListAPIView):
+    serializer_class = InternshipPlacementSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return InternshipPlacement.objects.filter(academic_supervisor = self.request.user)
+
+
+from users.permissions import IsAdmin
+class AdminPlacementViewSet(viewsets.ModelViewSet):
+    queryset = InternshipPlacement.objects.all()
+    serializer_class = InternshipPlacementSerializer
+    permission_classes = [IsAuthenticated, IsAdmin]
