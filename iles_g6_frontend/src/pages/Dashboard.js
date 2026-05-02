@@ -12,3 +12,7 @@ const Dashboard = () => {
   if (!user) return <p>Loading...</p>;
 
   switch (user.role) {
+    case "student":
+      return <StudentDashboard/>;
+    case "supervisor":
+      return <SupervisorDashboard/>;
