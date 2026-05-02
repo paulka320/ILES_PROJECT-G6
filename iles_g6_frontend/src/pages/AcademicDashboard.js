@@ -9,4 +9,5 @@ const AcademicDashboard = () => {
     const { user } = useContext(AuthContext);
     const [students, setStudents] = useState([]);
     const [evaluations, setEvaluations] = useState([]);
+    const [stats, setStats] = useState(null);
 
