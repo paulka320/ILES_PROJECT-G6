@@ -8,3 +8,5 @@ import AdminDashboard from "./AdminDashboard";
 
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
+
+  if (!user) return <p>Loading...</p>;
