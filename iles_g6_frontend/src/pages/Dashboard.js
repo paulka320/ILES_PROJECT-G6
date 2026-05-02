@@ -24,3 +24,4 @@ const Dashboard = () => {
       return <p>Invalid role</p>;
   }
 };
+
