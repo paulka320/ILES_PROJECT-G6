@@ -35,4 +35,14 @@ const AcademicDashboard = () => {
             console.error('Error fetching students:', err);
             setMessage({ type: 'danger', text: 'Failed to load students' });
         }
-    }; 
+    };
+    
+    const fetchEvaluations = async () => {
+        try {
+            const res = await API.get(evaluations/academic/${user.id}/evaluations/);
+            setEvaluations(res.data);
+        } catch (err) {
+            console.error('Error fetching evaluations:', err);
+            setMessage({ type: 'danger', text: 'Failed to load evaluations' });
+        }
+    };
