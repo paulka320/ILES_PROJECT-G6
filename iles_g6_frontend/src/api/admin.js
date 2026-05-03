@@ -6,9 +6,13 @@ export const getAllUsers = () =>
 export const deleteUser = (id) =>
     API.delete(`users/admin/users/${id}/`);
 
-export const getAllPlacements = () =>
-    API.get("/internships/internshipplacement");
+export const updateUserRole = (id, role) =>
+    API.patch(`users/admin/users/${id}/`, { role });
 
+export const getAllPlacements = () => {
+    console.log("API CALL:GET PLACEMENTS");
+    API.get("internships/admin/placements/");
+};
 export const getAllLogs = () =>
     API.get("/logs/weeklylogs/");
 
