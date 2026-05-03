@@ -90,8 +90,11 @@ function App() {
           <Route
             path="/notifications"
             element={
-              
+              <ProtectedRoute>
+                <Notifications />
+              </ProtectedRoute>
             }
+            />
 
 
         </Routes>
