@@ -207,10 +207,13 @@ const SupervisorDashboard = () => {
                         </td>
                       </tr>
                     ))
-                      <Badge bg="warning">{log.status}</Badge>
-                    </td>
-                  </tr>
-                ))}
+                  ) : (
+                    <tr>
+                      <td colSpan="5" className="text-center text-muted">
+                        No pnding logs
+                      </td>
+                    </tr>
+                  )}
               </tbody>
             </Table>
           </Card>
