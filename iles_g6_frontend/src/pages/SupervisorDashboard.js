@@ -52,7 +52,7 @@ const SupervisorDashboard = () => {
     };
 
     useEffect(() =>{
-      if (user && user.role =='supervisor') {
+      if (user && user.role ==='supervisor') {
         fetchData();
       }
     },[user]);
@@ -235,7 +235,7 @@ const SupervisorDashboard = () => {
                 </LineChart>
               </ResponsiveContainer>
             ) : (
-              <p>No evaluation data yet</p>
+              <p classNmae="text-center text-muted">No evaluation data yet</p>
             )}
           </Card>
         </Col>
