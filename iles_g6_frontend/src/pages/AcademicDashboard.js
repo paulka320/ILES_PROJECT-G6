@@ -152,5 +152,23 @@ const AcademicDashboard = () => {
             {message && <Alert variant={message.type} onClose={() => setMessage(null)} dismissible className="mb-4">
                 {message.text}
             </Alert>}
+
+            <Row className="mb-4">
+                <Col>
+                    <Card className='bg-info text-white p-3'>
+                        <div className="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h2>Academic Dashboard</h2>
+                                <p>Welcome, {user?.username}|Role: {user?.role}</p>
+                                {loading && <p>Loading data...</p>}
+                            </div>
+                            <Link to='/notifications'>
+                            Notifications</Button>
+                            </Link>
+                        </div>
+                    </Card>
+                </Col>
+            </Row>
+                            
         
         
