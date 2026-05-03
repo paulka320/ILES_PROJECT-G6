@@ -26,5 +26,14 @@ def notify_on_log_submission(sender, instance, created, **kwargs):
                 recipient=supervisor,
                 notification_type='log_submitted',
                 title ='New Log Submitted',
-                message=f'Student {instance.student.username} has submitted their weekly log for week {instance.week_number}.'
+                message=f'Student {instance.student.username} has submitted their weekly log for week {instance.week_number}.',
+                related_log=instance
+            )
+        except InternshipPlacement.DoesNotExist:
+            Notification.objects.create(
+                recipient = instance.student,
+                notification_type = 'log_submitted',
+                title ='Log Submitted - No Supervisor Assigned',
+                message="Your weekly log was submiited, but no supervsor is currently assignedto your placement. It will be reviewed once a supervior is assigned.",
+                related_log=instance
             )
