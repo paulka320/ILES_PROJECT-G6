@@ -192,7 +192,24 @@ const AcademicDashboard = () => {
                     </Col>
                 </Row>
             )}
-            }
+
+            <Tab.Container defaultActiveKey='students'>
+                <Card className='mb-4'>
+                    <Card.Header>
+                        <Nav variant='pills'>
+                            <Nav.Item>
+                                <Nav.Link eventKey='students'>My Students</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                                <Nav.Link eventKey='evaluations'>Evaluations</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                                <Nav.Link eventKey='performance'>Performance</Nav.Link>
+                            </Nav.Item>
+                        </Nav>
+                    </Card.Header>
+                
+            
                             
         
         
