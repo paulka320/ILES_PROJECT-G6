@@ -23,21 +23,26 @@ export const assignAcademicSupervisor = (placementId,academicId) =>
     API.post(`internships/admin/placements/${placementId}/assign_academic_supervisor/`,{
         academic_id:academicId,
     });
+
+export const createPlacement = (placementData) =>
+    API.post("internships/admin/placements/create_placement/",placementData);
+
+
 export const getAllLogs = () =>
-    API.get("/logs/weeklylogs/");
+    API.get("logs/weeklylogs/");
 
 export const deleteLog = (id) =>
-    API.delete(`/logs/weeklylogs/${id}/`);
+    API.delete(`logs/weeklylogs/${id}/`);
 
 export const approveLog = (id) =>
-    API.post(`/logs/weeklylogs/${id}/admin_approve/`);
+    API.post(`logs/weeklylogs/${id}/admin_approve/`);
 
 export const rejectLog = (id) =>
-    API.post(`/logs/weeklylogs/${id}/admin_reject/`);
+    API.post(`logs/weeklylogs/${id}/admin_reject/`);
 
 
 export const getAllEvaluations = () =>
-    API.get("/evaluations/evaluations/");
+    API.get("evaluations/evaluations/");
 
 export const getAdminStats = () =>
-    API.get("/users/admin/stats/");
+    API.get("users/admin/stats/");
