@@ -5,5 +5,5 @@ export const login = async (formData) => {
 
     localStorage.setItem("token",res.data.access);
 
-    return 
-}
+    return res.data.user;
+};
