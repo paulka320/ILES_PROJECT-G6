@@ -4,7 +4,7 @@ from django.urls import path
 
 
 router =DefaultRouter()
-router.register(r'logs', WeeklyLogViewSet,basename='weeklylogs')
+router.register(r'weeklylogs', WeeklyLogViewSet,basename='weeklylogs')
 
 urlpatterns = router.urls + [
     path('supervisor/pending/',SupervisorPendingLogsView.as_view(),name="supervisor-pending-logs"),
