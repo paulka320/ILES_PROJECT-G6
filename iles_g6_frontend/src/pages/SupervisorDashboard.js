@@ -138,7 +138,17 @@ const SupervisorDashboard = () => {
               </thead>
               <tbody>
                 {students.length > 0 ? (
-                  students.map((stu))
+                  students.map((stu) => (
+                    <tr key={stu.id}>
+                      <td>{stu.student?.username || 'N/A'}</td>
+                      <td>
+                      <Badge bg="info">{stu.student?.role || 'N/A'}</Badge>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr></tr>
+                )
                 )}
                 {students.map((stu) => (
                   <tr key={stu.id}>
