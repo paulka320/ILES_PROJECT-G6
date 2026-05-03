@@ -146,5 +146,11 @@ const AcademicDashboard = () => {
         report: ev.report_score,
         total: ev.total_score,
     }));
+
+    return (
+        <Container fluid className="p-4">
+            {message && <Alert variant={message.type} onClose={() => setMessage(null)} dismissible className="mb-4">
+                {message.text}
+            </Alert>}
         
         
