@@ -147,15 +147,14 @@ const SupervisorDashboard = () => {
                     </tr>
                   ))
                 ) : (
-                  <tr></tr>
-                )
-                )}
-                {students.map((stu) => (
-                  <tr key={stu.id}>
-                    <td>{stu.username}</td>
-                    <td>{stu.role}</td>
+                  <tr>
+                    <td colSpan="2" className="text-center text-muted">
+                      No students assigned yet
+                    </td>
                   </tr>
-                ))}
+                
+                )}
+                
               </tbody>
             </Table>
           </Card>
@@ -163,9 +162,9 @@ const SupervisorDashboard = () => {
 
         <Col md={6}>
           <Card className="p-3">
-            <h4>Pending Weekly Logs</h4>
+            <h4>📋 Pending Weekly Logs</h4>
             <Table striped bordered hover responsive>
-              <thead>
+              <thead className="table-warning">
                 <tr>
                   <th>Student</th>
                   <th>Week</th>
