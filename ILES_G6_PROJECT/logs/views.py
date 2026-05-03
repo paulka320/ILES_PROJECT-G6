@@ -78,18 +78,16 @@ def review(self, request, pk=None):
 @action(detail=True,methods = ["post"],url_path="admin_approve")
 def admin_approve(self,request,pk=None):
 
-  if request.user.role
-  log = self.get_object()
-
   if request.user.role != "admin":
     return Response ({"error":"Unauthorised"},status=403)
+  log = self.get_object()
   log.status = "approved"
   log.save()
 
   return Response ({"message":"Log approved by admin"})
 
 
-@action (detail=True, methods = ["post"])
+@action (detail=True, methods = ["post"], url_path="admin_reject")
 def admin_reject(self,request,pk = None):
   log = self.get_object()
 
