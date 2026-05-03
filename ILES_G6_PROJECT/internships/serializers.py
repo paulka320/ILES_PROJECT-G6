@@ -20,7 +20,15 @@ class InternshipPlacementSerializer(serializers.ModelSerializer):
         fields = ['id', 'student', 'company_name', 'academic_supervisor', 'supervisor_name',
                  'start_date', 'end_date', 'student_id', 'supervisor_id', 'academic_id']
 
+    def create(self, validated_data):
+        student_id = validated_data.pop('student_id')
+        supervisor_id = validated_data.pop('supervisor_id',None)
+        academic_id = validated_data.pop('academic_id',None)
 
+        student = CustomUser.objects.get(id=student_id)
+        validated_data['student']= student
+
+        if supervisor_id:
     # 🔥 VALIDATION: prevent overlapping dates
     def validate(self, data):
         student = data['student']
