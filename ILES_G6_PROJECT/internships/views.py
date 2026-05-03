@@ -116,4 +116,24 @@ class AdminPlacementViewSet(viewsets.ModelViewSet):
 
             academic=None
             if academic_id:
-                
+                academic = CustomUser.objects.get(id=academic_id, role="academic")
+
+            supervisor = None
+            if supervisor_id:
+                supervisor = CustomUser.objects.get(id=supervisor_id, role="supervisor")
+
+            placement = InternshipPlacement.objects.create(
+                student = student,
+                company_name=company_name,
+                start_date=start_date,
+                end_date=end_date,
+                academic_supervisor=academic,
+                supervisor_name=supervisor
+            )
+            serializer = InternshipPlacementSerializer(placement)
+            return Response(serializer.data, status=201)
+        
+        except CustomUser.DoesNotExist as e:
+            return Response({"error":"User not found"},status=400)
+        except Exception as e:
+            return Response({"error":str(e)},status=400)
