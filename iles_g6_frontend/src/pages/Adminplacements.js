@@ -9,14 +9,24 @@ const  AdminPlacements = () => {
     const [placements, setPlacements] = 
         useState([]);
     
-        const fetchPlacements = async () => {
+    const fetchPlacements = async () => {
 
-            try {
-                const res = 
-                    await API.get(
-                        "internships/admin/placements/"
-                    );
-                setPlacements(res.data);
-            } catch (err) {}
+        try {
+            const res = 
+                await API.get(
+                    "internships/admin/placements/"
+                );
+            setPlacements(res.data);
+        } catch (err) {
+            console.error (
+                "placements Error:",
+                err.response || err
+            );
         }
+    };
+
+    useEffect(() =>{
+        fetchPlacements();
+    }, []);
+
 }
