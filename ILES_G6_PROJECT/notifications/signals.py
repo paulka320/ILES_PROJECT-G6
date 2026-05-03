@@ -37,3 +37,23 @@ def notify_on_log_submission(sender, instance, created, **kwargs):
                 message="Your weekly log was submiited, but no supervsor is currently assignedto your placement. It will be reviewed once a supervior is assigned.",
                 related_log=instance
             )
+@receiver(post_save, sender=WeeklyLog)
+def notify_on_log_review(sender, instance,created, **kwargs):
+    if not created and instance.status in ['approved', 'rejected']:
+        notification_type = 'log_approved' if instance.status== 'approved' else 'log_rejected'
+        title = 'Log Approved' if instance.status =='approved' else 'Log Rejected'
+        message = f"Your weekly log for week {instance.week_number} has been {instance.status}."
+        if instance.supervisor_comment:
+            message += f'Comment: {instance.supervisor_comment}'
+
+        Notification.objects.create(
+            recipient= instance.student,
+            notification_type = notification_type,
+            title = title,
+            message = message,
+            related_log = instance
+
+
+        )
+
+@receiver(post_save, sender=Evaluation)
