@@ -168,7 +168,9 @@ const SupervisorDashboard = () => {
                 <tr>
                   <th>Student</th>
                   <th>Week</th>
-                  <th>Status</th>
+                  <th>Activities</th>
+                  <th>Comment</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
