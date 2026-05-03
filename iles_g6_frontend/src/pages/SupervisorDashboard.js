@@ -44,10 +44,18 @@ const SupervisorDashboard = () => {
       
       } catch (err) {
         console.error("Error fetching supervisor dashboard:", err);
+        setMessage({type:'danger',text:'Failed to Load dashboard data'});
+
+      } finally {
+        setLoading(false);
       }
     };
-    fetchData();
-  }, [user]);
+
+    useEffect(() =>{
+      if (user && user.role =='supervisor') {
+        fetchData();
+      }
+    },[user]);
 
   const chartData = evaluations.map((ev) => ({
     student: ev.student.username,
