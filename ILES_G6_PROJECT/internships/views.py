@@ -94,3 +94,13 @@ class AdminPlacementViewSet(viewsets.ModelViewSet):
                 {"error":"Academic supervisor not found"},
                 status=400
             )
+        placement.academic_supervisor = academic
+        placement.save()
+
+        return Response ({
+            "message":"Academic Supervisor assigned successfully"
+        })
+    
+    @action(detail=False, methods=["post"])
+    def create_placement(self,request):
+        """Create a new internship placement for a student"""
