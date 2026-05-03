@@ -65,6 +65,14 @@ const SupervisorDashboard = () => {
     });
   };
 
+  const reviewLog = async (id, action) => {
+    if (!comments[id] || comments[id].trim()===''){
+      setMessage({type: 'warning',text:'please provide feedback before approving or rejecting'});
+      return;
+    }
+    try {}
+  }
+
   const chartData = evaluations.map((ev) => ({
     student: ev.student.username,
     score: ev.total_score,
