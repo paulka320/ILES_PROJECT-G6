@@ -17,7 +17,9 @@ class InternshipPlacementSerializer(serializers.ModelSerializer):
     academic_id = serializers.IntegerField(write_only=True, required=False)
     class Meta:
         model = InternshipPlacement
-        fields = '__all__'
+        fields = ['id', 'student', 'company_name', 'academic_supervisor', 'supervisor_name',
+                 'start_date', 'end_date', 'student_id', 'supervisor_id', 'academic_id']
+
 
     # 🔥 VALIDATION: prevent overlapping dates
     def validate(self, data):
