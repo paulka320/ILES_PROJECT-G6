@@ -68,7 +68,31 @@ function App() {
             </ProtectedRoute>
           }
           />
+
+        <Route
+            path="/supervisor"
+            element={
+              <ProtectedRoute>
+                <SupervisorDashboard />
+              </ProtectedRoute>
+            }
+            />
           
+          <Route
+            path="/academic"
+            element={
+              <ProtectedRoute>
+                <AcademicDashboard />
+              </ProtectedRoute>
+            }
+            />
+          
+          <Route
+            path="/notifications"
+            element={
+              
+            }
+
 
         </Routes>
 
