@@ -29,9 +29,21 @@ class InternshipPlacementSerializer(serializers.ModelSerializer):
         validated_data['student']= student
 
         if supervisor_id:
+            supervisor = CustomUser.objects.get(id=supervisor_id,role='supervisor')
+            validated_data['supervisor_name'] = supervisor
+
+        if academic_id:
+            academic = CustomUser.objects.get(id= academic_id, role='academic')
+            validated_data['academic_supervisor'] = academic
+        return super().create(validated_data)
     # 🔥 VALIDATION: prevent overlapping dates
     def validate(self, data):
-        student = data['student']
+        student_id = data.get('student_id') or (self.instance.student.id if self.instance else None)
+        if not student_id:
+            return data
+        
+        student = CustomUser.objects.get(id=student_id)
+
         start_date = data['start_date']
         end_date = data['end_date']
 
@@ -43,6 +55,10 @@ class InternshipPlacementSerializer(serializers.ModelSerializer):
             start_date__lte=end_date,
             end_date__gte=start_date
         )
+
+        if self.instance:
+            existing = existing.exclude(id=self.instance.id)
+            
 
         if existing.exists():
             raise serializers.ValidationError("Overlapping internship placement detected")
