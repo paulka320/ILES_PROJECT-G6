@@ -132,5 +132,11 @@ const AcademicDashboard = () => {
           setSubmitting(false);
         }
     };
+
+
+    const chartData = evaluations.map((ev) => ({
+        student: ev.student_details?.username,
+        score: ev.total_score,
+    }));
         
         
