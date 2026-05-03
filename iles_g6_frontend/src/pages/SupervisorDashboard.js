@@ -76,10 +76,17 @@ const SupervisorDashboard = () => {
         supervisor_comment: comments[id],
       });
       const statusText = action ==='approve' ? 'approved' : 'rejected';
+      setMessage({ type: 'success', text:`Log ${statusText} successfully `});
+      setComments({...comments, [id]: ''});
+      fetchData();
+    } catch (err) {
+      console.error("Review Error:", err.response || err);
+      setMessage({type: 'danger', text:err.response?.data?.error || 'Failed to review log'});
     }
-  }
+  };
 
-  const chartData = evaluations.map((ev) => ({
+  const chartData =
+   evaluations.map((ev) => ({
     student: ev.student.username,
     score: ev.total_score,
   }));
