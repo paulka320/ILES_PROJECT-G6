@@ -18,6 +18,11 @@ export const assignSupervisor = (placementId, supervisorId) =>
     API.post(`internships/admin/placements/${placementId}/assign_academic_supervisor/`, {
         supervisor_id:supervisorId,
     });
+
+export const assignAcademicSupervisor = (placementId,academicId) =>
+    API.post(`internships/admin/placements/${placementId}/assign_academic_supervisor/`,{
+        academic_id:academicId,
+    });
 export const getAllLogs = () =>
     API.get("/logs/weeklylogs/");
 
