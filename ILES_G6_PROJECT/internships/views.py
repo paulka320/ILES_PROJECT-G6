@@ -29,13 +29,13 @@ class InternshipPlacementViewSet(viewsets.ModelViewSet):
         
         return InternshipPlacement.objects.none()
 
-class SupervisorStudentsView(generics.ListAPIView):
+class SupervisorStudentsView(ListAPIView):
     serializer_class = InternshipPlacementSerializer
     permission_classes =[IsAuthenticated]
 
     def get_queryset(self):
         return InternshipPlacement.objects.filter(
-            supervisor = self.request.user
+            supervisor_name = self.request.user
         )
 
 
@@ -48,7 +48,28 @@ class AcademicStudentsView(ListAPIView):
 
 
 from users.permissions import IsAdmin
+from rest_framework.decorators import action
+from rest_framework.response import Response
+from users.models import CustomUser
 class AdminPlacementViewSet(viewsets.ModelViewSet):
     queryset = InternshipPlacement.objects.all()
     serializer_class = InternshipPlacementSerializer
     permission_classes = [IsAuthenticated, IsAdmin]
+
+
+    @action(detail=True, methods=["post"])
+    def assign_supervisor(self, request, pk=None):
+
+        placement = self.get_object()
+        supervisor_id = request.data.get("supervisor_id")
+
+        try:
+            supervisor = CustomUser.objects.get(
+                id=supervisor_id,
+                role="supervisor"
+            )
+        except CustomUser.DoesNotExist:
+            return Response(
+                {"error": "Supervisor not found"},
+                status=400
+            )
