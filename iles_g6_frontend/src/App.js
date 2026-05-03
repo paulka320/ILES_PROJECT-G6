@@ -60,6 +60,16 @@ function App() {
             }
           />
 
+        <Route
+          path="/student"
+          element={
+            <ProtectedRoute>
+              <StudentDashboard />
+            </ProtectedRoute>
+          }
+          />
+          
+
         </Routes>
 
       </BrowserRouter>
