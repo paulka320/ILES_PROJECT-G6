@@ -208,6 +208,62 @@ const AcademicDashboard = () => {
                             </Nav.Item>
                         </Nav>
                     </Card.Header>
+
+                    <Card.Body>
+                        <Tab.Content>
+                            <Tab.Pane eventKey='students'>
+                                <div className='mb-3'>
+                                    <Button variant='success' onClick={() => setShowEvaluationModal(true)}>
+                                        Create Evaluation
+                                    </Button>
+                                </div>
+                                <Table striped bordered hover responsive>
+                                    <thead className='table-info'>
+                                        <tr>
+                                            <th>Student</th>
+                                            <th>Company</th>
+                                            <th>Start Date</th>
+                                            <th>End Date</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {students.length > 0 ? students.map((stu) => (
+                                            <tr key={stu.id}>
+                                                <td>{stu.student?.username||'N/A'}</td>
+                                                <td>{stu.company?.name||'N/A'}</td>
+                                                <td>{stu.start_date?new Date(stu.start_date).toLocaleDateString():'N/A'}</td>
+                                                <td>{stu.end_date?new Date(stu.end_date).toLocaleDateString():'N/A'}</td>
+                                                <td>
+                                                    <Badge bg='success'>Active</Badge>
+                                                </td>
+                                                <td>
+                                                    <Button variant='primary' size='sm' className='me-2' onClick={() => selectStudent(stu)}>
+                                                        View Details
+                                                    </Button>
+                                                    <Button variant='info' size='sm' onClick={() => {
+                                                        setNewEvaluation({
+                                                            ...newEvaluation,
+                                                            student: stu.student.id,
+                                                        });
+                                                        setShowEvaluationModal(true);
+                                                    }}>
+                                                        Evaluate
+                                                    </Button>
+                                                </td>
+                                            </tr>
+                                            )) 
+                                        ): (
+                                            <tr>
+                                                <td colSpan='6' className='text-center text muted'>
+                                                    No students assigned yet
+                                                </td>
+                                            </tr>
+                                        )}
+                                    </tbody>
+                                </Table>
+                            </Tab.Pane>
                 
             
                             
