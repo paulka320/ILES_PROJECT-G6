@@ -17,3 +17,14 @@ def notify_on_log_submission(sender, instance, created, **kwargs):
             message=f'Your weekly log for week {instance.week_number} has been submitted successfully and is pending review.',
             related_log=instance
         )
+
+
+        try:
+            placement = InternshipPlacement.objects.get(student=instance.student)
+            supervisor = placement.supervisor_name
+            Notification.objects.create(
+                recipient=supervisor,
+                notification_type='log_submitted',
+                title ='New Log Submitted',
+                message=f'Student {instance.student.username} has submitted their weekly log for week {instance.week_number}.'
+            )
