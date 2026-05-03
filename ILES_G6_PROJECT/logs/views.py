@@ -68,16 +68,17 @@ def review(self, request, pk=None):
   if action not in ['approve','reject']:
     return Response({"error":"Invalid action.Must be approve or reject"}, status=400)
   log.supervisor_comment = comment
-  log.status = "approved" if action =="approve" else "reject"
-  if comment :
-    log.supervisor_comment = comment
-
-  log.status ='approved'
+  log.status = "approved" if action =="approve" else "rejected"
   log.save()
 
-  return Response({"message": "Log  reviewed and approved"})
-@action(detail=True,methods = ["post"])
+  message = f"Log {action}d by supervisor"
+  return Response({"message": message})
+
+
+@action(detail=True,methods = ["post"],url_path="admin_approve")
 def admin_approve(self,request,pk=None):
+
+  if request.user.role
   log = self.get_object()
 
   if request.user.role != "admin":
