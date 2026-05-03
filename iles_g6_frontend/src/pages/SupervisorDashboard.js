@@ -25,21 +25,21 @@ const SupervisorDashboard = () => {
 
   
 
-   useEffect(() => {
-     const fetchData = async () => {
+    const fetchData = async () => {
+      setLoading(true);
       try {
-        const studentsRes = await API.get(`internships/supervisor/${user.id}/students/`);
-        console.log("Supervisor students:",studentsRes.data);
+        const studentsRes = await API.get(`internships/supervisor/students/`);
+
         setStudents(studentsRes.data);
 
-        const logsRes = await API.get(`logs/supervisor/${user.id}/pending/`);
-        console.log("Pending logs:", logsRes.data);
+        const logsRes = await API.get(`logs/supervisor/pending/`);
+        
         setPendingLogs(logsRes.data);
 
-        const evalRes = await API.get(`evaluations/supervisor/${user.id}/evaluations/`);
+        const evalRes = await API.get(`evaluations/academic/${user.id}/evaluations/`);
         const data = Array.isArray(evalRes.data) ? evalRes.data :[];
 
-        console.log("Evaluations:", data);
+        
         setEvaluations(data);
       
       } catch (err) {
