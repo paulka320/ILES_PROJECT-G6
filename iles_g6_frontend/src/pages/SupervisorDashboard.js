@@ -70,7 +70,13 @@ const SupervisorDashboard = () => {
       setMessage({type: 'warning',text:'please provide feedback before approving or rejecting'});
       return;
     }
-    try {}
+    try {
+      await API.post(`logs/weeklylogs/${id}/review`,{
+        action,
+        supervisor_comment: comments[id],
+      });
+      const statusText = action ==='approve' ? 'approved' : 'rejected';
+    }
   }
 
   const chartData = evaluations.map((ev) => ({
