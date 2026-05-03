@@ -223,15 +223,15 @@ const SupervisorDashboard = () => {
       <Row>
         <Col>
           <Card className="p-3">
-            <h4>Evaluation Scores</h4>
+            <h4>📊 Evaluation Scores</h4>
             {chartData.length > 0 ? (
               <ResponsiveContainer width="100%" height={300}>
                 <LineChart data={chartData}>
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="student" />
-                  <YAxis />
+                  <YAxis domain={[0,10]}/>
                   <Tooltip />
-                  <Line type="monotone" dataKey="score" stroke="#82ca9d" strokeWidth={3} />
+                  <Line type="monotone" dataKey="score" stroke="#17a2b8" strokeWidth={3} />
                 </LineChart>
               </ResponsiveContainer>
             ) : (
