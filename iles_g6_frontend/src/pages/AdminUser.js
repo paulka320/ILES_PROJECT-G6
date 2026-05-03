@@ -34,10 +34,31 @@ const AdminUsers = () => {
     <Row>
         <Col>
         <Card className="p-3">
-            
+            <h4>System Users</h4>
+            <Table striped bordered>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {users.map((user) =>(
+                        <tr key={user.id}>
+                            <td>{user.id}</td>
+                            <td>{user.username}</td>
+                            <td>{user.role}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </Table>
         </Card>
         </Col>
     </Row>
 </Container>
-    )
-}
+    );
+};
+
+export default AdminUsers;
