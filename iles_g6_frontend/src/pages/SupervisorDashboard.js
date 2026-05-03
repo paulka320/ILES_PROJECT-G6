@@ -87,15 +87,26 @@ const SupervisorDashboard = () => {
 
   const chartData =
    evaluations.map((ev) => ({
-    student: ev.student.username,
-    score: ev.total_score,
+
+      student: ev.student?.username,
+      score: ev.total_score,
   }));
 
   return (
     <Container fluid className="p-4">
+      {message && (
+        <Alert
+            variant={message.type}
+            onclose={()=> setMessage(null)}
+            dismissible
+            className="mb-4"
+            >
+              {message.text}
+            </Alert>
+      )}
       <Row className="mb-4">
         <Col>
-          <Card className="bg-success text-white p-3">
+          <Card className="bg-primary text-white p-3">
             <h2>Welcome, {user.username}!</h2>
             <p>Role: {user.role}</p>
           </Card>
