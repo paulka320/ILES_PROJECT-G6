@@ -11,6 +11,10 @@ class InternshipPlacementSerializer(serializers.ModelSerializer):
     student = UserMiniSerializer(read_only=True)
     supervisor_name = UserMiniSerializer(read_only=True)
     academic_supervisor = UserMiniSerializer(read_only=True)
+
+    student_id = serializers.IntegerField(write_only=True)
+    supervisor_id = serializers.IntegerField(write_only=True,required=False)
+    academic_id = serializers.IntegerField(write_only=True, required=False)
     class Meta:
         model = InternshipPlacement
         fields = '__all__'
