@@ -27,6 +27,10 @@ class AdminUserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     permission_classes = [IsAuthenticated,IsAdmin]
 
+    def perform_update(self, serializer):
+        """Allow admins to update user roles"""
+        serializer.save()
+
 from rest_framework_simplejwt.views import TokenObtainPairView
 from .serializers import MyTokenObtainPairSerializer
 
