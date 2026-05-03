@@ -117,24 +117,29 @@ const SupervisorDashboard = () => {
                 <Button variant="light">🔔 Notifications</Button>
               </Link>
             </div>
-            <h2>Welcome, {user.username}!</h2>
-            <p>Role: {user.role}</p>
+            
           </Card>
         </Col>
       </Row>
 
       <Row className="mb-4">
+
         <Col md={6}>
+
           <Card className="p-3">
-            <h4>Assigned Students</h4>
+
+            <h4>👥 Assigned Students</h4>
             <Table striped bordered hover responsive>
-              <thead>
+              <thead className="table-info">
                 <tr>
                   <th>Username</th>
                   <th>Role</th>
                 </tr>
               </thead>
               <tbody>
+                {students.length > 0 ? (
+                  students.map((stu))
+                )}
                 {students.map((stu) => (
                   <tr key={stu.id}>
                     <td>{stu.username}</td>
