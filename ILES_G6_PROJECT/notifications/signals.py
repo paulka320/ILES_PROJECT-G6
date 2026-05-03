@@ -57,3 +57,13 @@ def notify_on_log_review(sender, instance,created, **kwargs):
         )
 
 @receiver(post_save, sender=Evaluation)
+def notify_on_evaluation_created(sender, instance, created, **kwargs):
+    if created:
+        Notification.objects.create(
+            recipient=instance.student,
+            notification_type='evaluation_created',
+            title='New Evaluation Available',
+            message=f'You have received a new evaluation from {instance.evaluator.username}. Total score: {instance.total_score:.2f}',
+            related_placement=instance
+        )
+        Notification.objects.create()
