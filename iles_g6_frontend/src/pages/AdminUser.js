@@ -23,5 +23,21 @@ const AdminUsers = () => {
                 err
             );
         }
-    }
+    };
+
+    useEffect(() => {
+        fetchUsers();
+    },[]);
+
+    return (
+<Container fluid className="p-4">
+    <Row>
+        <Col>
+        <Card className="p-3">
+            
+        </Card>
+        </Col>
+    </Row>
+</Container>
+    )
 }
