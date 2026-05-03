@@ -57,6 +57,14 @@ const SupervisorDashboard = () => {
       }
     },[user]);
 
+  const handleCommentChange = (id, value) => {
+
+    setComments ({
+      ...comments,
+      [id]: value,
+    });
+  };
+
   const chartData = evaluations.map((ev) => ({
     student: ev.student.username,
     score: ev.total_score,
