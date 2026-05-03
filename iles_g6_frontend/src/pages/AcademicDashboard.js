@@ -169,6 +169,30 @@ const AcademicDashboard = () => {
                     </Card>
                 </Col>
             </Row>
+
+            {stats && (
+                <Row className="mb-4">
+                    <Col md={4}>
+                        <Card className='p-3 text-center bg-primary text-white'>
+                            <h6>Assigned Students</h6>
+                            <h3>{stats.totalStudents || 0}</h3>
+                        </Card>
+                    </Col>
+                    <Col md={4}>
+                        <Card className='p-3 text-center bg-success text-white'>
+                            <h6>Total Evaluations</h6>
+                            <h3>{stats.totalEvaluations || 0}</h3>
+                        </Card>
+                    </Col>
+                    <Col md={4}>
+                        <Card className='p-3 text-center bg-warning'>
+                            <h6>Average Score</h6>
+                            <h3>{stats.averageScore?.toFixed(2) || 'N/A'}</h3>
+                        </Card>
+                    </Col>
+                </Row>
+            )}
+            }
                             
         
         
