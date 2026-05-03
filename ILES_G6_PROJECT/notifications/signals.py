@@ -66,4 +66,10 @@ def notify_on_evaluation_created(sender, instance, created, **kwargs):
             message=f'You have received a new evaluation from {instance.evaluator.username}. Total score: {instance.total_score:.2f}',
             related_placement=instance
         )
-        Notification.objects.create()
+        Notification.objects.create(
+            recipient=instance.supervisor_name,
+            notification_type='placement_assigned',
+            title='New Student Assigned',
+            message=f"Student {instance.student.username} has been assigned to you at {instance.company_name}.",
+            related_placement=instance
+        )
