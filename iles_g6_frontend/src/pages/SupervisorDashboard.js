@@ -194,7 +194,16 @@ const SupervisorDashboard = () => {
                             size="sm"
                             variant="success"
                             onClick={() => reviewLog(log.id,'approve')}
-                            />
+                            >
+                              Approve
+                            </Button>
+                            <Button
+                              size="sm"
+                              variant="danger"
+                              onClick={() =>reviewLog(log.id, 'reject')}  
+                              >
+                                Reject
+                              </Button>
                         </td>
                       </tr>
                     ))
