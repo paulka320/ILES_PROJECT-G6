@@ -107,6 +107,12 @@ const SupervisorDashboard = () => {
       <Row className="mb-4">
         <Col>
           <Card className="bg-primary text-white p-3">
+            <div className="d-flex justify-content-between align-items-center">
+              <div>
+                <h2>👨‍🏫 Supervisor Dashboard</h2>
+                <p>Welcome, {user?.username} | Role: {user?.role}</p>
+              </div>
+            </div>
             <h2>Welcome, {user.username}!</h2>
             <p>Role: {user.role}</p>
           </Card>
