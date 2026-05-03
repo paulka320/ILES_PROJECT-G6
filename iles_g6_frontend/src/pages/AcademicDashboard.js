@@ -138,5 +138,13 @@ const AcademicDashboard = () => {
         student: ev.student_details?.username,
         score: ev.total_score,
     }));
+
+    const performanceData = evaluations.map((ev) => ({
+        student: ev.student_details?.username,
+        attendance: ev.attendance_score,
+        performance: ev.performance_score,
+        report: ev.report_score,
+        total: ev.total_score,
+    }));
         
         
