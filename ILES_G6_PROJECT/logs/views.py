@@ -41,7 +41,7 @@ class WeeklyLogViewSet(viewsets.ModelViewSet):
     serializer.save(student=self.request.user)
 
 # submitting Log
-  @action(detail=True, method=['post'], permission_classes=[IsStudent])
+  @action(detail=True, method=['post'])
   def submit(self, request, pk=None):
     log = self.get_object()
 
@@ -51,18 +51,24 @@ class WeeklyLogViewSet(viewsets.ModelViewSet):
     log.status = 'submitted'
     log.save()
 
-    return Response({"message": "Log submitted"})
+    return Response({"message": "Log submitted successfully"})
 
 # Review Log
-@action(detail=True, methods=['post'], permission_classes=[IsSupervisor])
+@action(detail=True, methods=['post'])
 def review(self, request, pk=None):
+
   log = self.get_object()
   
   if log.status != 'submitted':
     return Response({"error": "only submitted logs can be reviewed"}, status=400)
+  
+  action = request.data.get("action")
 
-  comment = request.data.get("supervisor_comment")
-
+  comment = request.data.get("supervisor_comment","")
+  if action not in ['approve','reject']:
+    return Response({"error":"Invalid action.Must be approve or reject"}, status=400)
+  log.supervisor_comment = comment
+  log.status = "approved" if action =="approve" else "reject"
   if comment :
     log.supervisor_comment = comment
 
