@@ -104,3 +104,16 @@ class AdminPlacementViewSet(viewsets.ModelViewSet):
     @action(detail=False, methods=["post"])
     def create_placement(self,request):
         """Create a new internship placement for a student"""
+        try:
+            student_id = request.data.get("student_id")
+            company_name = request.data.get("company_name")
+            start_date = request.data.get("start_date")
+            end_date = request.data.get("end_date")
+            academic_id = request.data.get("academic_id")
+            supervisor_id = request.data.get("supervisor_id")
+
+            student = CustomUser.objects.get(id=student_id, role="student")
+
+            academic=None
+            if academic_id:
+                
