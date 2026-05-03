@@ -111,7 +111,11 @@ const SupervisorDashboard = () => {
               <div>
                 <h2>👨‍🏫 Supervisor Dashboard</h2>
                 <p>Welcome, {user?.username} | Role: {user?.role}</p>
+                {loading && <p>Loading Dashboard data...</p>}
               </div>
+              <Link to="/notifications">
+                <Button variant="light">🔔 Notifications</Button>
+              </Link>
             </div>
             <h2>Welcome, {user.username}!</h2>
             <p>Role: {user.role}</p>
