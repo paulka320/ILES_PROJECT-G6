@@ -10,9 +10,20 @@ import { Link } from "react-router-dom";
 
 const SupervisorDashboard = () => {
   const { user } = useContext(AuthContext);
+
   const [students, setStudents] = useState([]);
+
+  const [loading, setLoading] = useState(false);
+
   const [pendingLogs, setPendingLogs] = useState([]);
+
+  const [message, setMessage] = useState(null);
+
+  const [comments, setComments] = useState({});
+
   const [evaluations, setEvaluations] = useState([]);
+
+  
 
    useEffect(() => {
      const fetchData = async () => {
