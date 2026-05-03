@@ -44,17 +44,22 @@ const  AdminPlacements = () => {
                         <th>Academic</th>
                     </tr>
                 </thead>
-
+                <tbody>
                 {placements.map((p) =>(
                     <tr key ={p.id}>
-                        <td></td>
+                        <td>{p.student?.username}</td>
+                        <td>{p.company_name}</td>
+                        <td>{p.supervisor_name?.username}</td>
+                        <td>{p.academic_supervisor?.username}</td>
                     </tr>
                 ))}
+                </tbody>
             </Table>
         </Card>
         </Col>
     </Row>
 </Container>
-    )
+    );
 
-}
+};
+export default AdminPlacements;
