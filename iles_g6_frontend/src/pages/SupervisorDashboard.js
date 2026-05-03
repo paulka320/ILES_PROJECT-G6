@@ -174,11 +174,30 @@ const SupervisorDashboard = () => {
                 </tr>
               </thead>
               <tbody>
-                {pendingLogs.map((log) => (
-                  <tr key={log.id}>
-                    <td>{log.student.username}</td>
-                    <td>{log.week_number}</td>
-                    <td>
+                {pendingLogs.length > 0 ? (
+                    pendingLogs.map((log)=>(
+                      <tr key={log.id}>
+                        <td>{log.student?.username || 'N/A'}</td>
+                        <td>{log.week_number}</td>
+                        <td>{log.activities}</td>
+                        <td>
+                          <Form.Control
+                            as="textarea"
+                            rows={2}
+                            placeholder="Add feedback..."
+                            value={comments[log.id] || ""}
+                            onChange={(e)=> handleCommentChange(log.id, e.target.value)}
+                            />
+                        </td>
+                        <td className="d-flex gap-2">
+                          <Button
+                            size="sm"
+                            variant="success"
+                            onClick={() => reviewLog(log.id,'approve')}
+                            />
+                        </td>
+                      </tr>
+                    ))
                       <Badge bg="warning">{log.status}</Badge>
                     </td>
                   </tr>
