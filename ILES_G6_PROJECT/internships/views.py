@@ -73,3 +73,8 @@ class AdminPlacementViewSet(viewsets.ModelViewSet):
                 {"error": "Supervisor not found"},
                 status=400
             )
+        placement.supervisor_name = supervisor
+        placement.save()
+        return Response ({
+            "message":"Supervisor assigned successfully"
+        })
