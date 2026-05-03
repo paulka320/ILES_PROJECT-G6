@@ -78,3 +78,19 @@ class AdminPlacementViewSet(viewsets.ModelViewSet):
         return Response ({
             "message":"Supervisor assigned successfully"
         })
+    
+    @action(detail=True, methods=["post"])
+    def assign_academic_supervisor(self,request, pk=None):
+        placement = self.get_object()
+        academic_id = request.data.get("academic_id")
+
+        try:
+            academic = CustomUser.objects.get(
+                id=academic_id,
+                role ="academic"
+            )
+        except CustomUser.DoesNotExist:
+            return Response (
+                {"error":"Academic supervisor not found"},
+                status=400
+            )
