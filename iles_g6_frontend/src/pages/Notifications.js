@@ -12,6 +12,12 @@ const Notifications = () => {
   const [filter, setFilter] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage =10;
+
+  // fetch notifications from API
+  const fetchNotifications = async () => {
+    try{
+      setLoading(true);
+      const res = await API.get('/notofocations/${user.id}/');
   
   
   
