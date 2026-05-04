@@ -46,4 +46,5 @@ const Login = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     setMessage(null);
+    setLoading(true);
   
