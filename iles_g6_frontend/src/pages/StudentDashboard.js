@@ -108,7 +108,18 @@ const [newLog, setNewLog] = useState({
         setMessage({ type: 'success', text: 'Log saved as draft' });
       }    
 
-
+fetchLogs();
+      setEditingId(null);
+      setNewLog({
+        week_number: "",
+        activities: "",
+        challenges: "",
+      });
+    } catch (err) {
+      console.error("Create/Update Error:", err.response || err);
+      setMessage({ type: 'danger', text: err.response?.data?.error || 'Failed to save log' });
+    }
+  };
 
 
         
