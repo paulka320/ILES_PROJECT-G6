@@ -81,4 +81,5 @@ const Login = () => {
             </div>
             <h3 className="fw-bold mb-1">
               {isRegister ? "Create your account" : "Welcome back"}
+            </h3>
   
