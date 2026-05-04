@@ -145,3 +145,4 @@ const Login = () => {
                   value={formData.role}
                   onChange={(e) => setFormData({ ...formData, role: e.target.value })}
                   required
+                >
