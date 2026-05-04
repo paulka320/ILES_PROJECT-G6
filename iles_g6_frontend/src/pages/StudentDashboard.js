@@ -341,3 +341,11 @@ fetchLogs();
         </Col>
       </Row>
 
+{/* Logs Table */}
+      <Row className="mb-4">
+        <Col>
+          <Card className="p-3">
+            <h4>📋 Weekly Logs</h4>
+            <Table striped bordered hover responsive>
+              <thead className="table-info">
+                <tr>
