@@ -102,3 +102,4 @@ const Login = () => {
 
           <Form onSubmit={isRegister ? handleRegister : handleLogin}>
             <Form.Group className="mb-3" controlId="loginUsername">
+              <Form.Label>Username</Form.Label>
