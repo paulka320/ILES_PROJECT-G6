@@ -45,6 +45,10 @@ const Notifications = () => {
       filtered = notifications.filter(n => n.is_read);
     }
 
+    set FilteredNotifications(filtered);
+    setCurrentPage(1);
+  }, [filter, notifications]);
+
     
       
   
