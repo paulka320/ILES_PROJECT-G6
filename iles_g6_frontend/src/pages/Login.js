@@ -156,3 +156,4 @@ const Login = () => {
               </Form.Group>
             )}
 
+            <Button type="submit" className="w-100 py-2" variant="primary" disabled={loading}>
