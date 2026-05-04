@@ -120,3 +120,4 @@ const Login = () => {
                   placeholder="Enter your email"
                   value={formData.email}
                   required
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
