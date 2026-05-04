@@ -173,4 +173,5 @@ const Login = () => {
               {isRegister ? "Already have an account?" : "Don't have an account?"}
             <Button
               variant="link"
+              className="text-decoration-none"
               
