@@ -32,4 +32,5 @@ const Login = () => {
       const user = await login(formData.username, formData.password);
 
       if (user.role === "admin") navigate("/admin");
+      else if (user.role === "supervisor") navigate("/supervisor");
       
