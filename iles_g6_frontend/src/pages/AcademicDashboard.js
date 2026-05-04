@@ -149,9 +149,13 @@ const AcademicDashboard = () => {
 
     return (
         <Container fluid className="p-4">
-            {message && <Alert variant={message.type} onClose={() => setMessage(null)} dismissible className="mb-4">
+            {message && (
+                <Alert variant={message.type} onClose={() => setMessage(null)} dismissible className="mb-4"
+                >
                 {message.text}
-            </Alert>}
+            </Alert>
+            )}
+            
 
             <Row className="mb-4">
                 <Col>
@@ -159,10 +163,13 @@ const AcademicDashboard = () => {
                         <div className="d-flex justify-content-between align-items-center">
                             <div>
                                 <h2>Academic Dashboard</h2>
-                                <p>Welcome, {user?.username}|Role: {user?.role}</p>
+                                <p>Welcome,
+                                    {user?.username}|Role:
+                                    {user?.role}</p>
                                 {loading && <p>Loading data...</p>}
                             </div>
                             <Link to='/notifications'>
+                                <Button variant='light'>
                             Notifications</Button>
                             </Link>
                         </div>
@@ -608,4 +615,4 @@ export default AcademicDashboard;
 
 
 
-        </></>
+        
