@@ -9,3 +9,4 @@ const Login = () => {
   const navigate = useNavigate();
 
   const [isRegister, setIsRegister] = useState(false);
+  const [loading, setLoading] = useState(false);
