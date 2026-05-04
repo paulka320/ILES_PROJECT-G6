@@ -76,4 +76,5 @@ const Login = () => {
       <Card className="shadow-lg border-0" style={{ width: "420px", maxWidth: "95%" }}>
         <Card.Body className="p-4">
           <div className="text-center mb-4">
+            <div className="mb-2">
   
