@@ -80,4 +80,5 @@ const Login = () => {
               <span className="badge bg-primary rounded-pill px-3 py-2">ILES</span>
             </div>
             <h3 className="fw-bold mb-1">
+              {isRegister ? "Create your account" : "Welcome back"}
   
