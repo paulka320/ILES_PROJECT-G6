@@ -43,4 +43,5 @@ const Login = () => {
     }
   };
 
+  const handleRegister = async (e) => {
   
