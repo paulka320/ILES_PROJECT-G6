@@ -49,5 +49,6 @@ const Login = () => {
     setLoading(true);
 
     try {
+      await API.post("/users/register/", {
 
 
