@@ -83,6 +83,15 @@ const Notifications = () => {
       await API.delete('/notificaions/${notificaionId}/');
       const updated = notificaions.filter(n => n.id !== notificaionId);
       setNotificaions(updated);
+      setMessage({ type: 'success', text: 'Notification deleted' });
+    } catch (err) {
+       console.error('Error deleting notificaion:', err);
+       setMessage({ type: 'danger', text: 'Failed to delete notification' });
+  }
+};
+
+// Pagination
+
       
       
   
