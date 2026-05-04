@@ -81,6 +81,9 @@ const [newLog, setNewLog] = useState({
       fetchData();
     }
   }, [user]);
+
+  // Handle Input Change
+  const handleChange = (e) => {
               
                    
              
