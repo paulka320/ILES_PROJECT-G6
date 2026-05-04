@@ -10,6 +10,8 @@ const Notifications = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
   const [filter, setFilter] = useState('all');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage =10;
   
   
   
