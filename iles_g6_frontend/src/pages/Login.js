@@ -178,4 +178,5 @@ const Login = () => {
                 setIsRegister(!isRegister);
                 setMessage(null);
                 resetForm();
+              }}
               
