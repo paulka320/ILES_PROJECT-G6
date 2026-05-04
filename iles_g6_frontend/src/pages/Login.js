@@ -19,4 +19,4 @@ const Login = () => {
     role: "student",
   });
 
-  
+  const resetForm = () => {
