@@ -202,3 +202,21 @@ fetchLogs();
           {message.text}
         </Alert>
       )}
+
+{/* Welcome */}
+      <Row className="mb-4">
+        <Col>
+          <Card className="bg-success text-white p-3">
+            <div className="d-flex justify-content-between align-items-center">
+              <div>
+                <h2>📚 Student Dashboard</h2>
+                <p>Welcome, {user?.username} | Role: {user?.role}</p>
+                {loading && <p>Loading dashboard data...</p>}
+              </div>
+              <Link to="/notifications">
+                <Button variant="light">🔔 Notifications</Button>
+              </Link>
+            </div>
+          </Card>
+        </Col>
+      </Row>
