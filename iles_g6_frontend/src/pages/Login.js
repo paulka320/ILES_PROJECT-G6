@@ -135,3 +135,4 @@ const Login = () => {
                 required
                 minLength={6}
                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+              />
