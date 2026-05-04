@@ -58,6 +58,8 @@ const Notifications = () => {
      ); 
       setNotificaions(updated);
       setMessage({ types: 'success', text: 'Notification marked as read' });
+    } catch (err) {
+      consloe.error('Error marking notification as read:', err);
                                 
 
 
