@@ -170,4 +170,10 @@ fetchLogs();
 
     }));
 
+// Stats
+  const totalLogs = logs.length;
 
+  const submittedLogs =
+    logs.filter(
+      (l) => l.status === "submitted"
+    ).length;
