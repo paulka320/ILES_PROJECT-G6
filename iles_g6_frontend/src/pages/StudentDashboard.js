@@ -256,3 +256,11 @@ fetchLogs();
 
 )}
 
+ {/* Stats */}
+      <Row className="mb-4">
+        <Col md={4}>
+          <Card className="p-3 text-center bg-primary text-white">
+            <h6>Total Logs</h6>
+            <h3>{totalLogs}</h3>
+          </Card>
+        </Col>
