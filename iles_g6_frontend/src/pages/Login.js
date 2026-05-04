@@ -129,3 +129,4 @@ const Login = () => {
             <Form.Group className="mb-4" controlId="loginPassword">
               <Form.Label>Password</Form.Label>
               <Form.Control
+                type="password"
