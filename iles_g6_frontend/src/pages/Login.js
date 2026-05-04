@@ -123,3 +123,4 @@ const Login = () => {
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 />
                 <Form.Text className="text-muted">We&apos;ll never share your email.</Form.Text>
+              </Form.Group>
