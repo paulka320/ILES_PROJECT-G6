@@ -15,3 +15,4 @@ const Login = () => {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
+    password: "",
