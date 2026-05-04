@@ -177,4 +177,5 @@ const Login = () => {
               onClick={() => {
                 setIsRegister(!isRegister);
                 setMessage(null);
+                resetForm();
               
