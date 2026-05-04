@@ -59,6 +59,7 @@ const [newLog, setNewLog] = useState({
     }
   };
 
+  
 
 
 
