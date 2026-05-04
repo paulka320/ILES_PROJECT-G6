@@ -121,6 +121,18 @@ fetchLogs();
     }
   };
 
+  // Submit Log
+  const submitLog = async (id) => {
+    try {
+      await API.post(logs/weeklylogs/${id}/submit/);
+      setMessage({ type: 'success', text: 'Log submitted successfully' });
+      fetchLogs();
+    } catch (err) {
+      console.error("Submit Error:", err.response || err);
+      setMessage({ type: 'danger', text: err.response?.data?.error || 'Failed to submit log' });
+    }
+  };
+
 
         
 
