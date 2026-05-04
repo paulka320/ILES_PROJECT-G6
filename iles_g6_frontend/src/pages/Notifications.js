@@ -92,8 +92,8 @@ const Notifications = () => {
 
 // Pagination
 const totalPages = Math.ceil(filteredNotifications.length / itemsPerPage);
-    const startIndex = (currentPage - 1) * itemsPerPage;
- const paginatedNotifications = filteredNotifications.slice(startIndex, startIndex + itemsPerPage);
+const startIndex = (currentPage - 1) * itemsPerPage;
+const paginatedNotifications = filteredNotifications.slice(startIndex, startIndex + itemsPerPage);
 
 const getNotificationBadgeColor = (type) => {
         const colors = {
