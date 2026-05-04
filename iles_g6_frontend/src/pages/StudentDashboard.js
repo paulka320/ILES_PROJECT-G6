@@ -65,12 +65,39 @@ const [newLog, setNewLog] = useState({
       setLoading(true);
       try {
         await fetchLogs();
+
+        const placementRes = await getStudentPlacement();
+        setPlacement(placementRes.data[0]);
         
+      } catch (err) {
+        console.error("Dashboard Error:", err.response || err);
+        setMessage({ type: 'danger', text: 'Failed to load dashboard data' });
+      } finally {
+        setLoading(false);
+      }
+    };
 
+     if (user && user.role === 'student') {
+      fetchData();
+    }
+  }, [user]);
 
+  // Handle Input Change
+  const handleChange = (e) => {
+    setNewLog({
+      ...newLog,
+      [e.target.name]: e.target.value,
+    });
 
+  };
               
-                   
+  // Create OR Update Log
+  const createLog = async () => {
+    // Basic validation
+    if (!newLog.week_number || !newLog.activities.trim()) {
+      setMessage({ type: 'warning', text: 'Please fill in the week number and activities' });
+      return;
+    }                 
              
         
 
