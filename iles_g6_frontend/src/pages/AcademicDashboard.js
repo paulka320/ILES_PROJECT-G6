@@ -264,6 +264,45 @@ const AcademicDashboard = () => {
                                     </tbody>
                                 </Table>
                             </Tab.Pane>
+
+                            <Tab.Pane eventKey='evaluations'>
+                                <Table striped bordered hover responsive>
+                                    <thead className='table-success'>
+                                        <tr>
+                                            <th>Student</th>
+                                            <th>Attendance(40%)</th>
+                                            <th>Performance(30%)</th>
+                                            <th>Report(30%)</th>
+                                            <th>Total Score</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {evaluations.length > 0 ? (
+                                            evaluations.map((ev) => (
+                                                <tr key={ev.id}>
+                                                    <td>{ev.student_details?.username||'N/A'}</td>
+                                                    <td>{ev.attendance_score?.toFixed(2)||'N/A'}</td>
+                                                    <td>{ev.performance_score?.toFixed(2)||'N/A'}</td>
+                                                    <td>{ev.report_score?.toFixed(2)||'N/A'}</td>
+                                                    <td>
+                                                    <strong>{ev.total_score?.toFixed(2)||'N/A'}</strong>
+                                                    </td>
+                                                    <td>{ev.created_at?new Date(ev.created_at).toLocaleDateString():'N/A'}</td>
+                                                </tr>
+                                            ))
+                                        ) : (
+                                            <tr>
+                                                <td colSpan='6' className='text-center text-muted'>
+                                                    No evaluations submitted yet
+                                                </td>
+                                            </tr>
+                                        )}
+                                    </tbody>
+                                </Table>
+                            </Tab.Pane>
+
+
                 
             
                             
