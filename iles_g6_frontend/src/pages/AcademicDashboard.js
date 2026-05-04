@@ -29,7 +29,7 @@ const AcademicDashboard = () => {
 
     const fetchStudents = async () => {
         try {
-            const res = await API.get(internships/academic/students/);
+            const res = await API.get('internships/academic/students/');
             setStudents(res.data);
         } catch (err) {
             console.error('Error fetching students:', err);
@@ -39,7 +39,7 @@ const AcademicDashboard = () => {
     
     const fetchEvaluations = async () => {
         try {
-            const res = await API.get(evaluations/academic/${user.id}/evaluations/);
+            const res = await API.get(`evaluations/academic/${user.id}/evaluations/`);
             setEvaluations(res.data);
         } catch (err) {
             console.error('Error fetching evaluations:', err);
@@ -49,7 +49,7 @@ const AcademicDashboard = () => {
 
     const fetchStats = async () => {
         try {
-            const res = await API.get(evaluations/academic/${user.id}/stats/);
+            const res = await API.get(`evaluations/academic/${user.id}/stats/`);
             setStats(res.data);
         } catch (err) {
             console.error('Error fetching stats:', err);
@@ -59,7 +59,7 @@ const AcademicDashboard = () => {
 
     const fetchStudentLogs = async (studentId) => {
         try {
-            const res = await API.get(logs/academic/${studentId}/logs/);
+            const res = await API.get(`logs/academic/${studentId}/logs/`);
             setLogs(res.data);
         } catch (err) {
             console.error('Error fetching logs:', err);
@@ -115,7 +115,7 @@ const AcademicDashboard = () => {
 
         setSubmitting(true);
         try {
-            await API.post(evaluations/evaluations/, newEvaluation);
+            await API.post('evaluations/evaluations/', newEvaluation);
             setMessage({ type: 'success', text: 'Evaluation submitted successfully' });
             setShowEvaluationModal(false);
             setNewEvaluation({
@@ -260,12 +260,9 @@ const AcademicDashboard = () => {
                                             </Button>
                                         </td>
                                     </tr>
-                                ))
-                                    :
-                                }
-                                ): (
+                                )) : (
                                 <tr>
-                                    <td colSpan='6' className='text-center text muted'>
+                                    <td colSpan='6' className='text-center text-muted'>
                                         No students assigned yet
                                     </td>
                                 </tr>
@@ -424,7 +421,7 @@ const AcademicDashboard = () => {
                                     <hr />
                                     <p>
                                         <strong>Company:</strong>
-                                        {selectedStudent.company_-name}
+                                        {selectedStudent.company?.name}
                                     </p>
                                     <p>
                                         <strong>Start Date:</strong>{' '}
@@ -436,7 +433,7 @@ const AcademicDashboard = () => {
                                     </p>
                                     <p>
                                         <strong>Placement Supervisor:</strong>{' '}
-                                        {selectedStudent.supervisor_-name || 'Not Assigned'}
+                                        {selectedStudent.supervisor?.name || 'Not Assigned'}
                                     </p>
                                 </Card>
                             </Col>
@@ -493,7 +490,7 @@ const AcademicDashboard = () => {
                 </Button>
                 <Button variant='success' onClick={() => {
                     setShowStudentDetails(false);
-                    setNewEvaluationModal(true);
+                    setShowEvaluationModal(true);
                 }}
                 >
                     Create Evaluation
@@ -550,7 +547,7 @@ const AcademicDashboard = () => {
                                 <Form.Control
                                     type='number'
                                     name='performance_score'
-                                    min='0
+                                    min='0'
                                     max='10'
                                     step='0.1'
                                     placeholder='0.0'
@@ -595,8 +592,11 @@ const AcademicDashboard = () => {
                 </Modal.Footer>
             </Form>
         </Modal>
+    </>
     </Container>
+);
 
+};
 
 export default AcademicDashboard;
 
