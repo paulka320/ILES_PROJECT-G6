@@ -57,3 +57,4 @@ const Login = () => {
       });
 
       setMessage({ type: "success", text: "Registration successful. Please login." });
+      setIsRegister(false);
