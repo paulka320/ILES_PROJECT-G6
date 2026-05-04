@@ -142,3 +142,4 @@ const Login = () => {
               <Form.Group className="mb-4" controlId="loginRole">
                 <Form.Label>Role</Form.Label>
                 <Form.Select
+                  value={formData.role}
