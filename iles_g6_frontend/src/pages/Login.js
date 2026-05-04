@@ -165,3 +165,4 @@ const Login = () => {
               ) : (
                 isRegister ? "Register" : "Login"
               )}
+            </Button>
