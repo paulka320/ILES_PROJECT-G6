@@ -130,3 +130,4 @@ const Login = () => {
               <Form.Label>Password</Form.Label>
               <Form.Control
                 type="password"
+                placeholder="Enter your password"
