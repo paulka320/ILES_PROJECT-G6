@@ -176,4 +176,5 @@ const Login = () => {
               className="text-decoration-none"
               onClick={() => {
                 setIsRegister(!isRegister);
+                setMessage(null);
               
