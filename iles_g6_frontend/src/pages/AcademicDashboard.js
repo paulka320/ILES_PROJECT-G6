@@ -492,7 +492,105 @@ const AcademicDashboard = () => {
                     Create Evaluation
                 </Button>
             </Modal.Footer>
-            </Modal>
+            </Modal><Modal show={showEvaluationModal} onHide={() => setShowEvaluationModal(false)}>
+            <Modal.Header closeButton>
+                <Modal.Title>Create Student Evaluation</Modal.Title>
+            </Modal.Header>
+            <Form onSubmit={submitEvaluation}>
+                <Modal.Body>
+                    <Form.Group className='mb-3'>
+                        <Form.Label>Select Student</Form.Label>
+                        <Form.Select
+                            value={newEvaluation.student}
+                            onChange={(e) =>
+                                setNewEvaluation({
+                                    ...newEvaluation,
+                                    student: e.target.value,
+                                })
+                            }
+                            required
+                        >
+                            <option value=''>Choose a student...</option>
+                            {students.map((stu) => (
+                                <option
+                                    key={stu.student.id}
+                                    value={stu.student.id}>
+                                        {stu.student.username} - {stu.company_name}
+                                    </option>
+                            ))}
+                        </Form.Select>
+                    </Form.Group>
+                    <Row>
+                        <Col>
+                            <Form.Group className='mb-3'>
+                                <Form.Label>Attendance Score (0-10) *</Form.Label>
+                                <Form.Control
+                                    type='number'
+                                    name='attendance_score'
+                                    min='0'
+                                    max='10'
+                                    step='0.1'
+                                    placeholder='0.0'
+                                    onChange={handleChange}
+                                    required
+                                />
+                                <Form.Text className='text-muted'>40% weight</Form.Text>
+                            </Form.Group>
+                        </Col>
+                        <Col>
+                            <Form.Group className='mb-3'>
+                                <Form.Label>Performance Score (0-10) *</Form.Label>
+                                <Form.Control
+                                    type='number'
+                                    name='performance_score'
+                                    min='0
+                                    max='10'
+                                    step='0.1'
+                                    placeholder='0.0'
+                                    onChange={handleChange}
+                                    required
+                                />
+                                <Form.Text className='text-muted'>30% weight</Form.Text>
+                            </Form.Group>
+                        </Col>
+                        <Col>
+                            <Form.Group className='mb-3'>
+                                <Form.Label>Report Score (0-10) *</Form.Label>
+                                <Form.Control
+                                    type='number'
+                                    name='report_score'
+                                    min='0'
+                                    max='10'
+                                    step='0.1'
+                                    placeholder='0.0'
+                                    onChange={handleChange}
+                                    required
+                                />
+                                <Form.Text className='text-muted'>30% weight</Form.Text>
+                            </Form.Group>
+                        </Col>
+                    </Row>
+                    <div className='text-muted mb-3'>
+                        <small>
+                            Total Score = (Attendance * 0.4) + (Performance * 0.3) + (Report * 0.3)
+                        </small>
+                    </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant='secondary' onClick={() => setShowEvaluationModal(false)}>
+                        Cancel
+                    </Button>
+                    <Button variant='primary' type='submit'
+                        disabled={submitting}>
+                            {submitting ? 
+                                'Submitting...' : 'Submit Evaluation'}
+                    </Button>
+                </Modal.Footer>
+            </Form>
+        </Modal>
+    </Container>
+
+
 
 
 
