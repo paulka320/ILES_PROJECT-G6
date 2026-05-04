@@ -141,3 +141,4 @@ const Login = () => {
             {isRegister && (
               <Form.Group className="mb-4" controlId="loginRole">
                 <Form.Label>Role</Form.Label>
+                <Form.Select
