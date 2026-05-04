@@ -77,4 +77,5 @@ const Login = () => {
         <Card.Body className="p-4">
           <div className="text-center mb-4">
             <div className="mb-2">
+              <span className="badge bg-primary rounded-pill px-3 py-2">ILES</span>
   
