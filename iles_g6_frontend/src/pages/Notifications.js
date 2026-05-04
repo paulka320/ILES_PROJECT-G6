@@ -119,7 +119,20 @@ const getNotificationBadgeColor = (type) => {
         return icons[type] || 'ℹ️';
     };      
   
-      
+  const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        return date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    };
+
+    const unreadCount = notifications.filter(n => !n.is_read).length;
+
+    return (
+        <Container fluid className="p-4">
+            {message && (
+                <Alert variant={message.type} onClose={() => setMessage(null)} dismissible className="mb-4">
+                    {message.text}
+                </Alert>
+            )}    
                                 
 
 
