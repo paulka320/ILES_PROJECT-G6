@@ -7,5 +7,7 @@ const Notifications = () => {
   const { user} = useContext(AuthContext);
   const [notifications, setNotifications] = useState([]);
   const [filteredNotifications, setFilteredNotifications] = useState([]);
+  const [loading, setLoading] = useState(false);
+  
   
   
