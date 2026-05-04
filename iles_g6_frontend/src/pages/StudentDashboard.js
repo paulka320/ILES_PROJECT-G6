@@ -42,7 +42,7 @@ const StudentDashboard = () => {
 
   const [editingId, setEditingId] = useState(null);
   
-const [newLog, setNewLog] = useState({
+  const [newLog, setNewLog] = useState({
     week_number: "",
     activities: "",
     challenges: "",
