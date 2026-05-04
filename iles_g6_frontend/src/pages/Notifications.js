@@ -55,6 +55,13 @@ const Notifications = () => {
       await API.patch('/notifications/${notificationId}/mark_read/', { is_read: true });
       const update = notifications.map(n=>
         n.id === notificationId? { ...n, is_read: true } : n
+     ); 
+      setNotificaions(updated);
+      setMessage({ types: 'success', text: 'Notification marked as read' });
+                                
+
+
+                                      
       
 
     
