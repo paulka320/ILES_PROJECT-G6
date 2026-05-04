@@ -591,6 +591,9 @@ const AcademicDashboard = () => {
     </Container>
 
 
+export default AcademicDashboard;
+
+
 
 
 
