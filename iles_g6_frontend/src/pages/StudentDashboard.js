@@ -220,3 +220,5 @@ fetchLogs();
           </Card>
         </Col>
       </Row>
+
+  {/* Placement */}
