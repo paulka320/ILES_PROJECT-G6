@@ -9,16 +9,23 @@ class UserSerializer(serializers.ModelSerializer):
 
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True,required=True)
+    role= serializers.ChoiceField(choices=CustomUser.ROLE_CHOICES, default='student')
 
     class Meta:
         model = CustomUser
         fields = ['username','email','password','role']
 
+        def validate_role(self, value):
+            if value not in ['student','supervisor','academic']:
+                raise serializers.ValidationError("Invalid role for registration.")
+            return value
+
         def create(self,validated_data):
+            role = validated_data.pop('role','student')
             user = CustomUser.objects.create_user(
                 username=validated_data['username'],
                 email = validated_data['email'],
-                role = validated_data['role'],
+                role = role,
                 password = validated_data['password']
             )
             return user
@@ -35,8 +42,9 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self,attrs):
         data = super().validate(attrs)
 #add role to the response
-        data['id'] = self.user.id
-        data['role'] = self.user.role
-        data['username'] = self.user.username
-
+        data["user"] = {
+            "id":self.user.id,
+            "role":self.user.role,
+            "uername":self.user.username
+        }
         return data

@@ -3,7 +3,7 @@ from .models import Evaluation
 from users.models import CustomUser
 
 
-class UserSerializer(serializers.ModelSerializer):
+class UserMiniSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
         fields = ['id','username', 'role']
@@ -11,8 +11,8 @@ class UserSerializer(serializers.ModelSerializer):
 
 class EvaluationSerializer(serializers.ModelSerializer):
     student = serializers.PrimaryKeyRelatedField(queryset=CustomUser.objects.all(),write_only = True)
-    student_details=UserSerializer(source ='student',read_only= True)
-    evaluator = UserSerializer(read_only=True)
+    student_details=UserMiniSerializer(source ='student',read_only= True)
+    evaluator = UserMiniSerializer(read_only=True)
     class Meta:
         model = Evaluation
         fields = '__all__'

@@ -13,6 +13,11 @@ import AdminDashboard from "./pages/AdminDashboard";
 import AdminPlacements from "./pages/Adminplacements";
 
 // Import protected route component (restricts access)
+import StudentDashboard from "./pages/StudentDashboard";
+import SupervisorDashboard from "./pages/SupervisorDashboard";
+import AcademicDashboard from "./pages/AcademicDashboard";
+import Notifications from "./pages/Notifications";
+
 import ProtectedRoute from "./components/ProtectedRoute";
 import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
@@ -54,6 +59,43 @@ function App() {
               </ProtectedRoute>
             }
           />
+
+        <Route
+          path="/student"
+          element={
+            <ProtectedRoute>
+              <StudentDashboard />
+            </ProtectedRoute>
+          }
+          />
+
+        <Route
+            path="/supervisor"
+            element={
+              <ProtectedRoute>
+                <SupervisorDashboard />
+              </ProtectedRoute>
+            }
+            />
+          
+          <Route
+            path="/academic"
+            element={
+              <ProtectedRoute>
+                <AcademicDashboard />
+              </ProtectedRoute>
+            }
+            />
+          
+          <Route
+            path="/notifications"
+            element={
+              <ProtectedRoute>
+                <Notifications />
+              </ProtectedRoute>
+            }
+            />
+
 
         </Routes>
 
