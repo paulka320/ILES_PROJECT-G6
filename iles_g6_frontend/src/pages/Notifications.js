@@ -8,6 +8,8 @@ const Notifications = () => {
   const [notifications, setNotifications] = useState([]);
   const [filteredNotifications, setFilteredNotifications] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState(null);
+  const [filter, setFilter] = useState('all');
   
   
   
