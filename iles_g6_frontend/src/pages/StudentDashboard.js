@@ -356,3 +356,20 @@ fetchLogs();
                   <th>Feedback</th>
                   <th>Actions</th>
                 </tr>
+              </thead>
+              <tbody>
+                {logs.length > 0 ? (
+                  logs.map((log) => (
+                    <tr key={log.id}>
+                      <td>{log.week_number}</td>
+                      <td>{log.activities}</td>
+                      <td>{log.challenges || "None"}</td>
+                      <td>
+                        <Badge
+                          bg={
+                            log.status === "approved"
+                              ? "success"
+                              : log.status === "submitted"
+                              ? "primary"
+                              : "warning"
+                          }
