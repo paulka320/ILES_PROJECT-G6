@@ -48,6 +48,9 @@ const [newLog, setNewLog] = useState({
     challenges: "",
   });
 
+    // Fetch Logs
+
+
 
               
                    
