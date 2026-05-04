@@ -51,5 +51,6 @@ const Login = () => {
     try {
       await API.post("/users/register/", {
         username: formData.username,
+        email: formData.email,
 
 
