@@ -132,3 +132,4 @@ const Login = () => {
                 type="password"
                 placeholder="Enter your password"
                 value={formData.password}
+                required
