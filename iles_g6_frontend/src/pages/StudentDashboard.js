@@ -99,7 +99,14 @@ const [newLog, setNewLog] = useState({
       return;
     }                 
              
-        
+     try {
+      if (editingId) {
+        await API.put(logs/weeklylogs/${editingId}/, newLog);
+        setMessage({ type: 'success', text: 'Log updated successfully' });
+      } else {
+        await API.post("logs/weeklylogs/", newLog);
+        setMessage({ type: 'success', text: 'Log saved as draft' });
+      }    
 
 
 
