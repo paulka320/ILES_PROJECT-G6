@@ -133,3 +133,4 @@ const Login = () => {
                 placeholder="Enter your password"
                 value={formData.password}
                 required
+                minLength={6}
