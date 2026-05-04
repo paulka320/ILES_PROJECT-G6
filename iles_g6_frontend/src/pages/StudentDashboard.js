@@ -395,3 +395,10 @@ fetchLogs();
                               className="me-2"
                               onClick={() => editLog(log)}
                             >
+                             Edit
+                            </Button>
+                            <Button
+                              size="sm"
+                              variant="danger"
+                              onClick={() => deleteLog(log.id)}
+                            >
