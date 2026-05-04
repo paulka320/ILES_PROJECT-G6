@@ -278,3 +278,22 @@ fetchLogs();
         </Col>
       </Row>
                  
+ {/* Create Log */}
+      <Row className="mb-4">
+        <Col>
+          <Card className="p-3">
+            <h4>📝 {editingId ? "Edit Weekly Log" : "Create Weekly Log"}</h4>
+            <Form>
+              <Row className="mb-2">
+                <Col md={2}>
+                  <Form.Control
+                    type="number"
+                    name="week_number"
+                    placeholder="Week"
+                    value={newLog.week_number}
+                    onChange={handleChange}
+                    required
+                  />
+                </Col>
+              </Row>
+              <Row className="mb-2">
