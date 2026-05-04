@@ -188,3 +188,17 @@ fetchLogs();
           ) / evaluations.length
         ).toFixed(2)
       : 0;
+
+  return (
+    <Container fluid className="p-4">
+      {/* ALERT MESSAGE */}
+      {message && (
+        <Alert
+          variant={message.type}
+          onClose={() => setMessage(null)}
+          dismissible
+          className="mb-4"
+        >
+          {message.text}
+        </Alert>
+      )}
