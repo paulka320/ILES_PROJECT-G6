@@ -448,3 +448,11 @@ fetchLogs();
         </Col>
       </Row>
 
+
+</Container>
+
+  );
+
+};
+
+export default StudentDashboard;
