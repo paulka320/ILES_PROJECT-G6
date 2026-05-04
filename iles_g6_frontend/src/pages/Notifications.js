@@ -49,6 +49,12 @@ const Notifications = () => {
     setCurrentPage(1);
   }, [filter, notifications]);
 
+  // Mark notifications as read
+  const markAsRead = async ( notificationId) => {
+    try {
+      await API.patch('/notifications/${notificationId}/mark_read/', { is_read: true });
+      
+
     
       
   
