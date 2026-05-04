@@ -19,7 +19,12 @@ const Notifications = () => {
       setLoading(true);
       const res = await API.get('/notofocations/${user.id}/');
       console.log("Notifications Data:", res.data);
+      setNotifications(res.data);
       setFilteredNotifications(res.data);
+    } catch (err){
+      console.error('Error fetching notifications:', err);
+      setMessage({ type: 'danger', text: 'Failed to load notifications' });
+      
   
   
   
