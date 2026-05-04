@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../auth/AuthContext";
 import API from "../api/axios";
-import { Card, Container, Row, Col, Table, Badge } from "react-bootstrap";
+
 
 const StudentDashboard = () => {
     const { user } = useContext(AuthContext);
