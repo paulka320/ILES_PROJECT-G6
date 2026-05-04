@@ -23,4 +23,4 @@ const Login = () => {
     setFormData({ username: "", email: "", password: "", role: "student" });
   };
 
-  
+  const handleLogin = async (e) => {
