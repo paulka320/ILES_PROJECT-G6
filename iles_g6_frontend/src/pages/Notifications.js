@@ -150,7 +150,7 @@ const getNotificationBadgeColor = (type) => {
                         </div>
                     </Card>
                 </Col>
-            </Row
+            </Row>
                                 
 
 
