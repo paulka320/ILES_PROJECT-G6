@@ -91,3 +91,4 @@ const Login = () => {
 
           {message && (
             <Alert
+              variant={message.type}
