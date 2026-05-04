@@ -145,8 +145,29 @@ fetchLogs();
       console.error("Delete Error:", err.response || err);
       setMessage({ type: 'danger', text: err.response?.data?.error || 'Failed to delete log' });
     }
-  };       
+  };    
+  
+// Edit Log
+  const editLog = (log) => {
 
+    setEditingId(log.id);
 
+    setNewLog({
+      week_number: log.week_number,
+      activities: log.activities,
+      challenges: log.challenges,
+    });
+
+  };
+
+// Chart Data
+  const chartData =
+    evaluations.map((ev, index) => ({
+
+      week: index + 1,
+
+      score: ev.total_score,
+
+    }));
 
 
