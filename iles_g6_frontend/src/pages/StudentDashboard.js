@@ -48,7 +48,11 @@ const [newLog, setNewLog] = useState({
     challenges: "",
   });
 
-    // Fetch Logs
+ // Fetch Logs
+  const fetchLogs = async () => {
+    try {
+      const logRes = await getStudentLogs();
+      setLogs(logRes.data);
 
 
 
