@@ -105,3 +105,4 @@ const Login = () => {
               <Form.Label>Username</Form.Label>
               <Form.Control
                 type="text"
+                placeholder="Enter your username"
