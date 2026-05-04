@@ -5,4 +5,5 @@ import { Container, Row, Col, Card, Button, Table, Badge, Alert, Pagination } fr
 
 const Notifications = () => {
   const { user} = useContext(AuthContext);
+  const [notifications, setNotifications] = useState([]);
   
