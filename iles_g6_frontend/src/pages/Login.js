@@ -159,3 +159,4 @@ const Login = () => {
             <Button type="submit" className="w-100 py-2" variant="primary" disabled={loading}>
               {loading ? (
                 <>
+                  <Spinner animation="border" size="sm" className="me-2" />
