@@ -421,3 +421,4 @@ fetchLogs();
           </Card>
         </Col>
       </Row>
+             {/* Evaluation Chart */}
