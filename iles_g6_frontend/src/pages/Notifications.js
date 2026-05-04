@@ -208,6 +208,24 @@ const getNotificationBadgeColor = (type) => {
                                                         <p className="mb-0 text-muted">{notification.message}</p>
                                                     </div>
                                                 </td>
+                                                <td>{formatDate(notification.created_at)}</td>
+                                                <td className="text-center">
+                                                    <Badge bg={notification.is_read ? 'success' : 'warning'}>
+                                                        {notification.is_read ? 'Read': 'Unread'}
+                                                    </Badge>
+                                                </td>
+                                                <td>
+                                                    {!notification.is_read && (
+                                                        <Button
+                                                            variant="info"
+                                                            size="sm"
+                                                            className="me-2"
+                                                            onClick={() => markAsRead(notification.id)}
+                                                        >
+                                                            Mark Read
+                                                        </Button>
+                                                    )}                  
+                                                                    
 
 
                                 
