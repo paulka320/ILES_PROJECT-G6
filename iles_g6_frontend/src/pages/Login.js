@@ -97,3 +97,4 @@ const Login = () => {
               className="mb-4"
             >
               {message.text}
+            </Alert>
