@@ -69,10 +69,13 @@ const [newLog, setNewLog] = useState({
         const placementRes = await getStudentPlacement();
         setPlacement(placementRes.data[0]);
         
-        const evalRes = await getStudentEvaluations();
-        setEvaluations(evalRes.data);  
-
-
+      } catch (err) {
+        console.error("Dashboard Error:", err.response || err);
+        setMessage({ type: 'danger', text: 'Failed to load dashboard data' });
+      } finally {
+        setLoading(false);
+      }
+    };
               
                    
              
