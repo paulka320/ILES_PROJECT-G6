@@ -184,4 +184,5 @@ const Login = () => {
             </Button>
           </div>
         </Card.Body>
+      </Card>
               
