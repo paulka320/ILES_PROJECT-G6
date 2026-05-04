@@ -106,3 +106,4 @@ const Login = () => {
               <Form.Control
                 type="text"
                 placeholder="Enter your username"
+                value={formData.username}
