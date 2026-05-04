@@ -60,3 +60,4 @@ const Login = () => {
       setIsRegister(false);
       resetForm();
     } catch (err) {
+      console.error("Registration Error:", err.response || err);
