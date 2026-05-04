@@ -296,4 +296,17 @@ fetchLogs();
                   />
                 </Col>
               </Row>
-              <Row className="mb-2">
+             <Row className="mb-2">
+                <Col>
+                  <Form.Control
+                    as="textarea"
+                    rows={3}
+                    name="activities"
+                    placeholder="Activities done this week"
+                    value={newLog.activities}
+                    onChange={handleChange}
+                    required
+                  />
+                </Col>
+              </Row>
+              <Row className="mb-3">
