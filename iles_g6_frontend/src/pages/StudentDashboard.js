@@ -422,3 +422,29 @@ fetchLogs();
         </Col>
       </Row>
              {/* Evaluation Chart */}
+       Row>
+        <Col>
+          <Card className="p-3">
+            <h4>📊 Evaluation Scores</h4>
+            {chartData.length > 0 ? (
+              <ResponsiveContainer width="100%" height={300}>
+                <LineChart data={chartData}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="week" />
+                  <YAxis domain={[0, 10]} />
+                  <Tooltip />
+                  <Line
+                    type="monotone"
+                    dataKey="score"
+                    stroke="#17a2b8"
+                    strokeWidth={3}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            ) : (
+              <p className="text-center text-muted">No evaluation data yet</p>
+            )}
+          </Card>
+        </Col>
+      </Row>
+
