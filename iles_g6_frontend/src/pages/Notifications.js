@@ -24,6 +24,28 @@ const Notifications = () => {
     } catch (err){
       console.error('Error fetching notifications:', err);
       setMessage({ type: 'danger', text: 'Failed to load notifications' });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (user) {
+      fetchNotifications():
+    }
+  }, [user]);
+
+  // Filter notifications
+  useEffect(() => {
+    let filtered = notifications;
+
+    if (filtered === 'unread') {
+      filtered = notifications.filter(n => !n.is_read);
+    } else if (filter === 'read') {
+      filtered = notifications.filter(n => n.is_read);
+    }
+
+    
       
   
   
