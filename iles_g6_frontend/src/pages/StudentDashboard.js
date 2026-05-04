@@ -99,9 +99,39 @@ const [newLog, setNewLog] = useState({
       return;
     }                 
              
-        
+     try {
+      if (editingId) {
+        await API.put(logs/weeklylogs/${editingId}/, newLog);
+        setMessage({ type: 'success', text: 'Log updated successfully' });
+      } else {
+        await API.post("logs/weeklylogs/", newLog);
+        setMessage({ type: 'success', text: 'Log saved as draft' });
+      }    
 
+fetchLogs();
+      setEditingId(null);
+      setNewLog({
+        week_number: "",
+        activities: "",
+        challenges: "",
+      });
+    } catch (err) {
+      console.error("Create/Update Error:", err.response || err);
+      setMessage({ type: 'danger', text: err.response?.data?.error || 'Failed to save log' });
+    }
+  };
 
+  // Submit Log
+  const submitLog = async (id) => {
+    try {
+      await API.post(logs/weeklylogs/${id}/submit/);
+      setMessage({ type: 'success', text: 'Log submitted successfully' });
+      fetchLogs();
+    } catch (err) {
+      console.error("Submit Error:", err.response || err);
+      setMessage({ type: 'danger', text: err.response?.data?.error || 'Failed to submit log' });
+    }
+  };
 
 
         
