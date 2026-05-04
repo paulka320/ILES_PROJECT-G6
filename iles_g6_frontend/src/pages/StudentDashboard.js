@@ -40,6 +40,8 @@ const StudentDashboard = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
 
+  const [editingId, setEditingId] = useState(null);
+
 
 
               
