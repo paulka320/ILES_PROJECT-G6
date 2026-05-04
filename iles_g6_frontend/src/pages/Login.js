@@ -117,3 +117,4 @@ const Login = () => {
                 <Form.Label>Email address</Form.Label>
                 <Form.Control
                   type="email"
+                  placeholder="Enter your email"
