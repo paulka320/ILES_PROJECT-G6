@@ -133,6 +133,9 @@ fetchLogs();
     }
   };
 
+// Delete Log
+  const deleteLog = async (id) => {
+    if (!window.confirm('Are you sure you want to delete this log?')) return;
 
         
 
