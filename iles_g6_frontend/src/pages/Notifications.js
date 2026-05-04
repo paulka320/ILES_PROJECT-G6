@@ -271,6 +271,18 @@ const getNotificationBadgeColor = (type) => {
                                 )}
                             </>
                         ) : (
+                          <Card.Body>
+                                <p className="text-center text-muted">No notifications to display</p>
+                            </Card.Body>
+                        )}
+                    </Card>
+                </Col>
+            </Row>
+        </Container>
+    );
+};
+
+export default Notifications;'
                                                                     
 
 
