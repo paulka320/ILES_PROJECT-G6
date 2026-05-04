@@ -16,3 +16,4 @@ const Login = () => {
     username: "",
     email: "",
     password: "",
+    role: "student",
