@@ -53,6 +53,12 @@ const [newLog, setNewLog] = useState({
     try {
       const logRes = await getStudentLogs();
       setLogs(logRes.data);
+      } catch (err) {
+      console.error("Fetch Logs Error:", err);
+      setMessage({ type: 'danger', text: 'Failed to load weekly logs' });
+    }
+  };
+
 
 
 
