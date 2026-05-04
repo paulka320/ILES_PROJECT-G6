@@ -41,19 +41,19 @@ const StudentDashboard = () => {
   const [message, setMessage] = useState(null);
 
   const [editingId, setEditingId] = useState(null);
-  
-const [newLog, setNewLog] = useState({
+
+  const [newLog, setNewLog] = useState({
     week_number: "",
     activities: "",
     challenges: "",
   });
 
- // Fetch Logs
+  // Fetch Logs
   const fetchLogs = async () => {
     try {
       const logRes = await getStudentLogs();
       setLogs(logRes.data);
-      } catch (err) {
+    } catch (err) {
       console.error("Fetch Logs Error:", err);
       setMessage({ type: 'danger', text: 'Failed to load weekly logs' });
     }
@@ -68,7 +68,6 @@ const [newLog, setNewLog] = useState({
 
         const placementRes = await getStudentPlacement();
         setPlacement(placementRes.data[0]);
-        
       } catch (err) {
         console.error("Dashboard Error:", err.response || err);
         setMessage({ type: 'danger', text: 'Failed to load dashboard data' });
@@ -77,7 +76,7 @@ const [newLog, setNewLog] = useState({
       }
     };
 
-     if (user && user.role === 'student') {
+    if (user && user.role === 'student') {
       fetchData();
     }
   }, [user]);
@@ -88,27 +87,26 @@ const [newLog, setNewLog] = useState({
       ...newLog,
       [e.target.name]: e.target.value,
     });
-
   };
-              
+
   // Create OR Update Log
   const createLog = async () => {
     // Basic validation
     if (!newLog.week_number || !newLog.activities.trim()) {
       setMessage({ type: 'warning', text: 'Please fill in the week number and activities' });
       return;
-    }                 
-             
-     try {
+    }
+
+    try {
       if (editingId) {
-        await API.put(logs/weeklylogs/${editingId}/, newLog);
+        await API.put(`logs/weeklylogs/${editingId}/`, newLog);
         setMessage({ type: 'success', text: 'Log updated successfully' });
       } else {
         await API.post("logs/weeklylogs/", newLog);
         setMessage({ type: 'success', text: 'Log saved as draft' });
-      }    
+      }
 
-fetchLogs();
+      fetchLogs();
       setEditingId(null);
       setNewLog({
         week_number: "",
@@ -124,7 +122,7 @@ fetchLogs();
   // Submit Log
   const submitLog = async (id) => {
     try {
-      await API.post(logs/weeklylogs/${id}/submit/);
+      await API.post(`logs/weeklylogs/${id}/submit/`);
       setMessage({ type: 'success', text: 'Log submitted successfully' });
       fetchLogs();
     } catch (err) {
@@ -133,23 +131,22 @@ fetchLogs();
     }
   };
 
-// Delete Log
+  // Delete Log
   const deleteLog = async (id) => {
     if (!window.confirm('Are you sure you want to delete this log?')) return;
 
- try {
-      await API.delete(logs/weeklylogs/${id}/);
+    try {
+      await API.delete(`logs/weeklylogs/${id}/`);
       setMessage({ type: 'success', text: 'Log deleted successfully' });
       fetchLogs();
     } catch (err) {
       console.error("Delete Error:", err.response || err);
       setMessage({ type: 'danger', text: err.response?.data?.error || 'Failed to delete log' });
     }
-  };    
-  
-// Edit Log
-  const editLog = (log) => {
+  };
 
+  // Edit Log
+  const editLog = (log) => {
     setEditingId(log.id);
 
     setNewLog({
@@ -157,17 +154,273 @@ fetchLogs();
       activities: log.activities,
       challenges: log.challenges,
     });
-
   };
 
-// Chart Data
-  const chartData =
-    evaluations.map((ev, index) => ({
+  // Chart Data
+  const chartData = evaluations.map((ev, index) => ({
+    week: index + 1,
+    score: ev.total_score,
+  }));
 
-      week: index + 1,
+  // Stats
+  const totalLogs = logs.length;
 
-      score: ev.total_score,
+  const submittedLogs = logs.filter((l) => l.status === "submitted").length;
 
-    }));
+  const avgScore =
+    evaluations.length > 0
+      ? (
+        evaluations.reduce((a, b) => a + b.total_score, 0) /
+        evaluations.length
+      ).toFixed(2)
+      : 0;
 
+  return (
+    <Container fluid className="p-4">
+      {/* ALERT MESSAGE */}
+      {message && (
+        <Alert
+          variant={message.type}
+          onClose={() => setMessage(null)}
+          dismissible
+          className="mb-4"
+        >
+          {message.text}
+        </Alert>
+      )}
 
+      {/* Welcome */}
+      <Row className="mb-4">
+        <Col>
+          <Card className="bg-success text-white p-3">
+            <div className="d-flex justify-content-between align-items-center">
+              <div>
+                <h2>📚 Student Dashboard</h2>
+                <p>Welcome, {user?.username} | Role: {user?.role}</p>
+                {loading && <p>Loading dashboard data...</p>}
+              </div>
+              <Link to="/notifications">
+                <Button variant="light">🔔 Notifications</Button>
+              </Link>
+            </div>
+          </Card>
+        </Col>
+      </Row>
+
+      {/* Placement */}
+      {placement && (
+        <Row className="mb-4">
+          <Col>
+            <Card className="p-3">
+              <h4>Current Placement</h4>
+              <p>
+                <strong>Company:</strong> {placement.company_name}
+              </p>
+              <p>
+                <strong>Start Date:</strong> {placement.start_date}
+              </p>
+              <p>
+                <strong>End Date:</strong> {placement.end_date}
+              </p>
+            </Card>
+          </Col>
+        </Row>
+      )}
+
+      {/* Stats */}
+      <Row className="mb-4">
+        <Col md={4}>
+          <Card className="p-3 text-center bg-primary text-white">
+            <h6>Total Logs</h6>
+            <h3>{totalLogs}</h3>
+          </Card>
+        </Col>
+        <Col md={4}>
+          <Card className="p-3 text-center bg-success text-white">
+            <h6>Submitted Logs</h6>
+            <h3>{submittedLogs}</h3>
+          </Card>
+        </Col>
+        <Col md={4}>
+          <Card className="p-3 text-center bg-warning">
+            <h6>Average Score</h6>
+            <h3>{avgScore}</h3>
+          </Card>
+        </Col>
+      </Row>
+
+      {/* Create Log */}
+      <Row className="mb-4">
+        <Col>
+          <Card className="p-3">
+            <h4>📝 {editingId ? "Edit Weekly Log" : "Create Weekly Log"}</h4>
+            <Form>
+              <Row className="mb-2">
+                <Col md={2}>
+                  <Form.Control
+                    type="number"
+                    name="week_number"
+                    placeholder="Week"
+                    value={newLog.week_number}
+                    onChange={handleChange}
+                    required
+                  />
+                </Col>
+              </Row>
+              <Row className="mb-2">
+                <Col>
+                  <Form.Control
+                    as="textarea"
+                    rows={3}
+                    name="activities"
+                    placeholder="Activities done this week"
+                    value={newLog.activities}
+                    onChange={handleChange}
+                    required
+                  />
+                </Col>
+              </Row>
+              <Row className="mb-3">
+                <Col>
+                  <Form.Control
+                    as="textarea"
+                    rows={3}
+                    name="challenges"
+                    placeholder="Challenges faced this week"
+                    value={newLog.challenges}
+                    onChange={handleChange}
+                  />
+                </Col>
+              </Row>
+              <Button variant="primary" onClick={createLog}>
+                {editingId ? "Update Log" : "Save Draft"}
+              </Button>
+              {editingId && (
+                <Button
+                  variant="secondary"
+                  className="ms-2"
+                  onClick={() => {
+                    setEditingId(null);
+                    setNewLog({ week_number: "", activities: "", challenges: "" });
+                  }}
+                >
+                  Cancel Edit
+                </Button>
+              )}
+            </Form>
+          </Card>
+        </Col>
+      </Row>
+
+      {/* Logs Table */}
+      <Row className="mb-4">
+        <Col>
+          <Card className="p-3">
+            <h4>📋 Weekly Logs</h4>
+            <Table striped bordered hover responsive>
+              <thead className="table-info">
+                <tr>
+                  <th>Week</th>
+                  <th>Activities</th>
+                  <th>Challenges</th>
+                  <th>Status</th>
+                  <th>Feedback</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {logs.length > 0 ? (
+                  logs.map((log) => (
+                    <tr key={log.id}>
+                      <td>{log.week_number}</td>
+                      <td>{log.activities}</td>
+                      <td>{log.challenges || "None"}</td>
+                      <td>
+                        <Badge
+                          bg={
+                            log.status === "approved"
+                              ? "success"
+                              : log.status === "submitted"
+                              ? "primary"
+                              : "warning"
+                          }
+                        >
+                          {log.status}
+                        </Badge>
+                      </td>
+                      <td>{log.supervisor_comment || "No feedback yet"}</td>
+                      <td>
+                        {log.status === "draft" && (
+                          <>
+                            <Button
+                              size="sm"
+                              variant="success"
+                              className="me-2"
+                              onClick={() => submitLog(log.id)}
+                            >
+                              Submit
+                            </Button>
+                            <Button
+                              size="sm"
+                              variant="warning"
+                              className="me-2"
+                              onClick={() => editLog(log)}
+                            >
+                              Edit
+                            </Button>
+                            <Button
+                              size="sm"
+                              variant="danger"
+                              onClick={() => deleteLog(log.id)}
+                            >
+                              Delete
+                            </Button>
+                          </>
+                        )}
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="6" className="text-center text-muted">
+                      No logs submitted yet
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </Table>
+          </Card>
+        </Col>
+      </Row>
+
+      {/* Evaluation Chart */}
+      <Row>
+        <Col>
+          <Card className="p-3">
+            <h4>📊 Evaluation Scores</h4>
+            {chartData.length > 0 ? (
+              <ResponsiveContainer width="100%" height={300}>
+                <LineChart data={chartData}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="week" />
+                  <YAxis domain={[0, 10]} />
+                  <Tooltip />
+                  <Line
+                    type="monotone"
+                    dataKey="score"
+                    stroke="#17a2b8"
+                    strokeWidth={3}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            ) : (
+              <p className="text-center text-muted">No evaluation data yet</p>
+            )}
+          </Card>
+        </Col>
+      </Row>
+    </Container>
+  );
+};
+
+export default StudentDashboard;
