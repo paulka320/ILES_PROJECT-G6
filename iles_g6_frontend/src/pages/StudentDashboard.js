@@ -381,3 +381,9 @@ fetchLogs();
                       <td>
                         {log.status === "draft" && (
                           <>
+                            <Button
+                              size="sm"
+                              variant="success"
+                              className="me-2"
+                              onClick={() => submitLog(log.id)}
+                            >
