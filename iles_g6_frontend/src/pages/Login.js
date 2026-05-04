@@ -172,4 +172,5 @@ const Login = () => {
             <p className="text-muted">
               {isRegister ? "Already have an account?" : "Don't have an account?"}
             <Button
+              variant="link"
               
