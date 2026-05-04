@@ -84,6 +84,12 @@ const [newLog, setNewLog] = useState({
 
   // Handle Input Change
   const handleChange = (e) => {
+    setNewLog({
+      ...newLog,
+      [e.target.name]: e.target.value,
+    });
+
+  };
               
                    
              
