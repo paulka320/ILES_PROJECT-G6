@@ -147,3 +147,4 @@ const Login = () => {
                   required
                 >
                   <option value="student">Student</option>
+                  <option value="supervisor">Workplace Supervisor</option>
