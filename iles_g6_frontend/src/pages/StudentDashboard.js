@@ -22,34 +22,7 @@ import {
 
 
 
-                const placementRes = await getStudentPlacement();
-                console.log("PLACEMENT DATA:", placementRes.data);
-                setPlacement(placementRes.data);
-
-                const evalRes = await getStudentEvaluations();
-                console.log("EVALUATION DATA:", evalRes.data);
-                setEvaluations(evalRes.data);
-            } catch (err){
-                console.log(" Dashboard :", err.response || err);
-            }
-        };
-        fetchData();
-    }, [user]);
-
-    const chartData = evaluations.map((ev, index) => ({
-        week: index + 1,
-        score: ev.total_score,
-    }));
-
-    const totalLogs = logs.length;
-    const submittedLogs = logs.filter((l) => l.status === "submitted").length;
-    const pendingLogs = totalLogs - submittedLogs;
-    const avgScore = evaluations.length > 0 ? (evaluations.reduce((a,b) => a + b.total_score, 0) / evaluations.length).toFixed(2) : 0;
-
-    return (
-        <Container fluid className="p-4">
-            <Row className="mb-4">
-                <Col>
+              
                     <Card className="bg-primary text-white p-3">
                         <h2>Welcome, {user.username}</h2>
                         <p>Role: {user.role}</p>
