@@ -71,6 +71,16 @@ const Notifications = () => {
       const updated = notifications.map(n => ({...n, is_read: true }));
       setNotifications(updated);
       setMessage({ type: 'success', text: 'All notifications marked as read' });
+  catch (err) { 
+      console.error('Error marking all as read:', err);
+      setMessage({ type: 'danger', text: 'Failed to update notifications' });
+    }
+  };
+
+  // Delete notifications
+  const deleteNotifications = async (notificaionsId) => {
+    tyr {
+      await API.delete('/notificaions/${notificaionId}/');
       
   
       
