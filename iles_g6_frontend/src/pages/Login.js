@@ -119,3 +119,4 @@ const Login = () => {
                   type="email"
                   placeholder="Enter your email"
                   value={formData.email}
+                  required
