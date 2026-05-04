@@ -61,3 +61,4 @@ const Login = () => {
       resetForm();
     } catch (err) {
       console.error("Registration Error:", err.response || err);
+      setMessage({ type: "danger", text: err.response?.data?.error || "Registration failed." });
