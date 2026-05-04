@@ -8,4 +8,4 @@ const Login = () => {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  
+  const [isRegister, setIsRegister] = useState(false);
