@@ -143,3 +143,4 @@ const Login = () => {
                 <Form.Label>Role</Form.Label>
                 <Form.Select
                   value={formData.role}
+                  onChange={(e) => setFormData({ ...formData, role: e.target.value })}
