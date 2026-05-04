@@ -224,7 +224,19 @@ const getNotificationBadgeColor = (type) => {
                                                         >
                                                             Mark Read
                                                         </Button>
-                                                    )}                  
+                                                    )} 
+                                                    <Button
+                                                        variant="danger"
+                                                        size="sm"
+                                                        onClick={() => deleteNotification(notification.id)}
+                                                    >
+                                                        Delete
+                                                    </Button>
+                                                </td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </Table>
                                                                     
 
 
