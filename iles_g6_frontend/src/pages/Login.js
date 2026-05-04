@@ -92,3 +92,4 @@ const Login = () => {
           {message && (
             <Alert
               variant={message.type}
+              onClose={() => setMessage(null)}
