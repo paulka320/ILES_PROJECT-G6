@@ -373,3 +373,11 @@ fetchLogs();
                               ? "primary"
                               : "warning"
                           }
+                            >
+                          {log.status}
+                        </Badge>
+                      </td>
+                      <td>{log.supervisor_comment || "No feedback yet"}</td>
+                      <td>
+                        {log.status === "draft" && (
+                          <>
