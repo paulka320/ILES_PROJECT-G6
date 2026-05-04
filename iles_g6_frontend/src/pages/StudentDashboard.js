@@ -387,3 +387,11 @@ fetchLogs();
                               className="me-2"
                               onClick={() => submitLog(log.id)}
                             >
+                            Submit
+                            </Button>
+                            <Button
+                              size="sm"
+                              variant="warning"
+                              className="me-2"
+                              onClick={() => editLog(log)}
+                            >
