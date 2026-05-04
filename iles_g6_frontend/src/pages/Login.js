@@ -64,3 +64,4 @@ const Login = () => {
       setMessage({ type: "danger", text: err.response?.data?.error || "Registration failed." });
     } finally {
       setLoading(false);
+    }
