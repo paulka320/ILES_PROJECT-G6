@@ -93,3 +93,4 @@ const Login = () => {
             <Alert
               variant={message.type}
               onClose={() => setMessage(null)}
+              dismissible
