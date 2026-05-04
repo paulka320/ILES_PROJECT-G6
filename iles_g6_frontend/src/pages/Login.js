@@ -163,3 +163,4 @@ const Login = () => {
                   {isRegister ? "Registering..." : "Signing in..."}
                 </>
               ) : (
+                isRegister ? "Register" : "Login"
