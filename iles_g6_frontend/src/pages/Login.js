@@ -26,4 +26,5 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     setMessage(null);
+    setLoading(true);
     
