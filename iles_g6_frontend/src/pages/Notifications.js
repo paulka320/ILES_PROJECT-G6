@@ -107,7 +107,17 @@ const getNotificationBadgeColor = (type) => {
         return colors[type] || 'secondary';
     };
       
-      
+    const getNotificationIcon = (type) => {
+        const icons = {
+            'evaluation': '📋',
+            'log_submission': '📝',
+            'evaluation_complete': '✅',
+            'deadline': '⏰',
+            'alert': '⚠️',
+            'general': 'ℹ️'
+        };
+        return icons[type] || 'ℹ️';
+    };      
   
       
                                 
