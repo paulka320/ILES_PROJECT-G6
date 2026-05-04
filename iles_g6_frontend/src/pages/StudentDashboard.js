@@ -133,8 +133,19 @@ fetchLogs();
     }
   };
 
+// Delete Log
+  const deleteLog = async (id) => {
+    if (!window.confirm('Are you sure you want to delete this log?')) return;
 
-        
+ try {
+      await API.delete(logs/weeklylogs/${id}/);
+      setMessage({ type: 'success', text: 'Log deleted successfully' });
+      fetchLogs();
+    } catch (err) {
+      console.error("Delete Error:", err.response || err);
+      setMessage({ type: 'danger', text: err.response?.data?.error || 'Failed to delete log' });
+    }
+  };       
 
 
 
