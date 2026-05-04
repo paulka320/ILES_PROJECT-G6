@@ -59,7 +59,18 @@ const Notifications = () => {
       setNotificaions(updated);
       setMessage({ types: 'success', text: 'Notification marked as read' });
     } catch (err) {
-      consloe.error('Error marking notification as read:', err);
+      console.error('Error marking notification as read:', err);
+      setMessage({ type: 'danger', text: 'Failed to update notifications' });
+    }
+  }:
+
+  // Mark all notifications as read
+  const markAllAsRead = async () => {
+    try{
+      await API.post('/notificaions/${user.id}/mark_all_read/');
+      
+  
+      
                                 
 
 
