@@ -149,3 +149,4 @@ const Login = () => {
                   <option value="student">Student</option>
                   <option value="supervisor">Workplace Supervisor</option>
                   <option value="academic">Academic Supervisor</option>
+                </Form.Select>
