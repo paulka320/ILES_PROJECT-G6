@@ -81,6 +81,9 @@ const Notifications = () => {
   const deleteNotifications = async (notificaionsId) => {
     tyr {
       await API.delete('/notificaions/${notificaionId}/');
+      const updated = notificaions.filter(n => n.id !== notificaionId);
+      setNotificaions(updated);
+      
       
   
       
