@@ -264,3 +264,9 @@ fetchLogs();
             <h3>{totalLogs}</h3>
           </Card>
         </Col>
+        <Col md={4}>
+          <Card className="p-3 text-center bg-success text-white">
+            <h6>Submitted Logs</h6>
+            <h3>{submittedLogs}</h3>
+          </Card>
+        </Col>
