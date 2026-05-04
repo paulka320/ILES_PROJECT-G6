@@ -310,3 +310,34 @@ fetchLogs();
                 </Col>
               </Row>
               <Row className="mb-3">
+                      <Col>
+                  <Form.Control
+                    as="textarea"
+                    rows={3}
+                    name="challenges"
+                    placeholder="Challenges faced this week"
+                    value={newLog.challenges}
+                    onChange={handleChange}
+                  />
+                </Col>
+                </Row>
+              <Button variant="primary" onClick={createLog}>
+                {editingId ? "Update Log" : "Save Draft"}
+              </Button>
+              {editingId && (
+                <Button
+                  variant="secondary"
+                  className="ms-2"
+                  onClick={() => {
+                    setEditingId(null);
+                    setNewLog({ week_number: "", activities: "", challenges: "" });
+                  }}
+                >
+                  Cancel Edit
+                </Button>
+              )}
+            </Form>
+          </Card>
+        </Col>
+      </Row>
+
