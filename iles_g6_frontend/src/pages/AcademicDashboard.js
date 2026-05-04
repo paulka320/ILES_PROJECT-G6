@@ -302,6 +302,107 @@ const AcademicDashboard = () => {
                                 </Table>
                             </Tab.Pane>
 
+                            <Tab.Pane eventKey='performance'>
+                                <Row className='mb-4'>
+                                    <Col md={6}>
+                                        <Card className='p-4'>
+                                            <h5>Score Trends</h5>
+                                            <hr />
+                                            {chartData.length > 0 ? (
+                                                <ResponsiveContainer width='100%' height={300}>
+                                                    <LineChart data={chartData}>
+                                                        <CartesianGrid strokeDasharray='3 3' />
+                                                        <XAxis dataKey='student' />
+                                                        <YAxis domain={[0, 10]} />
+                                                        <Tooltip />
+                                                        <Line type='monotone' dataKey='score' stroke='#17a2b8' strokeWidth={3} />
+                                                    </LineChart>
+                                                </ResponsiveContainer>
+                                            ) : (
+                                                <p className='text-center text-muted'>
+                                                    No evaluation data available
+                                                </p>
+                                            )}
+                                        </Card>
+                                    </Col>
+                                    <Col md={6}>
+                                        <Card className='p-4'>
+                                            <h5>Performance Breakdown</h5>
+                                            <hr />
+                                            {performanceData.length > 0 ? (
+                                                <ResponsiveContainer width='100%' height={300}>
+                                                    <BarChart data={performanceData}>
+                                                        <CartesianGrid strokeDasharray='3 3' />
+                                                        <XAxis dataKey='student' />
+                                                        <YAxis domain={[0, 10]} />
+                                                        <Tooltip />
+                                                        <Bar dataKey='attendance' fill='#28a745' />
+                                                        <Bar dataKey='performance' fill='#ffc107' />
+                                                        <Bar dataKey='report' fill='#dc3545' />
+                                                    </BarChart>
+                                                </ResponsiveContainer>
+                                            ) : (
+                                                <p className='text-center text-muted'>
+                                                    No evaluation data available
+                                                </p>
+                                            )}
+                                        </Card>
+                                    </Col>
+                                </Row>
+                                <Card className='p-4'>
+                                    <h5>Performance Summary</h5>
+                                    <hr />
+                                    <Row>
+                                        <Col md={3}>
+                                            <p>
+                                                <strong>Evaluations Completed:</strong>{' '}
+                                                <Badge bg='success'>{evaluations.length}</Badge>
+                                            </p>
+                                        </Col>
+                                        <Col md={3}>
+                                            <p>
+                                                <strong>Students Evaluated:</strong>{' '}
+                                                <Badge bg='info'>
+                                                    {new Set(evaluations.map((ev) => ev.student)).size}
+                                                </Badge>
+                                            </p>
+                                        </Col>
+                                        <Col md={3}>
+                                            <p>
+                                                <strong>Average Attendance:</strong>{' '}
+                                                <Badge bg='primary'>
+                                                    {evaluations.length > 0
+                                                        ? (
+                                                                evaluations.reduce((sum, e) => sum + e.attendance_score, 0
+                                                            ) / evaluations.length
+                                                        ).toFixed(2)
+                                                        : 'N/A'}
+                                                </Badge>
+                                            </p>
+                                        </Col>
+                                        <Col md={3}>
+                                            <p>
+                                                <strong>Completion Rate:</strong>{' '}
+                                                <Badge bg='warning'>
+                                                    {students.length > 0
+                                                        ? (
+                                                                (evaluations.length / students.length) *
+                                                            100
+                                                            ).toFixed(0) + '%'
+                                                            : '0%'}
+                                                </Badge>
+                                            </p>
+                                        </Col>
+                                    </Row>
+                                </Card>
+                            </Tab.Pane>
+                        </Tab.Content>
+                    </Card.Body>
+                </Card>
+            </Tab.Container>
+
+
+
 
                 
             
