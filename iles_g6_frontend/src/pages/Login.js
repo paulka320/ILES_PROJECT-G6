@@ -5,3 +5,4 @@ import { AuthContext } from "../auth/AuthContext";
 import API from "../api/axios";
 
 const Login = () => {
+  const { login } = useContext(AuthContext);
