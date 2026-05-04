@@ -114,3 +114,4 @@ const Login = () => {
 
             {isRegister && (
               <Form.Group className="mb-3" controlId="loginEmail">
+                <Form.Label>Email address</Form.Label>
