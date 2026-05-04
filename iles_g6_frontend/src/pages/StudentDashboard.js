@@ -402,3 +402,22 @@ fetchLogs();
                               variant="danger"
                               onClick={() => deleteLog(log.id)}
                             >
+                            Delete
+                            </Button>
+                          </>
+                        )}
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="6" className="text-center text-muted">
+                      No logs submitted yet
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </Table>
+          </Card>
+        </Col>
+      </Row>
