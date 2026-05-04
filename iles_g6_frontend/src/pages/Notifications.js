@@ -18,6 +18,8 @@ const Notifications = () => {
     try{
       setLoading(true);
       const res = await API.get('/notofocations/${user.id}/');
+      console.log("Notifications Data:", res.data);
+      setFilteredNotifications(res.data);
   
   
   
