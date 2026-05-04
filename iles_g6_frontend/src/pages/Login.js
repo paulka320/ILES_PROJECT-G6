@@ -131,3 +131,4 @@ const Login = () => {
               <Form.Control
                 type="password"
                 placeholder="Enter your password"
+                value={formData.password}
