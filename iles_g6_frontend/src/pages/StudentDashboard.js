@@ -60,6 +60,12 @@ const [newLog, setNewLog] = useState({
   };
 
   // Fetch All Dashboard Data
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        await fetchLogs();
+        
 
 
 
