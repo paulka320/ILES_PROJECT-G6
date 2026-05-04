@@ -168,3 +168,8 @@ const Login = () => {
             </Button>
           </Form>
 
+          <div className="text-center mt-4">
+            <p className="text-muted">
+              {isRegister ? "Already have an account?" : "Don't have an account?"}
+            <Button
+              
