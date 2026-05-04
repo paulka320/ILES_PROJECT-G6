@@ -70,4 +70,5 @@ const Login = () => {
   return (
     <Container
       fluid
+      className="d-flex justify-content-center align-items-center min-vh-100"
   
