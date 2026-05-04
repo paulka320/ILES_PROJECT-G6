@@ -108,3 +108,4 @@ const Login = () => {
                 placeholder="Enter your username"
                 value={formData.username}
                 required
+                onChange={(e) => setFormData({ ...formData, username: e.target.value })}
