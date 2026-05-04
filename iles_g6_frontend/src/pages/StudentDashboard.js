@@ -34,6 +34,8 @@ import {
 const StudentDashboard = () => {
   const { user } = useContext(AuthContext);
 
+  const [logs, setLogs] = useState([]);
+
 
 
 
