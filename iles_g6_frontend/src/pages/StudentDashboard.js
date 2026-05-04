@@ -19,6 +19,18 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+import {
+  Card,
+  Container,
+  Row,
+  Col,
+  Table,
+  Badge,
+  Button,
+  Form,
+  Alert,
+} from "react-bootstrap";
+
 
 
 
