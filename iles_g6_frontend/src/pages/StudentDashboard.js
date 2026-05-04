@@ -76,6 +76,11 @@ const [newLog, setNewLog] = useState({
         setLoading(false);
       }
     };
+
+     if (user && user.role === 'student') {
+      fetchData();
+    }
+  }, [user]);
               
                    
              
