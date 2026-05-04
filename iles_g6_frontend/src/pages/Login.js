@@ -175,4 +175,5 @@ const Login = () => {
               variant="link"
               className="text-decoration-none"
               onClick={() => {
+                setIsRegister(!isRegister);
               
