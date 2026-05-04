@@ -222,3 +222,37 @@ fetchLogs();
       </Row>
 
   {/* Placement */}
+
+{placement && (
+
+<Row className="mb-4">
+
+<Col>
+
+<Card className="p-3">
+
+<h4>Current Placement</h4>
+
+<p>
+<strong>Company:</strong>{" "}
+{placement.company_name}
+</p>
+
+<p>
+<strong>Start Date:</strong>{" "}
+{placement.start_date}
+</p>
+
+<p>
+<strong>End Date:</strong>{" "}
+{placement.end_date}
+</p>
+
+</Card>
+
+</Col>
+
+</Row>
+
+)}
+
