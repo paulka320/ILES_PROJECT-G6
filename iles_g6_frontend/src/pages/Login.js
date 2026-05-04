@@ -183,4 +183,5 @@ const Login = () => {
               {isRegister ? "Already have an account? Login" : "New here? Create an account"}
             </Button>
           </div>
+        </Card.Body>
               
