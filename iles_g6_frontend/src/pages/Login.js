@@ -153,3 +153,4 @@ const Login = () => {
                 <Form.Text className="text-muted">
                   Select your role in the internship system.
                 </Form.Text>
+              </Form.Group>
