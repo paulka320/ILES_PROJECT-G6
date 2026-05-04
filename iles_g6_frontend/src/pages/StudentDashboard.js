@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { getStudentLogs, getStudentPlacement, getStudentEvaluations } from "../api/student";
+import { AuthContext } from "../auth/AuthContext";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import { Card, Container, Row, Col, Table, Badge } from "react-bootstrap";
 
