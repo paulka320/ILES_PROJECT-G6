@@ -41,19 +41,19 @@ const StudentDashboard = () => {
   const [message, setMessage] = useState(null);
 
   const [editingId, setEditingId] = useState(null);
-  
+
   const [newLog, setNewLog] = useState({
     week_number: "",
     activities: "",
     challenges: "",
   });
 
- // Fetch Logs
+  // Fetch Logs
   const fetchLogs = async () => {
     try {
       const logRes = await getStudentLogs();
       setLogs(logRes.data);
-      } catch (err) {
+    } catch (err) {
       console.error("Fetch Logs Error:", err);
       setMessage({ type: 'danger', text: 'Failed to load weekly logs' });
     }
@@ -68,7 +68,6 @@ const StudentDashboard = () => {
 
         const placementRes = await getStudentPlacement();
         setPlacement(placementRes.data[0]);
-        
       } catch (err) {
         console.error("Dashboard Error:", err.response || err);
         setMessage({ type: 'danger', text: 'Failed to load dashboard data' });
@@ -77,7 +76,7 @@ const StudentDashboard = () => {
       }
     };
 
-     if (user && user.role === 'student') {
+    if (user && user.role === 'student') {
       fetchData();
     }
   }, [user]);
@@ -88,27 +87,26 @@ const StudentDashboard = () => {
       ...newLog,
       [e.target.name]: e.target.value,
     });
-
   };
-              
+
   // Create OR Update Log
   const createLog = async () => {
     // Basic validation
     if (!newLog.week_number || !newLog.activities.trim()) {
       setMessage({ type: 'warning', text: 'Please fill in the week number and activities' });
       return;
-    }                 
-             
-     try {
+    }
+
+    try {
       if (editingId) {
-        await API.put(logs/weeklylogs/${editingId}/, newLog);
+        await API.put(`logs/weeklylogs/${editingId}/`, newLog);
         setMessage({ type: 'success', text: 'Log updated successfully' });
       } else {
         await API.post("logs/weeklylogs/", newLog);
         setMessage({ type: 'success', text: 'Log saved as draft' });
-      }    
+      }
 
-fetchLogs();
+      fetchLogs();
       setEditingId(null);
       setNewLog({
         week_number: "",
@@ -124,7 +122,7 @@ fetchLogs();
   // Submit Log
   const submitLog = async (id) => {
     try {
-      await API.post(logs/weeklylogs/${id}/submit/);
+      await API.post(`logs/weeklylogs/${id}/submit/`);
       setMessage({ type: 'success', text: 'Log submitted successfully' });
       fetchLogs();
     } catch (err) {
@@ -133,23 +131,22 @@ fetchLogs();
     }
   };
 
-// Delete Log
+  // Delete Log
   const deleteLog = async (id) => {
     if (!window.confirm('Are you sure you want to delete this log?')) return;
 
- try {
-      await API.delete(logs/weeklylogs/${id}/);
+    try {
+      await API.delete(`logs/weeklylogs/${id}/`);
       setMessage({ type: 'success', text: 'Log deleted successfully' });
       fetchLogs();
     } catch (err) {
       console.error("Delete Error:", err.response || err);
       setMessage({ type: 'danger', text: err.response?.data?.error || 'Failed to delete log' });
     }
-  };    
-  
-// Edit Log
-  const editLog = (log) => {
+  };
 
+  // Edit Log
+  const editLog = (log) => {
     setEditingId(log.id);
 
     setNewLog({
@@ -157,36 +154,25 @@ fetchLogs();
       activities: log.activities,
       challenges: log.challenges,
     });
-
   };
 
-// Chart Data
-  const chartData =
-    evaluations.map((ev, index) => ({
+  // Chart Data
+  const chartData = evaluations.map((ev, index) => ({
+    week: index + 1,
+    score: ev.total_score,
+  }));
 
-      week: index + 1,
-
-      score: ev.total_score,
-
-    }));
-
-// Stats
+  // Stats
   const totalLogs = logs.length;
 
-  const submittedLogs =
-    logs.filter(
-      (l) => l.status === "submitted"
-    ).length;
+  const submittedLogs = logs.filter((l) => l.status === "submitted").length;
 
-    const avgScore =
+  const avgScore =
     evaluations.length > 0
       ? (
-          evaluations.reduce(
-            (a, b) =>
-              a + b.total_score,
-            0
-          ) / evaluations.length
-        ).toFixed(2)
+        evaluations.reduce((a, b) => a + b.total_score, 0) /
+        evaluations.length
+      ).toFixed(2)
       : 0;
 
   return (
@@ -203,7 +189,7 @@ fetchLogs();
         </Alert>
       )}
 
-{/* Welcome */}
+      {/* Welcome */}
       <Row className="mb-4">
         <Col>
           <Card className="bg-success text-white p-3">
@@ -221,42 +207,27 @@ fetchLogs();
         </Col>
       </Row>
 
-  {/* Placement */}
+      {/* Placement */}
+      {placement && (
+        <Row className="mb-4">
+          <Col>
+            <Card className="p-3">
+              <h4>Current Placement</h4>
+              <p>
+                <strong>Company:</strong> {placement.company_name}
+              </p>
+              <p>
+                <strong>Start Date:</strong> {placement.start_date}
+              </p>
+              <p>
+                <strong>End Date:</strong> {placement.end_date}
+              </p>
+            </Card>
+          </Col>
+        </Row>
+      )}
 
-{placement && (
-
-<Row className="mb-4">
-
-<Col>
-
-<Card className="p-3">
-
-<h4>Current Placement</h4>
-
-<p>
-<strong>Company:</strong>{" "}
-{placement.company_name}
-</p>
-
-<p>
-<strong>Start Date:</strong>{" "}
-{placement.start_date}
-</p>
-
-<p>
-<strong>End Date:</strong>{" "}
-{placement.end_date}
-</p>
-
-</Card>
-
-</Col>
-
-</Row>
-
-)}
-
- {/* Stats */}
+      {/* Stats */}
       <Row className="mb-4">
         <Col md={4}>
           <Card className="p-3 text-center bg-primary text-white">
@@ -277,8 +248,8 @@ fetchLogs();
           </Card>
         </Col>
       </Row>
-                 
- {/* Create Log */}
+
+      {/* Create Log */}
       <Row className="mb-4">
         <Col>
           <Card className="p-3">
@@ -296,7 +267,7 @@ fetchLogs();
                   />
                 </Col>
               </Row>
-             <Row className="mb-2">
+              <Row className="mb-2">
                 <Col>
                   <Form.Control
                     as="textarea"
@@ -310,7 +281,7 @@ fetchLogs();
                 </Col>
               </Row>
               <Row className="mb-3">
-                      <Col>
+                <Col>
                   <Form.Control
                     as="textarea"
                     rows={3}
@@ -320,7 +291,7 @@ fetchLogs();
                     onChange={handleChange}
                   />
                 </Col>
-                </Row>
+              </Row>
               <Button variant="primary" onClick={createLog}>
                 {editingId ? "Update Log" : "Save Draft"}
               </Button>
@@ -341,7 +312,7 @@ fetchLogs();
         </Col>
       </Row>
 
-{/* Logs Table */}
+      {/* Logs Table */}
       <Row className="mb-4">
         <Col>
           <Card className="p-3">
@@ -373,7 +344,7 @@ fetchLogs();
                               ? "primary"
                               : "warning"
                           }
-                            >
+                        >
                           {log.status}
                         </Badge>
                       </td>
@@ -387,7 +358,7 @@ fetchLogs();
                               className="me-2"
                               onClick={() => submitLog(log.id)}
                             >
-                            Submit
+                              Submit
                             </Button>
                             <Button
                               size="sm"
@@ -395,14 +366,14 @@ fetchLogs();
                               className="me-2"
                               onClick={() => editLog(log)}
                             >
-                             Edit
+                              Edit
                             </Button>
                             <Button
                               size="sm"
                               variant="danger"
                               onClick={() => deleteLog(log.id)}
                             >
-                            Delete
+                              Delete
                             </Button>
                           </>
                         )}
@@ -421,8 +392,9 @@ fetchLogs();
           </Card>
         </Col>
       </Row>
-             {/* Evaluation Chart */}
-       Row>
+
+      {/* Evaluation Chart */}
+      <Row>
         <Col>
           <Card className="p-3">
             <h4>📊 Evaluation Scores</h4>
@@ -447,12 +419,8 @@ fetchLogs();
           </Card>
         </Col>
       </Row>
-
-
-</Container>
-
+    </Container>
   );
-
 };
 
 export default StudentDashboard;
