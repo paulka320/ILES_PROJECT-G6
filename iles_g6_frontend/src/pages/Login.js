@@ -112,3 +112,4 @@ const Login = () => {
               />
             </Form.Group>
 
+            {isRegister && (
