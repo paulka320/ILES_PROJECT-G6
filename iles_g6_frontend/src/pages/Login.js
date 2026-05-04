@@ -96,3 +96,4 @@ const Login = () => {
               dismissible
               className="mb-4"
             >
+              {message.text}
