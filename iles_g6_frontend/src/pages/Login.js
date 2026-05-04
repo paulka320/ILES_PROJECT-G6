@@ -40,4 +40,5 @@ const Login = () => {
       setMessage({ type: "danger", text: "Invalid username or password." });
     } finally {
       setLoading(false);
+    }
       
