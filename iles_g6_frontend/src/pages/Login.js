@@ -10,3 +10,6 @@ const Login = () => {
 
   const [isRegister, setIsRegister] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState(null);
+
+  
