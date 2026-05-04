@@ -68,6 +68,9 @@ const Notifications = () => {
   const markAllAsRead = async () => {
     try{
       await API.post('/notificaions/${user.id}/mark_all_read/');
+      const updated = notifications.map(n => ({...n, is_read: true }));
+      setNotifications(updated);
+      setMessage({ type: 'success', text: 'All notifications marked as read' });
       
   
       
