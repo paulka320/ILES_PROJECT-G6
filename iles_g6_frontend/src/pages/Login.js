@@ -94,3 +94,4 @@ const Login = () => {
               variant={message.type}
               onClose={() => setMessage(null)}
               dismissible
+              className="mb-4"
