@@ -20,19 +20,7 @@ import {
 } from "recharts";
 
 
-const StudentDashboard = () => {
-    const { user } = useContext(AuthContext);
-    const [logs, setLogs] = useState([]);
-    const [placement, setPlacement] = useState(null);
-    const [evaluations, setEvaluations] = useState([]);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-
-                const logRes = await getStudentLogs();
-                console.log("LOG DATA:", logRes.data);
-                setLogs(logRes.data);
 
                 const placementRes = await getStudentPlacement();
                 console.log("PLACEMENT DATA:", placementRes.data);
