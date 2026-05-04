@@ -177,6 +177,25 @@ const getNotificationBadgeColor = (type) => {
                 </Col>
             </Row>
 
+<Row>
+       <Col>
+            <Card>
+                  {loading? (
+                            <Card.Body>
+                                <p className="text-center">Loading notifications...</p>
+                            </Card.Body>
+                        ): filteredNotifications.length > 0 ? (
+                            <>
+                                <Table striped bordered hover responsive className="mb-0">
+                                    <thead className="table-light">
+                                        <tr>
+                                            <th>Type</th>
+                                            <th>Message</th>
+                                            <th>Date</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+
                                 
 
 
