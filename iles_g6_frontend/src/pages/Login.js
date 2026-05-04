@@ -146,3 +146,4 @@ const Login = () => {
                   onChange={(e) => setFormData({ ...formData, role: e.target.value })}
                   required
                 >
+                  <option value="student">Student</option>
