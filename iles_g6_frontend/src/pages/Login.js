@@ -104,3 +104,4 @@ const Login = () => {
             <Form.Group className="mb-3" controlId="loginUsername">
               <Form.Label>Username</Form.Label>
               <Form.Control
+                type="text"
