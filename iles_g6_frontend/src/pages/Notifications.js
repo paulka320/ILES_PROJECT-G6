@@ -151,6 +151,32 @@ const getNotificationBadgeColor = (type) => {
                     </Card>
                 </Col>
             </Row>
+
+<Row className="mb-4">
+                <Col>
+                    <div className="btn-group" role="group">
+                        <Button
+                            variant={filter === 'all' ? 'primary': 'outline-primary'}
+                            onClick={() => setFilter('all')}
+                        >
+                            All ({notifications.length})
+                        </Button>
+                        <Button
+                            variant={filter === 'unread' ? 'warning': 'outline-warning'}
+                            onClick={() => setFilter('unread')}
+                        >
+                            Unread ({unreadCount})
+                        </Button>
+                        <Button
+                            variant={filter === 'read' ? 'success': 'outline-success'}
+                            onClick={() => setFilter('read')}
+                        >
+                            Read ({notifications.length - unreadCount})
+                        </Button>
+                    </div>
+                </Col>
+            </Row>
+
                                 
 
 
