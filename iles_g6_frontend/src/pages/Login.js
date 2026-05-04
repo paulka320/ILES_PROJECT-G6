@@ -69,4 +69,5 @@ const Login = () => {
 
   return (
     <Container
+      fluid
   
