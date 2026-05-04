@@ -91,7 +91,13 @@ const [newLog, setNewLog] = useState({
 
   };
               
-                   
+  // Create OR Update Log
+  const createLog = async () => {
+    // Basic validation
+    if (!newLog.week_number || !newLog.activities.trim()) {
+      setMessage({ type: 'warning', text: 'Please fill in the week number and activities' });
+      return;
+    }                 
              
         
 
