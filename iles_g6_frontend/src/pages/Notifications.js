@@ -53,6 +53,8 @@ const Notifications = () => {
   const markAsRead = async ( notificationId) => {
     try {
       await API.patch('/notifications/${notificationId}/mark_read/', { is_read: true });
+      const update = notifications.map(n=>
+        n.id === notificationId? { ...n, is_read: true } : n
       
 
     
