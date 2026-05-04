@@ -72,4 +72,5 @@ const Login = () => {
       fluid
       className="d-flex justify-content-center align-items-center min-vh-100"
       style={{ background: "linear-gradient(135deg, #0d6efd 0%, #198754 100%)" }}
+    >
   
