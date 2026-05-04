@@ -195,6 +195,20 @@ const getNotificationBadgeColor = (type) => {
                                             <th>Status</th>
                                             <th>Actions</th>
                                         </tr>
+                                    </thead>
+                                    <tbody>
+                                        {paginatedNotifications.map((notification) => (
+                                            <tr key={notification.id} className={!notification.is_read ? 'table-active' : ''}>
+                                                <td className="text-center" style={{ fontSize: '1.2em' }}>
+                                                    {getNotificationIcon(notification.notification_type)}
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <strong>{notification.title || 'Notification'}</strong>
+                                                        <p className="mb-0 text-muted">{notification.message}</p>
+                                                    </div>
+                                                </td>
+
 
                                 
 
