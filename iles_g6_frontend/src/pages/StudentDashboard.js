@@ -270,3 +270,11 @@ fetchLogs();
             <h3>{submittedLogs}</h3>
           </Card>
         </Col>
+        <Col md={4}>
+          <Card className="p-3 text-center bg-warning">
+            <h6>Average Score</h6>
+            <h3>{avgScore}</h3>
+          </Card>
+        </Col>
+      </Row>
+                 
