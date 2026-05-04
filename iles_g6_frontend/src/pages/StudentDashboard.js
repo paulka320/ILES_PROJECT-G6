@@ -31,6 +31,9 @@ import {
   Alert,
 } from "react-bootstrap";
 
+const StudentDashboard = () => {
+  const { user } = useContext(AuthContext);
+
 
 
 
