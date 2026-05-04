@@ -177,3 +177,14 @@ fetchLogs();
     logs.filter(
       (l) => l.status === "submitted"
     ).length;
+
+    const avgScore =
+    evaluations.length > 0
+      ? (
+          evaluations.reduce(
+            (a, b) =>
+              a + b.total_score,
+            0
+          ) / evaluations.length
+        ).toFixed(2)
+      : 0;
