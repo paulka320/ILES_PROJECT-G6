@@ -74,4 +74,5 @@ const Login = () => {
       style={{ background: "linear-gradient(135deg, #0d6efd 0%, #198754 100%)" }}
     >
       <Card className="shadow-lg border-0" style={{ width: "420px", maxWidth: "95%" }}>
+        <Card.Body className="p-4">
   
