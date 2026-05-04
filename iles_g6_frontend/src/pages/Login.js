@@ -39,4 +39,5 @@ const Login = () => {
       console.error("Login Error:", err.response || err);
       setMessage({ type: "danger", text: "Invalid username or password." });
     } finally {
+      setLoading(false);
       
