@@ -84,4 +84,5 @@ const Login = () => {
             </h3>
             <p className="text-muted mb-0">
               {isRegister
+                ? "Register to join the internship management system."
   
