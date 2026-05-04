@@ -56,4 +56,4 @@ const Login = () => {
         role: formData.role,
       });
 
-      
+      setMessage({ type: "success", text: "Registration successful. Please login." });
