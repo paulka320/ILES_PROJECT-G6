@@ -349,7 +349,7 @@ fetchLogs();
             <Table striped bordered hover responsive>
               <thead className="table-info">
                 <tr>
-        <th>Week</th>
+                  <th>Week</th>
                   <th>Activities</th>
                   <th>Challenges</th>
                   <th>Status</th>
