@@ -237,6 +237,40 @@ const getNotificationBadgeColor = (type) => {
                                         ))}
                                     </tbody>
                                 </Table>
+
+                                {totalPages > 1 && (
+                                    <Card.Footer>
+                                        <Pagination className="mb-0">
+                                            <Pagination.First
+                                                onClick={() => setCurrentPage(1)}
+                                                disabled={currentPage === 1}
+                                            />
+                                            <Pagination.Prev
+                                                onClick={() => setCurrentPage(currentPage - 1)}
+                                                disabled={currentPage === 1}
+                                            />
+                                            {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                                                <Pagination.Item
+                                                    key={page}
+                                                    active={page === currentPage}
+                                                    onClick={() => setCurrentPage(page)}
+                                                >
+                                                    {page}
+                                                </Pagination.Item>
+                                            ))}
+                                            <Pagination.Next
+                                                onClick={() => setCurrentPage(currentPage + 1)}
+                                                disabled={currentPage === totalPages}
+                                            />
+                                            <Pagination.Last
+                                                onClick={() => setCurrentPage(totalPages)}
+                                                disabled={currentPage === totalPages}
+                                            />
+                                        </Pagination>
+                                    </Card.Footer>
+                                )}
+                            </>
+                        ) : (
                                                                     
 
 
