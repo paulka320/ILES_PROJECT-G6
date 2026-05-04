@@ -180,4 +180,5 @@ const Login = () => {
                 resetForm();
               }}
             >
+              {isRegister ? "Already have an account? Login" : "New here? Create an account"}
               
