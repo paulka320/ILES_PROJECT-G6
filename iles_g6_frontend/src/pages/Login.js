@@ -86,4 +86,5 @@ const Login = () => {
               {isRegister
                 ? "Register to join the internship management system."
                 : "Sign in to continue to the internship portal."}
+            </p>
   
