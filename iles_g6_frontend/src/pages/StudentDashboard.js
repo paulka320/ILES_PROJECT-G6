@@ -65,6 +65,9 @@ const [newLog, setNewLog] = useState({
       setLoading(true);
       try {
         await fetchLogs();
+
+        const placementRes = await getStudentPlacement();
+        setPlacement(placementRes.data[0]);
         
 
 
