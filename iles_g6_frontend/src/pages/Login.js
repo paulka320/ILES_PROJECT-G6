@@ -160,3 +160,4 @@ const Login = () => {
               {loading ? (
                 <>
                   <Spinner animation="border" size="sm" className="me-2" />
+                  {isRegister ? "Registering..." : "Signing in..."}
