@@ -132,7 +132,25 @@ const getNotificationBadgeColor = (type) => {
                 <Alert variant={message.type} onClose={() => setMessage(null)} dismissible className="mb-4">
                     {message.text}
                 </Alert>
-            )}    
+            )} 
+
+ <Row className="mb-4">
+                <Col>
+                    <Card className="bg-primary text-white p-3">
+                        <div className="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h2>Notifications</h2>
+                                <p>Unread: {unreadCount} | Total: {notifications.length}</p>
+                            </div>
+                            {unreadCount > 0 && (
+                                <Button variant="light" onClick={markAllAsRead}>
+                                    Mark All as Read
+                                </Button>
+                            )}
+                        </div>
+                    </Card>
+                </Col>
+            </Row
                                 
 
 
