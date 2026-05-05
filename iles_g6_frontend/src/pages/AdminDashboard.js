@@ -97,4 +97,17 @@ const AdminDashboard = () => {
         });
       }
   };
+
+  const handleCreatePlacement = async () => {
+    try {
+      if (
+        !createPlacementForm.student_id ||
+        !createPlacementForm.company_name ||
+        !createPlacementForm.start_date ||
+        !createPlacementForm.end_date
+      ) {
+        setMessage({ type: "warning", text: "Please fill in all required fields" });
+        return;
+      }
+      await createPlacement(createPlacementForm);
     
