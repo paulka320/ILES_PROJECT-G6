@@ -110,4 +110,25 @@ const AdminDashboard = () => {
         return;
       }
       await createPlacement(createPlacementForm);
+      setMessage({ type: "success", text: "Placement created successfully" });
+      
+      setCreatePlacementForm({
+        student_id: "",
+        company_name: "",
+        start_date: "",
+        end_date: "",
+        academic_id: "",
+        supervisor_id: "",
+      });
+
+      setShowCreatePlacement(false);
+      fetchAll();
+    } catch (err) {
+      setMessage({ 
+        type: "danger",
+        text: err.response?.data?.message || "Failed to create placement",
+      });
+    }
+  };
+
     
