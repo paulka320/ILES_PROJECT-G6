@@ -57,4 +57,6 @@ const AdminDashboard = () => {
     placementId: null,
     academic_id: "",
   });
+
+  const [message, setMessage] = useState(null);
     
