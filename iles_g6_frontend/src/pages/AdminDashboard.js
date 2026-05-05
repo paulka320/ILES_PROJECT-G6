@@ -186,4 +186,21 @@ const AdminDashboard = () => {
         </Alert>
       )}
 
+      <Row className="mb-4">
+        <Col>
+          <Card className="bg-dark text-white p-3">
+            <div className="d-flex justify-content-between align-items-center">
+              <div>
+                <h2>🎯 Admin Dashboard</h2>
+                <p>Full System Control & Management</p>
+              </div>
+              <Link to="/notifications">
+                <Button variant="light">🔔 Notifications</Button>
+              </Link>
+            </div>
+          </Card>
+        </Col>
+      </Row>
+
+
     
