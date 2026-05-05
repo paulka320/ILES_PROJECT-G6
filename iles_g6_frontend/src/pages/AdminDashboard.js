@@ -59,4 +59,8 @@ const AdminDashboard = () => {
   });
 
   const [message, setMessage] = useState(null);
+
+  useEffect(() => {
+    fetchAll();
+  }, []);
     
