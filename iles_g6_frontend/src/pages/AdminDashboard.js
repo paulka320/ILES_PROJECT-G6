@@ -43,3 +43,18 @@ const AdminDashboard = () => {
   const [showCreatePlacement, setShowCreatePlacement] = useState(false);
   const [showEditRole, setShowEditRole] = useState(false);
   const [showAssignAcademic, setShowAssignAcademic] = useState(false);
+
+  const [createPlacementForm, setCreatePlacementForm] = useState({
+    student_id: "",
+    company_name: "",
+    start_date: "",
+    end_date: "",
+    academic_id: "",
+    supervisor_id: "",
+  });
+  const [editRoleForm, setEditRoleForm] = useState({ user_id: null, role: "" });
+  const [assignAcademicForm, setAssignAcademicForm] = useState({
+    placementId: null,
+    academic_id: "",
+  });
+    
