@@ -71,4 +71,21 @@ const AdminDashboard = () => {
       const placementsRes = await getAllPlacements();
       const logsRes = await getAllLogs();
       const evalRes = await getAllEvaluations();
+
+      setStats(statsRes.data);
+      const usersData = usersRes.data?.results || usersRes.data || [];
+      setUsers(usersData);
+
+      setStudents(usersData.filter((u) => u.role === "student"));
+      setSupervisors(usersData.filter((u) => u.role === "supervisor"));
+      setAcademics(usersData.filter((u) => u.role === "academic"));
+
+      const placementsData = placementsRes.data?.results || placementsRes.data || [];
+      setPlacements(placementsData);
+
+      const logsData = logsRes.data?.results || logsRes.data || [];
+      setLogs(logsData);
+
+      const evalData = evalRes.data?.results || evalRes.data || [];
+      setEvaluations(evalData);
     
