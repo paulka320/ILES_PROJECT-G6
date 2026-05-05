@@ -151,4 +151,27 @@ const AdminDashboard = () => {
     }
   };
 
+  const handleAssignAcademic = async () => {
+    try {
+      if (!assignAcademicForm.placementId || !assignAcademicForm.academic_id) {
+        setMessage({ type: "warning", text: "Please select an academic supervisor" });
+        return;
+      }
+
+      await assignAcademicSupervisor(
+        assignAcademicForm.placementId,
+        assignAcademicForm.academic_id
+      );
+      setMessage({ type: "success", text: "Academic supervisor assigned successfully" });
+      setShowAssignAcademic(false);
+      setAssignAcademicForm({ placementId: null, academic_id: "" });
+      fetchAll();
+    } catch (err) {
+      setMessage({
+        type: "danger",
+        text: "Failed to assign academic supervisor",
+      });
+    }
+  };
+
     
