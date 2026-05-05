@@ -131,4 +131,24 @@ const AdminDashboard = () => {
     }
   };
 
+  const handleUpdateRole = async () => {
+    try {
+      if (!editRoleForm.user_id || !editRoleForm.role) {
+        setMessage({ type: "warning", text: "Please select a role" });
+        return;
+      }
+
+      await updateUserRole(editRoleForm.user_id, editRoleForm.role);
+      setMessage({ type: "success", text: "User role updated successfully" });
+      setShowEditRole(false);
+      setEditRoleForm({ user_id: null, role: "" });
+      fetchAll();
+    } catch (err) {
+      setMessage({
+        type: "danger",
+        text: "Failed to update user role",
+      });
+    }
+  };
+
     
