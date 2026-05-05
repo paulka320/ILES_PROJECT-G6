@@ -63,4 +63,12 @@ const AdminDashboard = () => {
   useEffect(() => {
     fetchAll();
   }, []);
+
+  const fetchAll = async () => {
+    try {
+      const statsRes = await getAdminStats();
+      const usersRes = await getAllUsers();
+      const placementsRes = await getAllPlacements();
+      const logsRes = await getAllLogs();
+      const evalRes = await getAllEvaluations();
     
