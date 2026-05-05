@@ -88,4 +88,13 @@ const AdminDashboard = () => {
 
       const evalData = evalRes.data?.results || evalRes.data || [];
       setEvaluations(evalData);
+
+      } catch (err) {
+        console.error("❌ Admin Error:", err.response || err);
+        setMessage({ 
+          type: "danger",
+          text: "Failed to load dashboard data",
+        });
+      }
+  };
     
