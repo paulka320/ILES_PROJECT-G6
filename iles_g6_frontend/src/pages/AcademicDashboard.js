@@ -162,14 +162,14 @@ const AcademicDashboard = () => {
                     <Card className='bg-info text-white p-3'>
                         <div className="d-flex justify-content-between align-items-center">
                             <div>
-                                <h2>Academic Dashboard</h2>
+                                <h2>🎓Academic Dashboard</h2>
                                 <p>Welcome,
                                     {user?.username}|Role:
                                     {user?.role}</p>
                                 {loading && <p>Loading data...</p>}
                             </div>
                             <Link to='/notifications'>
-                                <Button variant='light'>
+                                <Button variant='light'>🔔
                             Notifications</Button>
                             </Link>
                         </div>
@@ -205,13 +205,13 @@ const AcademicDashboard = () => {
             <Card.Header>
                 <Nav variant='pills'>
                     <Nav.Item>
-                        <Nav.Link eventKey='students'>My Students</Nav.Link>
+                        <Nav.Link eventKey='students'>👥My Students</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link eventKey='evaluations'>Evaluations</Nav.Link>
+                        <Nav.Link eventKey='evaluations'>⭐ Evaluations</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link eventKey='performance'>Performance</Nav.Link>
+                        <Nav.Link eventKey='performance'>📊 Performance</Nav.Link>
                     </Nav.Item>
                 </Nav>
             </Card.Header>
@@ -221,7 +221,7 @@ const AcademicDashboard = () => {
                     <Tab.Pane eventKey='students'>
                         <div className='mb-3'>
                             <Button variant='success' onClick={() => setShowEvaluationModal(true)}>
-                                Create Evaluation
+                                ➕ Create Evaluation
                             </Button>
                         </div>
                         <Table striped bordered hover responsive>
@@ -247,7 +247,7 @@ const AcademicDashboard = () => {
                                         </td>
                                         <td>
                                             <Button variant='primary' size='sm' className='me-2' onClick={() => selectStudent(stu)}>
-                                                View Details
+                                                👁️ View Details
                                             </Button>
                                             <Button variant='info' size='sm' onClick={() => {
                                                 setNewEvaluation({
@@ -256,7 +256,7 @@ const AcademicDashboard = () => {
                                                 });
                                                 setShowEvaluationModal(true);
                                             } }>
-                                                Evaluate
+                                                ⭐Evaluate
                                             </Button>
                                         </td>
                                     </tr>
@@ -312,7 +312,7 @@ const AcademicDashboard = () => {
                         <Row className='mb-4'>
                             <Col md={6}>
                                 <Card className='p-4'>
-                                    <h5>Score Trends</h5>
+                                    <h5>📈 Score Trends</h5>
                                     <hr />
                                     {chartData.length > 0 ? (
                                         <ResponsiveContainer width='100%' height={300}>
@@ -333,7 +333,7 @@ const AcademicDashboard = () => {
                             </Col>
                             <Col md={6}>
                                 <Card className='p-4'>
-                                    <h5>Performance Breakdown</h5>
+                                    <h5>📊 Performance Breakdown</h5>
                                     <hr />
                                     {performanceData.length > 0 ? (
                                         <ResponsiveContainer width='100%' height={300}>
@@ -356,7 +356,7 @@ const AcademicDashboard = () => {
                             </Col>
                         </Row>
                         <Card className='p-4'>
-                            <h5>Performance Summary</h5>
+                            <h5>📋 Performance Summary</h5>
                             <hr />
                             <Row>
                                 <Col md={3}>
@@ -417,7 +417,7 @@ const AcademicDashboard = () => {
                         <Row className='mb-3'>
                             <Col md={6}>
                                 <Card className='p-3'>
-                                    <h6>Placement Information</h6>
+                                    <h6>📋 Placement Information</h6>
                                     <hr />
                                     <p>
                                         <strong>Company:</strong>
@@ -439,7 +439,7 @@ const AcademicDashboard = () => {
                             </Col>
                             <Col md={6}>
                                 <Card className='p-3'>
-                                    <h6>Weekly Logs</h6>
+                                    <h6>📊 Weekly Logs</h6>
                                     <hr />
                                     {logs.length > 0 ? (
                                         <div style={{ maxHeight: '300px', overflowY: 'auto' }}>
