@@ -174,4 +174,16 @@ const AdminDashboard = () => {
     }
   };
 
+  return (
+    <Container fluid className="p-4">
+      {message && (
+        <Alert
+          variant={message.type}
+          onClose={() => setMessage(null)}
+          dismissible
+        >
+          {message.text}
+        </Alert>
+      )}
+
     
