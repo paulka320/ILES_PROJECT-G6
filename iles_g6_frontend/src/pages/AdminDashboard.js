@@ -202,5 +202,44 @@ const AdminDashboard = () => {
         </Col>
       </Row>
 
+      <Row className="mb-4">
+        <Col md={2}>
+          <Card className="p-3 text-center bg-primary text-white">
+            <h6>Students</h6>
+            <h3>{stats.totalStudents || 0}</h3>
+            </Card>
+        </Col>
+        <Col md={2}>
+          <Card className="p-3 text-center bg-warning">
+            <h6>Supervisors</h6>
+            <h3>{stats.totalSupervisors || 0}</h3>
+          </Card>
+        </Col>
+        <Col md={2}>
+          <Card className="p-3 text-center bg-info text-white">
+            <h6>Academics</h6>
+            <h3>{stats.totalAcademics || 0}</h3>
+          </Card>
+        </Col>
+        <Col md={2}>
+          <Card className="p-3 text-center bg-success text-white">
+            <h6>Placements</h6>
+            <h3>{stats.totalPlacements || 0}</h3>
+          </Card>
+        </Col>
+        <Col md={2}>
+          <Card className="p-3 text-center bg-danger text-white">
+            <h6>Avg Score</h6>
+            <h3>{stats.avgScore?.toFixed(2) || "N/A"}</h3>
+          </Card>
+        </Col>
+        <Col md={2}>
+          <Card className="p-3 text-center bg-secondary text-white">
+            <h6>Total Logs</h6>
+            <h3>{stats.totalLogs || 0}</h3>
+          </Card>
+        </Col>
+      </Row>
+
 
     
