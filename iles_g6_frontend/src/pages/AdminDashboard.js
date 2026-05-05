@@ -31,3 +31,11 @@ import {
 } from "react-bootstrap";
 
 const AdminDashboard = () => {
+  const [stats, setStats] = useState({});
+  const [users, setUsers] = useState([]);
+  const [students, setStudents] = useState([]);
+  const [supervisors, setSupervisors] = useState([]);
+  const [academics, setAcademics] = useState([]);
+  const [placements, setPlacements] = useState([]);
+  const [logs, setLogs] = useState([]);
+  const [evaluations, setEvaluations] = useState([]);
