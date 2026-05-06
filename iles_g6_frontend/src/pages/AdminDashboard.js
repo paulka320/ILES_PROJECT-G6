@@ -266,6 +266,110 @@ const AdminDashboard = () => {
           <Card.Body>
             <Tab.Content>
 
+              <Tab.Pane eventKey="placements">
+                <div className="mb-3">
+                  <Button variant="success"
+                    onClick={() => setShowCreatePlacement(true)}
+                    className="me-2"
+                  >
+                    ➕ Create Placement
+                  </Button>
+                  <Button
+                    variant="info"
+                    onClick={() => setShowAssignAcademic(true)}
+                  >
+                    👨‍🎓 Assign Academic Supervisor
+                  </Button>
+                </div>
+
+                <Table striped bordered hover responsive>
+                  <thead className="table-dark">
+                    <tr>
+                      <th>Student</th>
+                      <th>Company</th>
+                      <th>Start Date</th>
+                      <th>End Date</th>
+                      <th>Academic</th>
+                      <th>Supervisor</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {placements.length > 0 ? (
+                      placements.map((p) => (
+                        <tr key={p.id}>
+                          <td>{p.student?.username || "N/A"}</td>
+                          <td>{p.company_name || "N/A"}</td>
+                          <td>
+                            {p.start_date
+                              ? new Date(p.start_date).toLocaleDateString()
+                              : "N/A"}
+                          </td>
+                          <td>
+                            {p.end_date
+                              ? new Date(p.end_date).toLocaleDateString()
+                              : "N/A"}
+                          </td>
+                          <td>
+                            <Badge bg={p.academic_supervisor ? "success" : "warning"}>
+                              {p.academic_supervisor?.username || "Not Assigned"}
+                            </Badge>
+                          </td>
+                          <td>
+                            <select
+                              className="form-select form-select-sm"
+                              defaultValue=""
+                              onChange={async (e) => {
+                                const supervisorId = e.target.value;
+                                if (!supervisorId) return;
+                                try {
+                                  await assignSupervisor(p.id, supervisorId);
+                                  fetchAll();
+                                } catch (err) {
+                                  console.error(err);
+                                }
+                              }}
+                            >
+                              <option value="">
+                                {p.supervisor_name?.username || "Select Supervisor"}
+                              </option>
+                              {supervisors.map((s) => (
+                                <option key={s.id} value={s.id}>
+                                  {s.username}
+                                </option>
+                              ))}
+                            </select>
+                          </td>
+                          <td>
+                            <Button
+                              variant="danger"
+                              size="sm"
+                              onClick={async () => {
+                                if (window.confirm("Delete this placement?")) {
+                                  fetchAll();
+                                }
+                              }}
+                            >
+                              🗑️
+                            </Button>
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan="7" className="text-center text-muted">
+                          No placements found
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </Table>
+              </Tab.Pane>
+
+
+                    
+
+
 
 
     
