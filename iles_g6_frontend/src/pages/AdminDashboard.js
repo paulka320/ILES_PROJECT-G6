@@ -569,6 +569,101 @@ const AdminDashboard = () => {
                   </tbody>
                 </Table>
               </Tab.Pane>
+
+              <Tab.Pane eventKey="performance">
+                <Row className="mb-4">
+                  <Col md={6}>
+                    <Card className="p-4">
+                      <h5>📊 System Overview</h5>
+                      <hr />
+                      <div className="mb-3">
+                        <p>
+                          <strong>Total Users:</strong>{" "}
+                          <Badge bg="primary">{users.length}</Badge>
+                        </p>
+                        <p>
+                          <strong>Students:</strong>{" "}
+                          <Badge bg="info">{students.length}</Badge>
+                        </p>
+                        <p>
+                          <strong>Supervisors:</strong>{" "}
+                          <Badge bg="warning">{supervisors.length}</Badge>
+                        </p>
+                        <p>
+                          <strong>Academic Supervisors:</strong>{" "}
+                          <Badge bg="success">{academics.length}</Badge>
+                        </p>
+                      </div>
+                    </Card>
+                  </Col>
+
+                  <Col md={6}>
+                    <Card className="p-4">
+                      <h5>📈 Performance Metrics</h5>
+                      <hr />
+                      <div className="mb-3">
+                        <p>
+                          <strong>Total Placements:</strong>{" "}
+                          <Badge bg="success">{placements.length}</Badge>
+                        </p>
+                        <p>
+                          <strong>Total Weekly Logs:</strong>{" "}
+                          <Badge bg="secondary">{logs.length}</Badge>
+                        </p>
+                        <p>
+                          <strong>Total Evaluations:</strong>{" "}
+                          <Badge bg="danger">{evaluations.length}</Badge>
+                        </p>
+                        <p>
+                          <strong>Average Score:</strong>{" "}
+                          <Badge bg="primary">{stats.avgScore?.toFixed(2) || "N/A"}</Badge>
+                        </p>
+                      </div>
+                    </Card>
+                  </Col>
+                </Row>
+
+                <Card className="p-4">
+                  <h5>🎯 Placement Status</h5>
+                  <hr />
+                  <Row>
+                    <Col md={4}>
+                      <p>
+                        <strong>Assigned Supervisors:</strong>{" "}
+                        <Badge bg="success">
+                          {placements.filter((p) => p.supervisor_name).length}
+                        </Badge>
+                      </p>
+                    </Col>
+                    <Col md={4}>
+                      <p>
+                        <strong>Pending Assignments:</strong>{" "}
+                        <Badge bg="warning">
+                          {placements.filter((p) => !p.supervisor_name).length}
+                        </Badge>
+                      </p>
+                    </Col>
+                    <Col md={4}>
+                      <p>
+                        <strong>Completion Rate:</strong>{" "}
+                        <Badge bg="info">
+                          {placements.length > 0
+                            ? (
+                                ((placements.filter((p) => p.supervisor_name).length /
+                                  placements.length) *
+                                  100).toFixed(0) + "%"
+                              )
+                            : "0%"}
+                        </Badge>
+                      </p>
+                    </Col>
+                  </Row>
+                </Card>
+              </Tab.Pane>
+            </Tab.Content>
+          </Card.Body>
+        </Card>
+      </Tab.Container>
                   
 
               
