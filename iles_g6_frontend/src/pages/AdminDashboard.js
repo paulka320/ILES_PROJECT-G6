@@ -840,6 +840,66 @@ const AdminDashboard = () => {
         </Modal.Footer>
       </Modal>
 
+      <Modal show={showAssignAcademic} onHide={() => setShowAssignAcademic(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Assign Academic Supervisor</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-3">
+              <Form.Label>Select Placement</Form.Label>
+              <Form.Select
+                value={assignAcademicForm.placementId || ""}
+                onChange={(e) =>
+                  setAssignAcademicForm({
+                    ...assignAcademicForm,
+                    placementId: parseInt(e.target.value),
+                  })
+                }
+              >
+                <option value="">Select Placement</option>
+                {placements.map((p) => (
+                  <option key={p.id} value={p.id}>
+                    {p.student?.username} - {p.company_name}
+                  </option>
+                ))}
+              </Form.Select>
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Select Academic Supervisor</Form.Label>
+              <Form.Select
+                value={assignAcademicForm.academic_id}
+                onChange={(e) =>
+                  setAssignAcademicForm({
+                    ...assignAcademicForm,
+                    academic_id: e.target.value,
+                  })
+                }
+              >
+                <option value="">Select Academic</option>
+                {academics.map((a) => (
+                  <option key={a.id} value={a.id}>
+                    {a.username}
+                  </option>
+                ))}
+              </Form.Select>
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowAssignAcademic(false)}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={handleAssignAcademic}>
+            Assign Academic
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </Container>
+  );
+};
+
                   
 
               
