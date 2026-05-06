@@ -790,6 +790,56 @@ const AdminDashboard = () => {
         </Modal.Footer>
       </Modal>
 
+      <Modal show={showEditRole} onHide={() => setShowEditRole(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Update User Role</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-3">
+              <Form.Label>Select User</Form.Label>
+              <Form.Select
+                value={editRoleForm.userId || ""}
+                onChange={(e) =>
+                  setEditRoleForm({ ...editRoleForm, userId: parseInt(e.target.value) })
+                }
+              >
+                <option value="">Select User</option>
+                {users.map((u) => (
+                  <option key={u.id} value={u.id}>
+                    {u.username} ({u.role})
+                  </option>
+                ))}
+              </Form.Select>
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>New Role</Form.Label>
+              <Form.Select
+                value={editRoleForm.role}
+                onChange={(e) =>
+                  setEditRoleForm({ ...editRoleForm, role: e.target.value })
+                }
+              >
+                <option value="">Select Role</option>
+                <option value="student">Student</option>
+                <option value="supervisor">Supervisor</option>
+                <option value="academic">Academic Supervisor</option>
+                <option value="admin">Admin</option>
+              </Form.Select>
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowEditRole(false)}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={handleUpdateRole}>
+            Update Role
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
                   
 
               
