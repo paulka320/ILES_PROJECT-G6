@@ -531,7 +531,44 @@ const AdminDashboard = () => {
                     )}
                   </tbody>
                 </Table>
-              </Tab.Pane> 
+              </Tab.Pane>
+
+               <Tab.Pane eventKey="evaluations">
+                <Table striped bordered hover responsive>
+                  <thead className="table-dark">
+                    <tr>
+                      <th>Student</th>
+                      <th>Evaluator</th>
+                      <th>Attendance</th>
+                      <th>Performance</th>
+                      <th>Report</th>
+                      <th>Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {evaluations.length > 0 ? (
+                      evaluations.map((e) => (
+                        <tr key={e.id}>
+                          <td>{e.student_details?.username || "N/A"}</td>
+                          <td>{e.evaluator?.username || "N/A"}</td>
+                          <td>{e.attendance_score?.toFixed(2) || "N/A"}</td>
+                          <td>{e.performance_score?.toFixed(2) || "N/A"}</td>
+                          <td>{e.report_score?.toFixed(2) || "N/A"}</td>
+                          <td>
+                            <strong>{e.total_score?.toFixed(2) || "N/A"}</strong>
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan="6" className="text-center text-muted">
+                          No evaluations found
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </Table>
+              </Tab.Pane>
                   
 
               
