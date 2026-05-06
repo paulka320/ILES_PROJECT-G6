@@ -664,6 +664,132 @@ const AdminDashboard = () => {
           </Card.Body>
         </Card>
       </Tab.Container>
+
+      <Modal show={showCreatePlacement} onHide={() => setShowCreatePlacement(false)} size="lg">
+        <Modal.Header closeButton>
+          <Modal.Title>Create New Placement</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-3">
+              <Form.Label>Student *</Form.Label>
+              <Form.Select
+                value={createPlacementForm.student_id}
+                onChange={(e) =>
+                  setCreatePlacementForm({
+                    ...createPlacementForm,
+                    student_id: e.target.value,
+                  })
+                }
+              >
+                <option value="">Select Student</option>
+                {students.map((s) => (
+                  <option key={s.id} value={s.id}>
+                    {s.username}
+                  </option>
+                ))}
+              </Form.Select>
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Company Name *</Form.Label>
+              <Form.Control
+                type="text"
+                value={createPlacementForm.company_name}
+                onChange={(e) =>
+                  setCreatePlacementForm({
+                    ...createPlacementForm,
+                    company_name: e.target.value,
+                  })
+                }
+                placeholder="Enter company name"
+              />
+            </Form.Group>
+
+            <Row>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Start Date *</Form.Label>
+                  <Form.Control
+                    type="date"
+                    value={createPlacementForm.start_date}
+                    onChange={(e) =>
+                      setCreatePlacementForm({
+                        ...createPlacementForm,
+                        start_date: e.target.value,
+                      })
+                    }
+                  />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>End Date *</Form.Label>
+                  <Form.Control
+                    type="date"
+                    value={createPlacementForm.end_date}
+                    onChange={(e) =>
+                      setCreatePlacementForm({
+                        ...createPlacementForm,
+                        end_date: e.target.value,
+                      })
+                    }
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Academic Supervisor (Optional)</Form.Label>
+              <Form.Select
+                value={createPlacementForm.academic_id}
+                onChange={(e) =>
+                  setCreatePlacementForm({
+                    ...createPlacementForm,
+                    academic_id: e.target.value,
+                  })
+                }
+              >
+                <option value="">Select Academic Supervisor</option>
+                {academics.map((a) => (
+                  <option key={a.id} value={a.id}>
+                    {a.username}
+                  </option>
+                ))}
+              </Form.Select>
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Placement Supervisor (Optional)</Form.Label>
+              <Form.Select
+                value={createPlacementForm.supervisor_id}
+                onChange={(e) =>
+                  setCreatePlacementForm({
+                    ...createPlacementForm,
+                    supervisor_id: e.target.value,
+                  })
+                }
+              >
+                <option value="">Select Supervisor</option>
+                {supervisors.map((s) => (
+                  <option key={s.id} value={s.id}>
+                    {s.username}
+                  </option>
+                ))}
+              </Form.Select>
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowCreatePlacement(false)}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={handleCreatePlacement}>
+            Create Placement
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
                   
 
               
