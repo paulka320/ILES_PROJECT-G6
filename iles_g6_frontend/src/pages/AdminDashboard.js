@@ -241,5 +241,31 @@ const AdminDashboard = () => {
         </Col>
       </Row>
 
+      <Tab.Container defaultActiveKey="placements">
+        <Card className="mb-4">
+          <Card.Header>
+            <Nav variant="pills">
+              <Nav.Item>
+                <Nav.Link eventKey="placements">📍 Placements</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="users">👥 Users & Roles</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="logs">📋 Weekly Logs</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="evaluations">⭐ Evaluations</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="performance">📊 System Performance</Nav.Link>
+                </Nav.Item>
+            </Nav>
+          </Card.Header>
+          
+          <Card.Body>
+            <Tab.Content>
+
+
 
     
