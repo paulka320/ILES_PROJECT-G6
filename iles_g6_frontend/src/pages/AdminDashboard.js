@@ -366,6 +366,88 @@ const AdminDashboard = () => {
                 </Table>
               </Tab.Pane>
 
+              <Tab.Pane eventKey="users">
+                <div className="mb-3">
+                  <Button
+                    variant="secondary"
+                    onClick={() => setShowEditRole(true)}
+                  >
+                    ✏️ Edit User Role
+                  </Button>
+                </div>
+                <Table striped bordered hover responsive>
+                  <thead className="table-dark">
+                    <tr>
+                      <th>Username</th>
+                      <th>Email</th>
+                      <th>Role</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {users.length > 0 ? (
+                      users.map((u) => (
+                        <tr key={u.id}>
+                          <td>{u.username}</td>
+                          <td>{u.email}</td>
+                          <td>
+                            <Badge
+                              bg={
+                                u.role === "admin"
+                                  ? "danger"
+                                  : u.role === "student"
+                                  ? "primary"
+                                  : u.role === "supervisor"
+                                  ? "warning"
+                                  : "info"
+                              }
+                            >
+                              {u.role}
+                            </Badge>
+                          </td>
+                          <td>
+                            <Badge bg="success">Active</Badge>
+                          </td>
+                          <td>
+                            <Button
+                              variant="warning"
+                              size="sm"
+                              className="me-2"
+                              onClick={() => {
+                                setEditRoleForm({ userId: u.id, role: u.role });
+                                setShowEditRole(true);
+                              }}
+                            >
+                              ✏️ Edit
+                            </Button>
+                            <Button
+                              variant="danger"
+                              size="sm"
+                              onClick={() => {
+                                if (window.confirm("Delete this user?")) {
+                                  await deleteUser(u.id);
+                                  fetchAll();
+                                }
+                              }}
+                            >
+                              Delete
+                            </Button>
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan="5" className="text-center text-muted">
+                          No users found
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </Table>
+              </Tab.Pane>
+
+
 
                     
 
