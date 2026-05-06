@@ -447,6 +447,95 @@ const AdminDashboard = () => {
                 </Table>
               </Tab.Pane>
 
+              <Tab.Pane eventKey="logs">
+                <Table striped bordered hover responsive>
+                  <thead className="table-dark">
+                    <tr>
+                      <th>Student</th>
+                      <th>Week</th>
+                      <th>Status</th>
+                      <th>Submitted</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {logs.length > 0 ? (
+                     logs.map((l) => (
+                        <tr key={l.id}>
+                          <td>{l.student?.username || "N/A"}</td>
+                          <td>{l.week_number || "N/A"}</td>
+                          <td>
+                            <Badge
+                              bg={
+                                l.status === "approved"
+                                  ? "success"
+                                  : l.status === "rejected"
+                                  ? "danger"
+                                  : l.status === "submitted"
+                                  ? "warning"
+                                  : "secondary"
+                              }
+                            >
+                              {l.status}
+                            </Badge>
+                          </td>
+                          <td>
+                            {l.created_at
+                              ? new Date(l.created_at).toLocaleDateString()
+                              : "N/A"}
+                          </td>
+                          <td>
+                            <Button
+                              variant="success"
+                              size="sm"
+                              className="me-1"
+                              onClick={async () => {
+                                await approveLog(l.id);
+                                fetchAll();
+                              }}
+                            >
+                              ✅
+                            </Button>
+                            <Button
+                              variant="danger"
+                              size="sm"
+                              className="me-1"
+                              onClick={async () => {
+                                await rejectLog(l.id);
+                                fetchAll();
+                              }}
+                            >
+                              ❌
+                            </Button>
+                            <Button
+                              variant="dark"
+                              size="sm"
+                              onClick={async () => {
+                                if (window.confirm("Delete this log?")) {
+                                  await deleteLog(l.id);
+                                  fetchAll();
+                                }
+                              }}
+                            >
+                              🗑️
+                            </Button>
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan="5" className="text-center text-muted">
+                          No logs found
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </Table>
+              </Tab.Pane> 
+                  
+
+              
+
 
 
                     
