@@ -6,9 +6,9 @@ from django.urls import path
 router =DefaultRouter()
 router.register(r'weeklylogs', WeeklyLogViewSet,basename='weeklylogs')
 
-urlpatterns = router.urls + [
-    path('supervisor/pending/',SupervisorPendingLogsView.as_view(),name="supervisor-pending-logs"),
-    path('academic/<int:student_id>/logs/',AcademicStudentLogsView.as_view(),name = "academic-student-logs"),
-    path('admin/logs/',AdminLogsView.as_view(),name="admin-logs"),
-
+urlpatterns = [
+    path('', include(router.urls)), # This includes your 'weeklylogs'
+    path('supervisor/pending/', SupervisorPendingLogsView.as_view(), name="supervisor-pending"),
+    path('academic/<int:student_id>/logs/', AcademicStudentLogsView.as_view(), name="academic-student-logs"),
+    path('admin/logs/', AdminLogsView.as_view(), name="admin-logs"),
 ]
