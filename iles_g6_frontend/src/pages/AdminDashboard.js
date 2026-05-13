@@ -241,5 +241,676 @@ const AdminDashboard = () => {
         </Col>
       </Row>
 
+      <Tab.Container defaultActiveKey="placements">
+        <Card className="mb-4">
+          <Card.Header>
+            <Nav variant="pills">
+              <Nav.Item>
+                <Nav.Link eventKey="placements">📍 Placements</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="users">👥 Users & Roles</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="logs">📋 Weekly Logs</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="evaluations">⭐ Evaluations</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="performance">📊 System Performance</Nav.Link>
+                </Nav.Item>
+            </Nav>
+          </Card.Header>
+          
+          <Card.Body>
+            <Tab.Content>
+
+              <Tab.Pane eventKey="placements">
+                <div className="mb-3">
+                  <Button variant="success"
+                    onClick={() => setShowCreatePlacement(true)}
+                    className="me-2"
+                  >
+                    ➕ Create Placement
+                  </Button>
+                  <Button
+                    variant="info"
+                    onClick={() => setShowAssignAcademic(true)}
+                  >
+                    👨‍🎓 Assign Academic Supervisor
+                  </Button>
+                </div>
+
+                <Table striped bordered hover responsive>
+                  <thead className="table-dark">
+                    <tr>
+                      <th>Student</th>
+                      <th>Company</th>
+                      <th>Start Date</th>
+                      <th>End Date</th>
+                      <th>Academic</th>
+                      <th>Supervisor</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {placements.length > 0 ? (
+                      placements.map((p) => (
+                        <tr key={p.id}>
+                          <td>{p.student?.username || "N/A"}</td>
+                          <td>{p.company_name || "N/A"}</td>
+                          <td>
+                            {p.start_date
+                              ? new Date(p.start_date).toLocaleDateString()
+                              : "N/A"}
+                          </td>
+                          <td>
+                            {p.end_date
+                              ? new Date(p.end_date).toLocaleDateString()
+                              : "N/A"}
+                          </td>
+                          <td>
+                            <Badge bg={p.academic_supervisor ? "success" : "warning"}>
+                              {p.academic_supervisor?.username || "Not Assigned"}
+                            </Badge>
+                          </td>
+                          <td>
+                            <select
+                              className="form-select form-select-sm"
+                              defaultValue=""
+                              onChange={async (e) => {
+                                const supervisorId = e.target.value;
+                                if (!supervisorId) return;
+                                try {
+                                  await assignSupervisor(p.id, supervisorId);
+                                  fetchAll();
+                                } catch (err) {
+                                  console.error(err);
+                                }
+                              }}
+                            >
+                              <option value="">
+                                {p.supervisor_name?.username || "Select Supervisor"}
+                              </option>
+                              {supervisors.map((s) => (
+                                <option key={s.id} value={s.id}>
+                                  {s.username}
+                                </option>
+                              ))}
+                            </select>
+                          </td>
+                          <td>
+                            <Button
+                              variant="danger"
+                              size="sm"
+                              onClick={async () => {
+                                if (window.confirm("Delete this placement?")) {
+                                  fetchAll();
+                                }
+                              }}
+                            >
+                              🗑️
+                            </Button>
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan="7" className="text-center text-muted">
+                          No placements found
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </Table>
+              </Tab.Pane>
+
+              <Tab.Pane eventKey="users">
+                <div className="mb-3">
+                  <Button
+                    variant="secondary"
+                    onClick={() => setShowEditRole(true)}
+                  >
+                    ✏️ Edit User Role
+                  </Button>
+                </div>
+                <Table striped bordered hover responsive>
+                  <thead className="table-dark">
+                    <tr>
+                      <th>Username</th>
+                      <th>Email</th>
+                      <th>Role</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {users.length > 0 ? (
+                      users.map((u) => (
+                        <tr key={u.id}>
+                          <td>{u.username}</td>
+                          <td>{u.email}</td>
+                          <td>
+                            <Badge
+                              bg={
+                                u.role === "admin"
+                                  ? "danger"
+                                  : u.role === "student"
+                                  ? "primary"
+                                  : u.role === "supervisor"
+                                  ? "warning"
+                                  : "info"
+                              }
+                            >
+                              {u.role}
+                            </Badge>
+                          </td>
+                          <td>
+                            <Badge bg="success">Active</Badge>
+                          </td>
+                          <td>
+                            <Button
+                              variant="warning"
+                              size="sm"
+                              className="me-2"
+                              onClick={() => {
+                                setEditRoleForm({ userId: u.id, role: u.role });
+                                setShowEditRole(true);
+                              }}
+                            >
+                              ✏️ Edit
+                            </Button>
+                            <Button
+                              variant="danger"
+                              size="sm"
+                              onClick={() => {
+                                if (window.confirm("Delete this user?")) {
+                                  await deleteUser(u.id);
+                                  fetchAll();
+                                }
+                              }}
+                            >
+                              Delete
+                            </Button>
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan="5" className="text-center text-muted">
+                          No users found
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </Table>
+              </Tab.Pane>
+
+              <Tab.Pane eventKey="logs">
+                <Table striped bordered hover responsive>
+                  <thead className="table-dark">
+                    <tr>
+                      <th>Student</th>
+                      <th>Week</th>
+                      <th>Status</th>
+                      <th>Submitted</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {logs.length > 0 ? (
+                     logs.map((l) => (
+                        <tr key={l.id}>
+                          <td>{l.student?.username || "N/A"}</td>
+                          <td>{l.week_number || "N/A"}</td>
+                          <td>
+                            <Badge
+                              bg={
+                                l.status === "approved"
+                                  ? "success"
+                                  : l.status === "rejected"
+                                  ? "danger"
+                                  : l.status === "submitted"
+                                  ? "warning"
+                                  : "secondary"
+                              }
+                            >
+                              {l.status}
+                            </Badge>
+                          </td>
+                          <td>
+                            {l.created_at
+                              ? new Date(l.created_at).toLocaleDateString()
+                              : "N/A"}
+                          </td>
+                          <td>
+                            <Button
+                              variant="success"
+                              size="sm"
+                              className="me-1"
+                              onClick={async () => {
+                                await approveLog(l.id);
+                                fetchAll();
+                              }}
+                            >
+                              ✅
+                            </Button>
+                            <Button
+                              variant="danger"
+                              size="sm"
+                              className="me-1"
+                              onClick={async () => {
+                                await rejectLog(l.id);
+                                fetchAll();
+                              }}
+                            >
+                              ❌
+                            </Button>
+                            <Button
+                              variant="dark"
+                              size="sm"
+                              onClick={async () => {
+                                if (window.confirm("Delete this log?")) {
+                                  await deleteLog(l.id);
+                                  fetchAll();
+                                }
+                              }}
+                            >
+                              🗑️
+                            </Button>
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan="5" className="text-center text-muted">
+                          No logs found
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </Table>
+              </Tab.Pane>
+
+               <Tab.Pane eventKey="evaluations">
+                <Table striped bordered hover responsive>
+                  <thead className="table-dark">
+                    <tr>
+                      <th>Student</th>
+                      <th>Evaluator</th>
+                      <th>Attendance</th>
+                      <th>Performance</th>
+                      <th>Report</th>
+                      <th>Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {evaluations.length > 0 ? (
+                      evaluations.map((e) => (
+                        <tr key={e.id}>
+                          <td>{e.student_details?.username || "N/A"}</td>
+                          <td>{e.evaluator?.username || "N/A"}</td>
+                          <td>{e.attendance_score?.toFixed(2) || "N/A"}</td>
+                          <td>{e.performance_score?.toFixed(2) || "N/A"}</td>
+                          <td>{e.report_score?.toFixed(2) || "N/A"}</td>
+                          <td>
+                            <strong>{e.total_score?.toFixed(2) || "N/A"}</strong>
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan="6" className="text-center text-muted">
+                          No evaluations found
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </Table>
+              </Tab.Pane>
+
+              <Tab.Pane eventKey="performance">
+                <Row className="mb-4">
+                  <Col md={6}>
+                    <Card className="p-4">
+                      <h5>📊 System Overview</h5>
+                      <hr />
+                      <div className="mb-3">
+                        <p>
+                          <strong>Total Users:</strong>{" "}
+                          <Badge bg="primary">{users.length}</Badge>
+                        </p>
+                        <p>
+                          <strong>Students:</strong>{" "}
+                          <Badge bg="info">{students.length}</Badge>
+                        </p>
+                        <p>
+                          <strong>Supervisors:</strong>{" "}
+                          <Badge bg="warning">{supervisors.length}</Badge>
+                        </p>
+                        <p>
+                          <strong>Academic Supervisors:</strong>{" "}
+                          <Badge bg="success">{academics.length}</Badge>
+                        </p>
+                      </div>
+                    </Card>
+                  </Col>
+
+                  <Col md={6}>
+                    <Card className="p-4">
+                      <h5>📈 Performance Metrics</h5>
+                      <hr />
+                      <div className="mb-3">
+                        <p>
+                          <strong>Total Placements:</strong>{" "}
+                          <Badge bg="success">{placements.length}</Badge>
+                        </p>
+                        <p>
+                          <strong>Total Weekly Logs:</strong>{" "}
+                          <Badge bg="secondary">{logs.length}</Badge>
+                        </p>
+                        <p>
+                          <strong>Total Evaluations:</strong>{" "}
+                          <Badge bg="danger">{evaluations.length}</Badge>
+                        </p>
+                        <p>
+                          <strong>Average Score:</strong>{" "}
+                          <Badge bg="primary">{stats.avgScore?.toFixed(2) || "N/A"}</Badge>
+                        </p>
+                      </div>
+                    </Card>
+                  </Col>
+                </Row>
+
+                <Card className="p-4">
+                  <h5>🎯 Placement Status</h5>
+                  <hr />
+                  <Row>
+                    <Col md={4}>
+                      <p>
+                        <strong>Assigned Supervisors:</strong>{" "}
+                        <Badge bg="success">
+                          {placements.filter((p) => p.supervisor_name).length}
+                        </Badge>
+                      </p>
+                    </Col>
+                    <Col md={4}>
+                      <p>
+                        <strong>Pending Assignments:</strong>{" "}
+                        <Badge bg="warning">
+                          {placements.filter((p) => !p.supervisor_name).length}
+                        </Badge>
+                      </p>
+                    </Col>
+                    <Col md={4}>
+                      <p>
+                        <strong>Completion Rate:</strong>{" "}
+                        <Badge bg="info">
+                          {placements.length > 0
+                            ? (
+                                ((placements.filter((p) => p.supervisor_name).length /
+                                  placements.length) *
+                                  100).toFixed(0) + "%"
+                              )
+                            : "0%"}
+                        </Badge>
+                      </p>
+                    </Col>
+                  </Row>
+                </Card>
+              </Tab.Pane>
+            </Tab.Content>
+          </Card.Body>
+        </Card>
+      </Tab.Container>
+
+      <Modal show={showCreatePlacement} onHide={() => setShowCreatePlacement(false)} size="lg">
+        <Modal.Header closeButton>
+          <Modal.Title>Create New Placement</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-3">
+              <Form.Label>Student *</Form.Label>
+              <Form.Select
+                value={createPlacementForm.student_id}
+                onChange={(e) =>
+                  setCreatePlacementForm({
+                    ...createPlacementForm,
+                    student_id: e.target.value,
+                  })
+                }
+              >
+                <option value="">Select Student</option>
+                {students.map((s) => (
+                  <option key={s.id} value={s.id}>
+                    {s.username}
+                  </option>
+                ))}
+              </Form.Select>
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Company Name *</Form.Label>
+              <Form.Control
+                type="text"
+                value={createPlacementForm.company_name}
+                onChange={(e) =>
+                  setCreatePlacementForm({
+                    ...createPlacementForm,
+                    company_name: e.target.value,
+                  })
+                }
+                placeholder="Enter company name"
+              />
+            </Form.Group>
+
+            <Row>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Start Date *</Form.Label>
+                  <Form.Control
+                    type="date"
+                    value={createPlacementForm.start_date}
+                    onChange={(e) =>
+                      setCreatePlacementForm({
+                        ...createPlacementForm,
+                        start_date: e.target.value,
+                      })
+                    }
+                  />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>End Date *</Form.Label>
+                  <Form.Control
+                    type="date"
+                    value={createPlacementForm.end_date}
+                    onChange={(e) =>
+                      setCreatePlacementForm({
+                        ...createPlacementForm,
+                        end_date: e.target.value,
+                      })
+                    }
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Academic Supervisor (Optional)</Form.Label>
+              <Form.Select
+                value={createPlacementForm.academic_id}
+                onChange={(e) =>
+                  setCreatePlacementForm({
+                    ...createPlacementForm,
+                    academic_id: e.target.value,
+                  })
+                }
+              >
+                <option value="">Select Academic Supervisor</option>
+                {academics.map((a) => (
+                  <option key={a.id} value={a.id}>
+                    {a.username}
+                  </option>
+                ))}
+              </Form.Select>
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Placement Supervisor (Optional)</Form.Label>
+              <Form.Select
+                value={createPlacementForm.supervisor_id}
+                onChange={(e) =>
+                  setCreatePlacementForm({
+                    ...createPlacementForm,
+                    supervisor_id: e.target.value,
+                  })
+                }
+              >
+                <option value="">Select Supervisor</option>
+                {supervisors.map((s) => (
+                  <option key={s.id} value={s.id}>
+                    {s.username}
+                  </option>
+                ))}
+              </Form.Select>
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowCreatePlacement(false)}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={handleCreatePlacement}>
+            Create Placement
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      <Modal show={showEditRole} onHide={() => setShowEditRole(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Update User Role</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-3">
+              <Form.Label>Select User</Form.Label>
+              <Form.Select
+                value={editRoleForm.userId || ""}
+                onChange={(e) =>
+                  setEditRoleForm({ ...editRoleForm, userId: parseInt(e.target.value) })
+                }
+              >
+                <option value="">Select User</option>
+                {users.map((u) => (
+                  <option key={u.id} value={u.id}>
+                    {u.username} ({u.role})
+                  </option>
+                ))}
+              </Form.Select>
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>New Role</Form.Label>
+              <Form.Select
+                value={editRoleForm.role}
+                onChange={(e) =>
+                  setEditRoleForm({ ...editRoleForm, role: e.target.value })
+                }
+              >
+                <option value="">Select Role</option>
+                <option value="student">Student</option>
+                <option value="supervisor">Supervisor</option>
+                <option value="academic">Academic Supervisor</option>
+                <option value="admin">Admin</option>
+              </Form.Select>
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowEditRole(false)}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={handleUpdateRole}>
+            Update Role
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      <Modal show={showAssignAcademic} onHide={() => setShowAssignAcademic(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Assign Academic Supervisor</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-3">
+              <Form.Label>Select Placement</Form.Label>
+              <Form.Select
+                value={assignAcademicForm.placementId || ""}
+                onChange={(e) =>
+                  setAssignAcademicForm({
+                    ...assignAcademicForm,
+                    placementId: parseInt(e.target.value),
+                  })
+                }
+              >
+                <option value="">Select Placement</option>
+                {placements.map((p) => (
+                  <option key={p.id} value={p.id}>
+                    {p.student?.username} - {p.company_name}
+                  </option>
+                ))}
+              </Form.Select>
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Select Academic Supervisor</Form.Label>
+              <Form.Select
+                value={assignAcademicForm.academic_id}
+                onChange={(e) =>
+                  setAssignAcademicForm({
+                    ...assignAcademicForm,
+                    academic_id: e.target.value,
+                  })
+                }
+              >
+                <option value="">Select Academic</option>
+                {academics.map((a) => (
+                  <option key={a.id} value={a.id}>
+                    {a.username}
+                  </option>
+                ))}
+              </Form.Select>
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowAssignAcademic(false)}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={handleAssignAcademic}>
+            Assign Academic
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </Container>
+  );
+};
+
+export default AdminDashboard;
+
+                  
+
+              
+
+
+
+                    
+
+
+
 
     
