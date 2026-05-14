@@ -9,24 +9,31 @@ from users.permissions import IsAdmin
 from rest_framework.generics import ListAPIView
 
 
+
+from rest_framework.permissions import BasePermission, SAFE_METHODS
+
+# Custom permission: students can view, only admins can modify
+class IsAdminOrReadOnlyForStudent(BasePermission):
+    def has_permission(self, request, view):
+        if request.method in SAFE_METHODS:
+            return request.user.is_authenticated
+        return request.user.is_authenticated and getattr(request.user, 'role', None) == 'admin'
+
 class InternshipPlacementViewSet(viewsets.ModelViewSet):
     queryset = InternshipPlacement.objects.all()
     serializer_class = InternshipPlacementSerializer
-    permission_classes = [IsAuthenticated, IsAdmin]
+    permission_classes = [IsAdminOrReadOnlyForStudent]
 
     def get_queryset(self):
         user = self.request.user
-
-        if user.role =="student":
+        if getattr(user, 'role', None) == "student":
             return InternshipPlacement.objects.filter(student=user)
-        
-        elif user.role =="supervisor":
-            return InternshipPlacement.objects.filter(supervisor_name = user)
-        elif user.role =="academic":
-            return InternshipPlacement.objects.filter(academic_supervisor = user)
-        elif user.role =="admin":
+        elif getattr(user, 'role', None) == "supervisor":
+            return InternshipPlacement.objects.filter(supervisor_name=user)
+        elif getattr(user, 'role', None) == "academic":
+            return InternshipPlacement.objects.filter(academic_supervisor=user)
+        elif getattr(user, 'role', None) == "admin":
             return InternshipPlacement.objects.all()
-        
         return InternshipPlacement.objects.none()
 
 class SupervisorStudentsView(ListAPIView):

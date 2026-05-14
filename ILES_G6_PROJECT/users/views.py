@@ -44,7 +44,7 @@ class AdminStatsView(APIView):
         total_placements = InternshipPlacement.objects.count()
         total_logs = WeeklyLog.objects.count()
         total_evaluations = Evaluation.objects.count()
-        avg_score = Evaluation.object.aggregate(Avg("total_score"))["total_score__avg"] or 0
+        avg_score = Evaluation.objects.aggregate(Avg("total_score"))["total_score__avg"] or 0
 
         return Response({
             "totalStudents":total_students,

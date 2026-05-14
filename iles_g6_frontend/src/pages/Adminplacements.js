@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import API from "../api/axios";
+import Navigation from "../components/Navigation";
+import { Link } from 'react-router-dom';
+import { Container, Row, Col, Button, Card, Table } from 'react-bootstrap';
 
-import { Container, Table, Card, Row, Col, } from "react-bootstrap";
 
 
 const  AdminPlacements = () => {
@@ -30,11 +32,25 @@ const  AdminPlacements = () => {
     }, []);
 
     return (
-<Container fluid className="p-4">
-    <Row>
-        <Col>
-        <Card className="p-3">
-            <h4>All Placements</h4>
+      <>
+        <Navigation />
+        <Container fluid className="p-4">
+          <Row className="mb-3">
+            <Col>
+              <div className="d-flex flex-wrap gap-2">
+                <Link to="/admin">
+                  <Button variant="outline-primary">🏠 Admin Dashboard</Button>
+                </Link>
+                <Link to="/notifications">
+                  <Button variant="outline-light">🔔 Notifications</Button>
+                </Link>
+              </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Card className="p-3">
+                <h4>All Placements</h4>
             <Table striped bordered>
                 <thead>
                     <tr>
@@ -58,7 +74,8 @@ const  AdminPlacements = () => {
         </Card>
         </Col>
     </Row>
-</Container>
+  </Container>
+    </>
     );
 
 };

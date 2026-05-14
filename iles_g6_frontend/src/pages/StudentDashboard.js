@@ -30,6 +30,7 @@ import {
   Form,
   Alert,
 } from "react-bootstrap";
+import Navigation from "../components/Navigation";
 
 const StudentDashboard = () => {
   const { user } = useContext(AuthContext);
@@ -176,7 +177,9 @@ const StudentDashboard = () => {
       : 0;
 
   return (
-    <Container fluid className="p-4">
+    <>
+      <Navigation />
+      <Container fluid className="p-4">
       {/* ALERT MESSAGE */}
       {message && (
         <Alert
@@ -207,9 +210,28 @@ const StudentDashboard = () => {
         </Col>
       </Row>
 
+      <Row className="mb-3">
+        <Col>
+          <div className="d-flex flex-wrap gap-2">
+            <Link to="/student">
+              <Button variant="outline-light">🏠 Dashboard Home</Button>
+            </Link>
+            <Button variant="outline-info" onClick={() => document.getElementById('placement-section')?.scrollIntoView({ behavior: 'smooth' })}>
+              📍 My Placement
+            </Button>
+            <Button variant="outline-warning" onClick={() => document.getElementById('logs-section')?.scrollIntoView({ behavior: 'smooth' })}>
+              📝 Weekly Logs
+            </Button>
+            <Button variant="outline-primary" onClick={() => document.getElementById('evaluations-section')?.scrollIntoView({ behavior: 'smooth' })}>
+              ⭐ Evaluations
+            </Button>
+          </div>
+        </Col>
+      </Row>
+
       {/* Placement */}
       {placement && (
-        <Row className="mb-4">
+        <Row className="mb-4" id="placement-section">
           <Col>
             <Card className="p-3">
               <h4>Current Placement</h4>
@@ -313,7 +335,7 @@ const StudentDashboard = () => {
       </Row>
 
       {/* Logs Table */}
-      <Row className="mb-4">
+      <Row className="mb-4" id="logs-section">
         <Col>
           <Card className="p-3">
             <h4>📋 Weekly Logs</h4>
@@ -394,7 +416,7 @@ const StudentDashboard = () => {
       </Row>
 
       {/* Evaluation Chart */}
-      <Row>
+      <Row id="evaluations-section">
         <Col>
           <Card className="p-3">
             <h4>📊 Evaluation Scores</h4>
@@ -420,6 +442,7 @@ const StudentDashboard = () => {
         </Col>
       </Row>
     </Container>
+    </>
   );
 };
 

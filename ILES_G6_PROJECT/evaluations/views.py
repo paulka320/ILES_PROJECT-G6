@@ -8,6 +8,7 @@ from users.permissions import IsAcademic
 from rest_framework.decorators import api_view, permission_classes
 from internships.models import InternshipPlacement
 from rest_framework.response import Response
+from rest_framework.generics import ListAPIView
 
 
 class EvaluationViewSet(viewsets.ModelViewSet):

@@ -1,6 +1,6 @@
 from rest_framework.routers import DefaultRouter
 from .views import WeeklyLogViewSet,SupervisorPendingLogsView,AcademicStudentLogsView,AdminLogsView
-from django.urls import path
+from django.urls import path, include
 
 
 router =DefaultRouter()

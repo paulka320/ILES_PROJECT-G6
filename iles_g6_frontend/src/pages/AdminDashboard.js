@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { 
+import {
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar
+} from 'recharts';
+import {
   getAdminStats,
   getAllUsers,
   getAllPlacements,
@@ -15,7 +18,7 @@ import {
   createPlacement,
   updateUserRole,
 } from "../api/admin";
-import { 
+import {
   Container,
   Row,
   Col,
@@ -29,6 +32,7 @@ import {
   Nav,
   Tab,
 } from "react-bootstrap";
+import Navigation from "../components/Navigation";
 
 const AdminDashboard = () => {
   const [stats, setStats] = useState({});
@@ -175,32 +179,56 @@ const AdminDashboard = () => {
   };
 
   return (
-    <Container fluid className="p-4">
-      {message && (
-        <Alert
-          variant={message.type}
-          onClose={() => setMessage(null)}
-          dismissible
-        >
-          {message.text}
-        </Alert>
-      )}
+    <>
+      <Navigation />
+      <Container fluid className="p-4">
+        {message && (
+          <Alert
+            variant={message.type}
+            onClose={() => setMessage(null)}
+            dismissible
+          >
+            {message.text}
+          </Alert>
+        )}
 
-      <Row className="mb-4">
-        <Col>
-          <Card className="bg-dark text-white p-3">
-            <div className="d-flex justify-content-between align-items-center">
-              <div>
-                <h2>🎯 Admin Dashboard</h2>
-                <p>Full System Control & Management</p>
+        <Row className="mb-4">
+          <Col>
+            <Card className="bg-dark text-white p-3">
+              <div className="d-flex justify-content-between align-items-center">
+                <div>
+                  <h2>🎯 Admin Dashboard</h2>
+                  <p>Full System Control & Management</p>
+                </div>
+                <Link to="/notifications">
+                  <Button variant="light">🔔 Notifications</Button>
+                </Link>
               </div>
-              <Link to="/notifications">
-                <Button variant="light">🔔 Notifications</Button>
+            </Card>
+          </Col>
+        </Row>
+
+        <Row className="mb-3">
+          <Col>
+            <div className="d-flex flex-wrap gap-2">
+              <Link to="/admin">
+                <Button variant="outline-light">🏠 Dashboard Home</Button>
               </Link>
+              <Button variant="outline-info" onClick={() => document.getElementById('placements-section')?.scrollIntoView({ behavior: 'smooth' })}>
+                📍 Placements
+              </Button>
+              <Button variant="outline-warning" onClick={() => document.getElementById('users-section')?.scrollIntoView({ behavior: 'smooth' })}>
+                👥 Users
+              </Button>
+              <Button variant="outline-primary" onClick={() => document.getElementById('logs-section')?.scrollIntoView({ behavior: 'smooth' })}>
+                📋 Logs
+              </Button>
+              <Button variant="outline-success" onClick={() => document.getElementById('evaluations-section')?.scrollIntoView({ behavior: 'smooth' })}>
+                ⭐ Evaluations
+              </Button>
             </div>
-          </Card>
-        </Col>
-      </Row>
+          </Col>
+        </Row>
 
       <Row className="mb-4">
         <Col md={2}>
@@ -424,7 +452,7 @@ const AdminDashboard = () => {
                             <Button
                               variant="danger"
                               size="sm"
-                              onClick={() => {
+                              onClick={async () => {
                                 if (window.confirm("Delete this user?")) {
                                   await deleteUser(u.id);
                                   fetchAll();
@@ -619,6 +647,90 @@ const AdminDashboard = () => {
                           <Badge bg="primary">{stats.avgScore?.toFixed(2) || "N/A"}</Badge>
                         </p>
                       </div>
+                    </Card>
+                  </Col>
+                </Row>
+
+                {evaluations.length > 0 && (
+                  <Row className="mb-4">
+                    <Col md={6}>
+                      <Card className="p-4">
+                        <h5>📊 Student Performance Scores</h5>
+                        <hr />
+                        <ResponsiveContainer width="100%" height={300}>
+                          <BarChart data={evaluations.map(e => ({
+                            name: e.student_details?.username?.substring(0, 8) || 'Unknown',
+                            attendance: e.attendance_score || 0,
+                            performance: e.performance_score || 0,
+                            report: e.report_score || 0,
+                            total: e.total_score || 0
+                          }))}>
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="name" />
+                            <YAxis domain={[0, 10]} />
+                            <Tooltip />
+                            <Bar dataKey="attendance" fill="#8884d8" name="Attendance" />
+                            <Bar dataKey="performance" fill="#82ca9d" name="Performance" />
+                            <Bar dataKey="report" fill="#ffc658" name="Report" />
+                          </BarChart>
+                        </ResponsiveContainer>
+                      </Card>
+                    </Col>
+
+                    <Col md={6}>
+                      <Card className="p-4">
+                        <h5>📈 Total Score Distribution</h5>
+                        <hr />
+                        <ResponsiveContainer width="100%" height={300}>
+                          <LineChart data={evaluations.map((e, index) => ({
+                            student: e.student_details?.username?.substring(0, 8) || 'Unknown',
+                            score: e.total_score || 0,
+                            index: index + 1
+                          })).sort((a, b) => b.score - a.score)}>
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="student" />
+                            <YAxis domain={[0, 10]} />
+                            <Tooltip />
+                            <Line type="monotone" dataKey="score" stroke="#8884d8" strokeWidth={2} />
+                          </LineChart>
+                        </ResponsiveContainer>
+                      </Card>
+                    </Col>
+                  </Row>
+                )}
+
+                <Row className="mb-4">
+                  <Col md={6}>
+                    <Card className="p-4">
+                      <h5>📊 Score Breakdown Analysis</h5>
+                      <hr />
+                      {evaluations.length > 0 ? (
+                        <div>
+                          <p><strong>Average Attendance:</strong> {(evaluations.reduce((sum, e) => sum + (e.attendance_score || 0), 0) / evaluations.length).toFixed(2)}</p>
+                          <p><strong>Average Performance:</strong> {(evaluations.reduce((sum, e) => sum + (e.performance_score || 0), 0) / evaluations.length).toFixed(2)}</p>
+                          <p><strong>Average Report:</strong> {(evaluations.reduce((sum, e) => sum + (e.report_score || 0), 0) / evaluations.length).toFixed(2)}</p>
+                          <p><strong>Highest Score:</strong> {Math.max(...evaluations.map(e => e.total_score || 0)).toFixed(2)}</p>
+                          <p><strong>Lowest Score:</strong> {Math.min(...evaluations.map(e => e.total_score || 0)).toFixed(2)}</p>
+                        </div>
+                      ) : (
+                        <p className="text-muted">No evaluation data available</p>
+                      )}
+                    </Card>
+                  </Col>
+
+                  <Col md={6}>
+                    <Card className="p-4">
+                      <h5>🎯 Performance Categories</h5>
+                      <hr />
+                      {evaluations.length > 0 ? (
+                        <div>
+                          <p><strong>Excellent (9-10):</strong> <Badge bg="success">{evaluations.filter(e => (e.total_score || 0) >= 9).length}</Badge></p>
+                          <p><strong>Good (7-8.9):</strong> <Badge bg="warning">{evaluations.filter(e => (e.total_score || 0) >= 7 && (e.total_score || 0) < 9).length}</Badge></p>
+                          <p><strong>Needs Improvement (&lt;7):</strong> <Badge bg="danger">{evaluations.filter(e => (e.total_score || 0) < 7).length}</Badge></p>
+                        </div>
+                      ) : (
+                        <p className="text-muted">No evaluation data available</p>
+                      )}
                     </Card>
                   </Col>
                 </Row>
@@ -897,6 +1009,7 @@ const AdminDashboard = () => {
         </Modal.Footer>
       </Modal>
     </Container>
+    </>
   );
 };
 

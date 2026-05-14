@@ -1,7 +1,9 @@
 import { useEffect, useState, useContext } from 'react';
-import { AuthContext } from '../context/AuthContext'; 
+import { AuthContext } from '../auth/AuthContext'; 
 import API from '../api/axios'; 
 import { Container, Row, Col, Card, Button, Table, Badge, Alert, Pagination } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import Navigation from '../components/Navigation';
 
 const Notifications = () => {
   const { user } = useContext(AuthContext);
@@ -14,13 +16,20 @@ const Notifications = () => {
   const itemsPerPage = 10;
 
   // fetch notifications from API
+  const normalizeNotifications = (data) => {
+    if (Array.isArray(data)) return data;
+    if (data?.results && Array.isArray(data.results)) return data.results;
+    return [];
+  };
+
   const fetchNotifications = async () => {
     try {
       setLoading(true);
-      const res = await API.get(`/notifications/${user.id}/`);
+      const res = await API.get(`/notifications/`);
       console.log("Notifications Data:", res.data);
-      setNotifications(res.data);
-      setFilteredNotifications(res.data);
+      const notificationsData = normalizeNotifications(res.data);
+      setNotifications(notificationsData);
+      setFilteredNotifications(notificationsData);
     } catch (err) {
       console.error('Error fetching notifications:', err);
       setMessage({ type: 'danger', text: 'Failed to load notifications' });
@@ -67,7 +76,7 @@ const Notifications = () => {
   // Mark all notifications as read
   const markAllAsRead = async () => {
     try {
-      await API.post(`/notifications/${user.id}/mark_all_read/`);
+      await API.post(`/notifications/mark_all_read/`);
       const updated = notifications.map(n => ({ ...n, is_read: true }));
       setNotifications(updated);
       setMessage({ type: 'success', text: 'All notifications marked as read' });
@@ -127,7 +136,9 @@ const Notifications = () => {
   const unreadCount = notifications.filter(n => !n.is_read).length;
 
   return (
-    <Container fluid className="p-4">
+    <>
+      <Navigation />
+      <Container fluid className="p-4">
       {message && (
         <Alert variant={message.type} onClose={() => setMessage(null)} dismissible className="mb-4">
           {message.text}
@@ -149,6 +160,19 @@ const Notifications = () => {
               )}
             </div>
           </Card>
+        </Col>
+      </Row>
+
+      <Row className="mb-3">
+        <Col>
+          <div className="d-flex flex-wrap gap-2">
+            <Link to="/dashboard">
+              <Button variant="outline-light">🏠 Dashboard</Button>
+            </Link>
+            <Link to="/notifications">
+              <Button variant="outline-primary">🔔 Refresh</Button>
+            </Link>
+          </div>
         </Col>
       </Row>
 
@@ -279,7 +303,8 @@ const Notifications = () => {
         </Col>
       </Row>
     </Container>
-  );
+    </>
+    );
 };
 
 export default Notifications;

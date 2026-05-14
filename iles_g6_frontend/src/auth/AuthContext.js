@@ -8,17 +8,24 @@ export const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
 
-    const login = async (username, password) => {
+    const login = async (credentials) => {
+        const payload = {
+            username: credentials.username,
+            password: credentials.password,
+        };
 
-        const res = await API.post("users/login/", { username, password });
+        console.log("Login attempt payload:", payload);
 
-        localStorage.setItem("token", res.data.access);
-
-        const userData = res.data.user;
-
-        setUser(userData);
-
-        return userData;
+        try {
+            const res = await API.post("/users/login/", payload);
+            console.log("Login response:", res.data);
+            localStorage.setItem("token", res.data.access);
+            const userData = res.data.user;
+            setUser(userData);
+            return userData;
+        } catch (err) {
+            throw err;
+        }
 
         
     };

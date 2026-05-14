@@ -41,7 +41,7 @@ class WeeklyLogViewSet(viewsets.ModelViewSet):
     serializer.save(student=self.request.user)
 
 # submitting Log
-  @action(detail=True, method=['post'])
+  @action(detail=True, methods=['post'])
   def submit(self, request, pk=None):
     log = self.get_object()
 
@@ -54,50 +54,50 @@ class WeeklyLogViewSet(viewsets.ModelViewSet):
     return Response({"message": "Log submitted successfully"})
 
 # Review Log
-@action(detail=True, methods=['post'])
-def review(self, request, pk=None):
+  @action(detail=True, methods=['post'])
+  def review(self, request, pk=None):
 
-  log = self.get_object()
-  
-  if log.status != 'submitted':
-    return Response({"error": "only submitted logs can be reviewed"}, status=400)
-  
-  action = request.data.get("action")
+    log = self.get_object()
+    
+    if log.status != 'submitted':
+      return Response({"error": "only submitted logs can be reviewed"}, status=400)
+    
+    action = request.data.get("action")
 
-  comment = request.data.get("supervisor_comment","")
-  if action not in ['approve','reject']:
-    return Response({"error":"Invalid action.Must be approve or reject"}, status=400)
-  log.supervisor_comment = comment
-  log.status = "approved" if action =="approve" else "rejected"
-  log.save()
+    comment = request.data.get("supervisor_comment","")
+    if action not in ['approve','reject']:
+      return Response({"error":"Invalid action.Must be approve or reject"}, status=400)
+    log.supervisor_comment = comment
+    log.status = "approved" if action =="approve" else "rejected"
+    log.save()
 
-  message = f"Log {action}d by supervisor"
-  return Response({"message": message})
-
-
-@action(detail=True,methods = ["post"],url_path="admin_approve")
-def admin_approve(self,request,pk=None):
-
-  if request.user.role != "admin":
-    return Response ({"error":"Unauthorised"},status=403)
-  log = self.get_object()
-  log.status = "approved"
-  log.save()
-
-  return Response ({"message":"Log approved by admin"})
+    message = f"Log {action}d by supervisor"
+    return Response({"message": message})
 
 
-@action (detail=True, methods = ["post"], url_path="admin_reject")
-def admin_reject(self,request,pk = None):
-  
+  @action(detail=True,methods = ["post"],url_path="admin_approve")
+  def admin_approve(self,request,pk=None):
 
-  if request.user.role != "admin":
-    return Response({"error":"Unauthorized"},status=403)
-  log = self.get_object()
-  log.status = "rejected"
-  log.save()
+    if request.user.role != "admin":
+      return Response ({"error":"Unauthorised"},status=403)
+    log = self.get_object()
+    log.status = "approved"
+    log.save()
 
-  return Response({"message":"Log rejected by admin"})
+    return Response ({"message":"Log approved by admin"})
+
+
+  @action (detail=True, methods = ["post"], url_path="admin_reject")
+  def admin_reject(self,request,pk = None):
+    
+
+    if request.user.role != "admin":
+      return Response({"error":"Unauthorized"},status=403)
+    log = self.get_object()
+    log.status = "rejected"
+    log.save()
+
+    return Response({"message":"Log rejected by admin"})
 
 
 class SupervisorPendingLogsView(ListAPIView):

@@ -11,7 +11,7 @@ export const updateUserRole = (id, role) =>
 
 export const getAllPlacements = () => {
     console.log("API CALL:GET PLACEMENTS");
-    API.get("internships/admin/placements/");
+    return API.get("internships/admin/placements/");
 };
 
 export const assignSupervisor = (placementId, supervisorId) =>
@@ -42,7 +42,7 @@ export const rejectLog = (id) =>
 
 
 export const getAllEvaluations = () =>
-    API.get("evaluations/evaluations/");
+    API.get("evaluations/admin/evaluations/");
 
 export const getAdminStats = () =>
     API.get("users/admin/stats/");

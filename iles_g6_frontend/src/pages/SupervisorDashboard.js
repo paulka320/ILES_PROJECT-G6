@@ -5,6 +5,7 @@ import API from "../api/axios";
 import { Container, Row, Col, Card, Table, Badge, Button, Form, Alert } from "react-bootstrap";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import { Link } from "react-router-dom";
+import Navigation from "../components/Navigation";
 
 
 
@@ -71,7 +72,7 @@ const SupervisorDashboard = () => {
       return;
     }
     try {
-      await API.post(`logs/weeklylogs/${id}/review`,{
+      await API.post(`logs/weeklylogs/${id}/review/`,{
         action,
         supervisor_comment: comments[id],
       });
@@ -93,11 +94,13 @@ const SupervisorDashboard = () => {
   }));
 
   return (
-    <Container fluid className="p-4">
+    <>
+      <Navigation />
+      <Container fluid className="p-4">
       {message && (
         <Alert
             variant={message.type}
-            onclose={()=> setMessage(null)}
+            onClose={() => setMessage(null)}
             dismissible
             className="mb-4"
             >
@@ -123,6 +126,22 @@ const SupervisorDashboard = () => {
       </Row>
 
       <Row className="mb-4">
+        <Col>
+          <div className="d-flex flex-wrap gap-2 mb-3">
+            <Link to="/supervisor">
+              <Button variant="outline-light">🏠 Dashboard Home</Button>
+            </Link>
+            <Button variant="outline-info" onClick={() => document.getElementById('students-section')?.scrollIntoView({ behavior: 'smooth' })}>
+              👥 Assigned Students
+            </Button>
+            <Button variant="outline-warning" onClick={() => document.getElementById('logs-section')?.scrollIntoView({ behavior: 'smooth' })}>
+              📝 Pending Logs
+            </Button>
+          </div>
+        </Col>
+      </Row>
+
+      <Row className="mb-4" id="students-section">
 
         <Col md={6}>
 
@@ -210,7 +229,7 @@ const SupervisorDashboard = () => {
                   ) : (
                     <tr>
                       <td colSpan="5" className="text-center text-muted">
-                        No pnding logs
+                        No pending logs
                       </td>
                     </tr>
                   )}
@@ -220,7 +239,7 @@ const SupervisorDashboard = () => {
         </Col>
       </Row>
 
-      <Row>
+      <Row id="logs-section">
         <Col>
           <Card className="p-3">
             <h4>📊 Evaluation Scores</h4>
@@ -235,12 +254,13 @@ const SupervisorDashboard = () => {
                 </LineChart>
               </ResponsiveContainer>
             ) : (
-              <p classNmae="text-center text-muted">No evaluation data yet</p>
+              <p className="text-center text-muted">No evaluation data yet</p>
             )}
           </Card>
         </Col>
       </Row>
     </Container>
+    </>
   );
 };
 

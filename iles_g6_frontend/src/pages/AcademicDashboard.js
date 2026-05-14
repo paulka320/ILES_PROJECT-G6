@@ -4,6 +4,7 @@ import { AuthContext } from '../auth/AuthContext';
 import API from '../api/axios';
 import { Container, Row, Col, Card, Table, Button, Form, Badge, Alert, Modal, Tab, Nav } from 'react-bootstrap';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
+import Navigation from '../components/Navigation';
 
 const AcademicDashboard = () => {
     const { user } = useContext(AuthContext);
@@ -148,7 +149,9 @@ const AcademicDashboard = () => {
     }));
 
     return (
-        <Container fluid className="p-4">
+        <div>
+            <Navigation />
+            <Container fluid className="p-4">
             {message && (
                 <Alert variant={message.type} onClose={() => setMessage(null)} dismissible className="mb-4"
                 >
@@ -177,8 +180,27 @@ const AcademicDashboard = () => {
                 </Col>
             </Row>
 
+            <Row className="mb-3">
+                <Col>
+                    <div className="d-flex flex-wrap gap-2">
+                        <Link to="/academic">
+                            <Button variant="outline-info">🏠 Dashboard Home</Button>
+                        </Link>
+                        <Button variant="outline-primary" onClick={() => document.getElementById('student-list')?.scrollIntoView({ behavior: 'smooth' })}>
+                            👥 Students
+                        </Button>
+                        <Button variant="outline-warning" onClick={() => document.getElementById('evaluation-list')?.scrollIntoView({ behavior: 'smooth' })}>
+                            ⭐ Evaluations
+                        </Button>
+                        <Button variant="outline-success" onClick={() => document.getElementById('stats-summary')?.scrollIntoView({ behavior: 'smooth' })}>
+                            📊 Statistics
+                        </Button>
+                    </div>
+                </Col>
+            </Row>
+
             {stats && (
-                <Row className="mb-4">
+                <Row className="mb-4" id="stats-summary">
                     <Col md={4}>
                         <Card className='p-3 text-center bg-primary text-white'>
                             <h6>Assigned Students</h6>
@@ -200,7 +222,7 @@ const AcademicDashboard = () => {
                 </Row>
             )}
 
-            <><Tab.Container defaultActiveKey='students'>
+            <Tab.Container defaultActiveKey='students'>
         <Card className='mb-4'>
             <Card.Header>
                 <Nav variant='pills'>
@@ -218,7 +240,7 @@ const AcademicDashboard = () => {
 
             <Card.Body>
                 <Tab.Content>
-                    <Tab.Pane eventKey='students'>
+                    <Tab.Pane eventKey='students' id='student-list'>
                         <div className='mb-3'>
                             <Button variant='success' onClick={() => setShowEvaluationModal(true)}>
                                 ➕ Create Evaluation
@@ -271,7 +293,7 @@ const AcademicDashboard = () => {
                         </Table>
                     </Tab.Pane>
 
-                    <Tab.Pane eventKey='evaluations'>
+                    <Tab.Pane eventKey='evaluations' id='evaluation-list'>
                         <Table striped bordered hover responsive>
                             <thead className='table-success'>
                                 <tr>
@@ -308,7 +330,7 @@ const AcademicDashboard = () => {
                         </Table>
                     </Tab.Pane>
 
-                    <Tab.Pane eventKey='performance'>
+                    <Tab.Pane eventKey='performance' id='performance-section'>
                         <Row className='mb-4'>
                             <Col md={6}>
                                 <Card className='p-4'>
@@ -592,8 +614,8 @@ const AcademicDashboard = () => {
                 </Modal.Footer>
             </Form>
         </Modal>
-    </>
     </Container>
+    </div>
 );
 
 };

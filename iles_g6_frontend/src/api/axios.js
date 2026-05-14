@@ -5,9 +5,12 @@ const API =axios.create ({
 });
 
 API.interceptors.request.use((req) => {
-    const token = localStorage.getItem("token");
-    if (token) {
-        req.headers.Authorization = `Bearer ${token}`;
+    // Don't add Authorization header for login requests
+    if (!req.url.includes('/login/')) {
+        const token = localStorage.getItem("token");
+        if (token) {
+            req.headers.Authorization = `Bearer ${token}`;
+        }
     }
     return req;
 });
