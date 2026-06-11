@@ -23,3 +23,7 @@ docker compose exec backend python manage.py collectstatic --noinput
 ```
 
 Frontend will be served on `http://localhost:3000` and backend API on `http://localhost:8000`.
+
+## Deploy to Render (cloud)
+
+See **[README_RENDER.md](./README_RENDER.md)** for step-by-step Render deployment (PostgreSQL + Django API + React static site).
