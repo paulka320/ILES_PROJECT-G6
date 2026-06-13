@@ -35,7 +35,7 @@ services:
   - type: web
     name: iles-frontend
     runtime: static
-    plan: free
+    plan: starter
     rootDir: iles_g6_frontend
     buildCommand: npm install && npm run build
     staticPublishPath: build
