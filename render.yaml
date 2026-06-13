@@ -11,7 +11,7 @@ services:
   - type: web
     name: iles-backend
     runtime: python
-    plan: free
+    plan: starter
     rootDir: ILES_G6_PROJECT
     buildCommand: bash build.sh
     startCommand: gunicorn ILES_G6_PROJECT.wsgi:application --bind 0.0.0.0:$PORT
