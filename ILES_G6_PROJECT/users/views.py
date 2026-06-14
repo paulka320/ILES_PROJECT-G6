@@ -16,10 +16,27 @@ from rest_framework.response import Response
 from evaluations.models import Evaluation
 
 
+from rest_framework import generics, status
+from rest_framework.response import Response
+from .models import CustomUser
+from .serializers import RegisterSerializer
+import traceback
 
 class RegisterView(generics.CreateAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = RegisterSerializer
+
+    def create(self, request, *args, **kwargs):
+        try:
+            return super().create(request, *args, **kwargs)
+        except Exception as e:
+            return Response(
+                {
+                    "error": str(e),
+                    "traceback": traceback.format_exc()
+                },
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
 
 
 class AdminUserViewSet(viewsets.ModelViewSet):
